@@ -1,0 +1,1 @@
+g++ include/LivroEducativo.h src/LivroEducativo.cpp include/Revista.h src/Revista.cpp include/Jornal.h src/Jornal.cpp include/Geral.h src/Geral.cpp include/Uteis.h src/Uteis.cpp include/menu.h src/menu.cpp include/LivroCientifico.h src/LivroCientifico.cpp include/LivroFiccao.h src/LivroFiccao.cpp main.cpp include/Biblioteca.h src/Biblioteca.cpp -o teste
