@@ -1,4 +1,4 @@
-#include "../include/LivroEducativo.h"
+#include "../../include/Livros/LivroEducativo.h"
 
 
 LivroEducativo::LivroEducativo(string titulo, string autor, int ano, bool disponivel,string ISBN,int Nivel_Educacional,string Materia):Geral(titulo,autor,ano, disponivel),ISBN(ISBN),Nivel_Educacional(Nivel_Educacional)
@@ -13,9 +13,7 @@ LivroEducativo::~LivroEducativo()
 
 void LivroEducativo::descricao() const
 {
-    // Chama o método descricao da classe base
     Geral::descricao();
-    // Adiciona a descrição específica da subclasse
     cout << "Codigo ISBN: " << ISBN << "\n";
     cout << "Nivel Educacional: ";
     switch (Nivel_Educacional)

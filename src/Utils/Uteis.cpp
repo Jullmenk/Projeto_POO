@@ -1,15 +1,16 @@
-#include "../include/Uteis.h"
-#include "../include/Geral.h"
-#include "../include/Biblioteca.h"
-#include "../include/LivroFiccao.h"
 #include <iostream>
 #include <string>
-#include "../include/LivroCientifico.h"
-#include "../include/LivroEducativo.h"
-#include "../include/Revista.h"
-#include "../include/Jornal.h"
 #include <cstdlib> // Para exit e system("cls")
 using namespace std;
+#include "../../include/Utils/Uteis.h"
+#include "../../include/Livros/Geral.h"
+#include "../../include/Biblioteca.h"
+#include "../../include/Livros/LivroFiccao.h"
+#include "../../include/Livros/LivroCientifico.h"
+#include "../../include/Livros/LivroEducativo.h"
+#include "../../include/Livros/Revista.h"
+#include "../../include/Livros/Jornal.h"
+
 
 
 using namespace std;
@@ -22,6 +23,52 @@ Uteis::Uteis()
 Uteis::~Uteis()
 {
     //dtor
+}
+
+retorno RetornarType_String(){
+    int type=-1;
+    string categoria;
+    while (type<0||type>5)
+    {
+    cout << "\n\t***** Biblioteca *****" << endl;
+    cout << "\t1. Livro de Ficcao" << endl;
+    cout << "\t2. Livro Cientifico" << endl;
+    cout << "\t3. Livro Educativo" << endl;
+    cout << "\t4. Revista" << endl;
+    cout << "\t5. Jornal" << endl;
+    cout << "\t0. Sair" << endl;
+    cout << "\n" << endl;    
+    cout << "\tQue deseja Adicionar?"<< endl;
+    cout << "\n\tEscolha uma opcao: ";
+    
+    cin>> type;
+    }
+    cout << "\tLivro Escolhido : ";
+    switch (type)
+        {
+        case 1:
+            cout<<"Livro de Ficcao"<<endl;
+            categoria = "Ficcao";
+            break;
+        case 2:
+            cout<<"Livro Cientifico"<<endl;
+            categoria = "Cientifico";
+            break;
+        case 3:
+            cout<<"Livro Educativo"<<endl;
+            categoria = "Educativo";
+            break;
+        case 4:
+            cout<<"Revista"<<endl;
+            categoria = "Revista";
+            break;
+        case 5:
+            cout<<"Livro Jornal"<<endl;
+            categoria = "Jornal";
+            break;
+        }
+        cout << "\n";
+        return {type,categoria};
 }
 
 void Uteis::LivroInfo(int opcao,string categoria,Biblioteca& biblioteca)
@@ -39,16 +86,17 @@ void Uteis::LivroInfo(int opcao,string categoria,Biblioteca& biblioteca)
     cout << "Digite o ano de publicacao: ";
     cin >> ano;
 
-    // Entrada de dados específicos com base na opção
     switch (opcao) {
         case 1: { // Livro de Ficção
             string genero,isbn;
             int Faixa_Etaria;
-            cout << "Digite o genero: " <<endl;
-            cin.ignore(); // Limpa o buffer
+            // cout << "Digite o genero: " <<endl;
+            // cin.ignore(); // Limpa o buffer
             getline(cin, genero);
             cout << "Digite o ISBN: "<<endl;
+            cin.ignore(); 
             getline(cin, isbn);
+            cout<<isbn <<"\n";
             cout << "Digite a Faixa Etaria: ";
             cin >> Faixa_Etaria;
 
@@ -118,50 +166,10 @@ void Uteis::LivroInfo(int opcao,string categoria,Biblioteca& biblioteca)
     cout << "Livro adicionado com sucesso!\n";
 }
 
+
 void Uteis::CriarLivroUser(Biblioteca& bib){
-    int type;
-    string categoria;
-    while (type<0||type>5)
-    {
-    cout << "\n\t***** Biblioteca *****" << endl;
-    cout << "\t1. Livro de Ficcao" << endl;
-    cout << "\t2. Livro Cientifico" << endl;
-    cout << "\t3. Livro Educativo" << endl;
-    cout << "\t4. Revista" << endl;
-    cout << "\t5. Jornal" << endl;
-    cout << "\t0. Sair" << endl;
-    cout << "\n" << endl;    
-    cout << "\tQue deseja Adicionar?"<< endl;
-    cout << "\n\tEscolha uma opcao: ";
-    
-    cin>> type;
-    }
-    cout << "\tLivro Escolhido : ";
-    switch (type)
-        {
-        case 1:
-            cout<<"Livro de Ficcao"<<endl;
-            categoria = "Ficcao";
-            break;
-        case 2:
-            cout<<"Livro Cientifico"<<endl;
-            categoria = "Cientifico";
-            break;
-        case 3:
-            cout<<"Livro Educativo"<<endl;
-            categoria = "Educativo";
-            break;
-        case 4:
-            cout<<"Revista"<<endl;
-            categoria = "Revista";
-            break;
-        case 5:
-            cout<<"Livro Jornal"<<endl;
-            categoria = "Jornal";
-            break;
-        }
-        system("pause");
-
-        Uteis::LivroInfo(type,categoria,bib);        
-
+        retorno Retornado = RetornarType_String();
+        Uteis::LivroInfo(Retornado.type,Retornado.categoria,bib);        
 }
+
+

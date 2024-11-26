@@ -6,11 +6,13 @@
 
 class Professor : public Pessoa
 {
+    protected:
+
     public:
-        Professor();
+        Professor(string nome, string id);
         virtual ~Professor();
 
-    protected:
+        void descricao() const override;
 
     private:
 };

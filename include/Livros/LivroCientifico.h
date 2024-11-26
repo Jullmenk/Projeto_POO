@@ -1,7 +1,7 @@
 #ifndef LIVROCIENTIFICO_H
 #define LIVROCIENTIFICO_H
 
-#include "Geral.h" // Como está no mesmo diretório "include"
+#include "Geral.h"
 
 
 

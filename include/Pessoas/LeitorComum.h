@@ -6,13 +6,15 @@
 
 class LeitorComum : public Pessoa
 {
+    private:
+
     public:
-        LeitorComum();
+        LeitorComum(string nome, string id);
         virtual ~LeitorComum();
+        
+        void descricao() const override;
 
     protected:
-
-    private:
 };
 
 #endif // LEITORCOMUM_H

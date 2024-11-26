@@ -1,11 +1,10 @@
 #ifndef BIBLIOTECA_H
 #define BIBLIOTECA_H
-
 #include <iostream>
 #include <list>
 #include <map>
-#include "Pessoa.h"
-#include "Geral.h"
+#include "Pessoas/Pessoa.h"
+#include "Livros/Geral.h"
 using namespace std;
 
 class Biblioteca {
@@ -21,11 +20,11 @@ public:
     void RelatorioCategoria(const string& cat) const;
     void Prorrogacao_Emprestimos();
     void Sistema_Notificacoes_Atraso();
-    void listarLivros() const;  // Lista todos os livros
     void listarLivrosDisponiveis() const;
     void adicionarLivro(const string& categoria, Geral* livro);
     Geral* buscarLivro(int codigo);
     void removerLivro(const string& categoria, int codigo);
+    void listarLivrosComPaginacao();
 };
 
 #endif // BIBLIOTECA_H

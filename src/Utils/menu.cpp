@@ -1,42 +1,38 @@
 #include <iostream>
 #include <cstdlib> // Para exit e system("cls")
+#include <iostream>
+#include <string>
 using namespace std;
-#include "../include/menu.h"
-#include "../include/Biblioteca.h"
-#include "../include/Uteis.h"
+#include "../../include/Utils/menu.h"
+#include "../../include/Biblioteca.h"
+#include "../../include/Utils/Uteis.h"
+#include "../../include/Livros/LivroFiccao.h"
+#include "../../include/Livros/LivroCientifico.h"
+#include "../../include/Livros/LivroEducativo.h"
 
 void MENU_PRINCIPAL(Biblioteca &biblioteca) {
 
     int num;
     do {
-        // Limpa a tela 
         system("cls");
 
-        // Exibe o menu principal
         cout << "\n\t***** Biblioteca *****" << endl;
         cout << "\t1. Livros" << endl;
         cout << "\t2. Utilizador" << endl;
         cout << "\t0. Sair" << endl;
         cout << "\n\tEscolha uma opcao: ";
 
-        // Recebe a entrada do usuário
         cin >> num;
 
-        // Limpa a tela
         system("cls");
 
-        // Processa a escolha do usuário
         switch (num) {
             case 1:
-                // Chamar o menu do administrador
-                // MENU_ADM();
                 MENU_LIVROS(biblioteca);
                 system("pause");
                 break;
 
             case 2:
-                // Chamar o menu do utilizador
-                // MENU_LIVRO_USER();
                 cout << "Menu do Utilizador (em desenvolvimento)" << endl;
                 break;
 
@@ -57,10 +53,8 @@ void MENU_PRINCIPAL(Biblioteca &biblioteca) {
 void MENU_LIVROS(Biblioteca &biblioteca) {
     int num;
     do {
-        // Limpa a tela
         system("cls");
 
-        // Exibe o menu principal
         cout << "\n\t***** Biblioteca - LIVROS *****" << endl;
         cout << "\t1. Ver Livros" << endl;
         cout << "\t2. Adicionar Livros" << endl;
@@ -70,28 +64,35 @@ void MENU_LIVROS(Biblioteca &biblioteca) {
         cout << "\t6. Relatorios de Livros por Categoria" << endl;
         cout << "\n\tEscolha uma opcao: ";
 
-        // Recebe a entrada do usuário
         cin >> num;
 
-        // Limpa a tela
         system("cls");
 
-        // Processa a escolha do usuário
         switch (num) {
             case 1:{
-                // Chamar o menu do administrador
-                // MENU_ADM();
-                biblioteca.listarLivros();
+                biblioteca.listarLivrosComPaginacao();
                 system("pause");
                 break;
-}
+            }
             case 2:{
-                // Chamar o menu do utilizador
-                // MENU_LIVRO_USER();
+                //Funcao para teste, adiciono Livros aleatórios
                 Uteis uteis;
                 cout << "\n\t***** Adicionar Livros *****" << endl;
-                uteis.CriarLivroUser(biblioteca);
-                cout << "" << endl;
+                    for (int i = 1; i <= 10; ++i) {
+                        Geral* livroEducativo = new LivroEducativo("Educativo Livro " + to_string(i), "Julino Mendonca", 2002+i, true,"213123"+to_string(i), 18,"Fisica");
+                        biblioteca.adicionarLivro("Educativo", livroEducativo);
+                    }
+                    for (int i = 1; i <= 10; ++i) {
+                        Geral* livroCientifico = new LivroCientifico("Cientifico Livro " + to_string(i), "Jose Arrais", 1002+i, true,"3123"+to_string(i),"Matematica", 18);
+                        biblioteca.adicionarLivro("Cientifico", livroCientifico);                    }
+                    for (int i = 1; i <= 10; ++i) {
+                        Geral* livroFiccao = new LivroFiccao("Ficcao Livro " + to_string(i), "Rodrigo Caxinde ", 4002+i, true,"73913"+to_string(i),"Romance",18);
+                        biblioteca.adicionarLivro("Ficcao", livroFiccao);
+                    }
+                    cout<<"Livros Adicionados com sucesso\n";
+                    system("pause");
+                // uteis.CriarLivroUser(biblioteca);
+                // cout << "" << endl;
                 break;}
 
             case 0:

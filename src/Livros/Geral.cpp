@@ -1,4 +1,4 @@
-#include "../include/Geral.h"
+#include "../../include/Livros/Geral.h"
 
 Geral::Geral(string titulo,  string autor, int ano, bool disponivel): titulo(titulo), autor(autor), ano(ano), disponivel(disponivel) {}
 
