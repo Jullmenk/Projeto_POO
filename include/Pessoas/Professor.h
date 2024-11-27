@@ -9,7 +9,7 @@ class Professor : public Pessoa
     protected:
 
     public:
-        Professor(string nome, string id);
+        Professor(string nome, string id,int NumerodeEmprestimos);
         virtual ~Professor();
 
         void descricao() const override;

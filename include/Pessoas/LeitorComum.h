@@ -9,7 +9,7 @@ class LeitorComum : public Pessoa
     private:
 
     public:
-        LeitorComum(string nome, string id);
+        LeitorComum(string nome, string id,int NumerodeEmprestimos);
         virtual ~LeitorComum();
         
         void descricao() const override;

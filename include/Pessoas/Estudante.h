@@ -9,7 +9,7 @@ class Estudante : public Pessoa
     private:
 
     public:
-        Estudante(string nome, string id);
+        Estudante(string nome, string id,int NumerodeEmprestimos);
         virtual ~Estudante();
         
         void descricao() const override;

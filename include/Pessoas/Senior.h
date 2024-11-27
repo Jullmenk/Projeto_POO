@@ -9,7 +9,7 @@ class Senior : public Pessoa
     private:
 
     public:
-        Senior(string nome, string id);
+        Senior(string nome, string id,int NumerodeEmprestimos);
         virtual ~Senior();
         
         void descricao() const override;
