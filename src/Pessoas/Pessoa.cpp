@@ -1,17 +1,14 @@
 #include "../../include/Pessoas/Pessoa.h"
 
-Pessoa::Pessoa(string nome, string id, int livrosMaximos, double descontoMulta,int NumeroDeEmprestimos)
-        :nome(nome), id(id), livrosMaximos(livrosMaximos), descontoMulta(descontoMulta),NumeroDeEmprestimos(NumeroDeEmprestimos){}
+Pessoa::Pessoa(string nome, string id, int livrosMaximos, double descontoMulta,int NumeroDeEmprestimosAtivos,int NumeroDeEmprestimosTotal,struct LivroEmprestado)
+        :nome(nome), id(id), livrosMaximos(livrosMaximos), descontoMulta(descontoMulta),NumeroDeEmprestimosAtivos(NumeroDeEmprestimosAtivos),NumeroDeEmprestimosTotal(NumeroDeEmprestimosTotal),struct LivroEmprestado(LivroEmprestado){}
 
-Pessoa::~Pessoa()
-{
-    //dtor
-}
+Pessoa::~Pessoa(){}
 
 void Pessoa::descricao() const 
 {
-        cout << "Nome: " << nome << " | ID: " << id << " | Max. Livros: " << livrosMaximos
-             << " | Desconto Multa: " << descontoMulta * 100 << "%" << " | Emprestimos:"<< NumeroDeEmprestimos <<endl;
+    cout << "Nome: " << nome << " | ID: " << id << " | Max. Livros: " << livrosMaximos
+    << " | Desconto Multa: " << descontoMulta * 100 << "%" << " | Total de Emprestimos :"<< NumeroDeEmprestimosTotal << "NumeroDeEmprestimosAtivos : " << NumeroDeEmprestimosAtivos <<endl;
 }
 
 string Pessoa::getNome() const { return nome; }
@@ -19,7 +16,7 @@ string Pessoa::getId() const { return id; }
 int Pessoa::getLivrosMaximos() const { return livrosMaximos; }
 double Pessoa::getDescontoMulta() const { return descontoMulta; }
 
-void Pessoa::adicionarEmprestimo(string idLivro, const string& titulo, const string& categoria, time_t dataEmprestimo) {
+void Pessoa::adicionarEmprestimo(string idLivro,string titulo, string categoria, time_t dataEmprestimo) {
     if (livrosEmprestados.size() >= livrosMaximos) {
         cout << "Limite de livros emprestados atingido!" << endl;
         return;
@@ -35,7 +32,8 @@ void Pessoa::listarEmprestimos() const {
         cout << "ID: " << livro.idLivro
              << " | Titulo: " << livro.titulo
              << " | Categoria: " << livro.categoria
-             << " | Data do emprestimo: " << ctime(&livro.dataEmprestimo);
+            //  << " | Data do emprestimo: " << ctime(&livro.dataEmprestimo)
+            ;
     }
 }
 

@@ -6,6 +6,17 @@
 using namespace std;
 
 
+struct LivroEmprestado {
+    string idLivro;
+    string titulo;
+    string categoria;
+    time_t dataEmprestimo;
+    bool recebido;
+    bool devolvido;
+
+    LivroEmprestado(std::string titulo = "", std::string dataEmprestimo = "", bool devolvido = false)
+        : titulo(titulo), dataEmprestimo(dataEmprestimo), devolvido(devolvido) {}
+};
 
 class Pessoa
 {
@@ -31,7 +42,7 @@ class Pessoa
     vector<LivroEmprestado> livrosEmprestados;
 
     public:
-        Pessoa(string nome, string id, int livrosMaximos, double descontoMulta,int NumerodeEmprestimos);
+        Pessoa(string nome, string id, int livrosMaximos, double descontoMulta,int NumeroDeEmprestimosTotal, int NumeroDeEmprestimosAtivos, struct LivroEmprestado );
         virtual ~Pessoa();
         virtual void descricao() const ;
  
@@ -39,7 +50,7 @@ class Pessoa
         string getId() const;
         int getLivrosMaximos() const;
         double getDescontoMulta() const;
-        void adicionarEmprestimo(string idLivro, const string& titulo, const string& categoria, time_t dataEmprestimo);
+        void adicionarEmprestimo(string idLivro, string titulo,string categoria, time_t dataEmprestimo);
         void listarEmprestimos() const;
         double calcularMultaTotal() const;
 
