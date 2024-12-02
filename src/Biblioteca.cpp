@@ -164,7 +164,7 @@ void Biblioteca::registrarReserva(Pessoa* leitor, Geral* livro) {
     }
 
     if(!leitor->PodeEmprestar()){
-        cout<<"Esse leitor Ja atingiu o numero maximo de Emprestimos permitido";
+        cout<<"Esse leitor Ja atingiu o numero maximo de Emprestimos permitido, devolva alguns livros\n";
         system("pause");
         return;
     }

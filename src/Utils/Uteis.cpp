@@ -230,22 +230,22 @@ void Uteis::UserInfo(int opcao,string categoria,Biblioteca& biblioteca)
     getline(cin, NIF); 
 
     switch (opcao) {
-        case 1: { // Livro de Ficção
+        case 1: { // Estudante
             Pessoa* estudante = new Estudante(nome,NIF,0,0,categoria);
             biblioteca.adicionarLeitor(categoria, estudante);
             break;
         }
-        case 2: { // Livro Científico
+        case 2: { // Comum
             Pessoa* leitorComum = new LeitorComum(nome,NIF,0,0,categoria);
             biblioteca.adicionarLeitor(categoria, leitorComum);
             break;
         }
-        case 3: { // Livro Educativo
+        case 3: { // Professor
             Pessoa* professor = new Professor(nome,NIF,0,0,categoria);
             biblioteca.adicionarLeitor(categoria, professor);
             break;
         }
-        case 4: { // Revista
+        case 4: { // Senior
             Pessoa* senior = new Senior(nome,NIF,0,0,categoria);
             biblioteca.adicionarLeitor(categoria, senior);
             break;
