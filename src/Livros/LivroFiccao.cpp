@@ -10,10 +10,13 @@ LivroFiccao::~LivroFiccao()
     //dtor 
 }
 
-void LivroFiccao::descricao() const
-{
+void LivroFiccao::descricao() const {
     Geral::descricao();
-    cout << "ISBN: " << ISBN <<"\n";
-    cout << "Genero Literario: " << Genero_Literario <<"\n";
-    cout << "Faixa Etaria: " << Faixa_Etaria <<"\n";
+    cout << " | ISBN: " << ISBN
+         << " | Genero Literario: " << Genero_Literario
+         << " | Faixa Etaria: " << Faixa_Etaria << endl;
+}
+
+string LivroFiccao::getCodigo() const {
+    return ISBN;
 }

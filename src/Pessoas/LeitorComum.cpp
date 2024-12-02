@@ -1,6 +1,6 @@
 #include "../../include/Pessoas/LeitorComum.h"
 
-LeitorComum::LeitorComum(string nome, string id):Pessoa(nome,id,3,0.0){} // 3 livros máximos, sem desconto em multas
+LeitorComum::LeitorComum(string nome, string id, int NumeroDeEmprestimos,int NumeroDeReservas,string categoria):Pessoa(nome,id,3,0.0,NumeroDeEmprestimos, 0, 0, 0,NumeroDeReservas, categoria){} // 3 livros máximos, sem desconto em multas
 
 LeitorComum::~LeitorComum()
 {
@@ -8,6 +8,34 @@ LeitorComum::~LeitorComum()
 }
 
 void LeitorComum::descricao() const {
-    cout << "Leitor Comum: ";
     Pessoa::descricao();
+}
+
+int LeitorComum::getPrazoDevolucao(string categoriaLivro) const {
+    if (categoriaLivro == "Educativo") {
+        return 15; 
+    }
+    return 15; 
+}
+
+int LeitorComum::getNumerodeReservas(string categoriaLivro) const {
+    return 2;
+}
+
+bool LeitorComum::PodeReservar() const{
+    if(NumeroDeReservas>=2){
+        return false;
+    }
+    else{
+        return true;
+    }
+}
+
+bool LeitorComum::PodeEmprestar() const{
+    if(NumeroDeEmprestimosAtivos >= livrosMaximos){
+        return false;
+    }
+    else{
+        return true;
+    }
 }

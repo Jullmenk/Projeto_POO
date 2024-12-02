@@ -15,12 +15,16 @@ class Geral
 
 public:
     Geral(string titulo, string autor, int ano, bool disponivel);
-    virtual ~Geral() = default;
+    virtual ~Geral();
 
-    // A função descricao é virtual, permitindo que seja sobrescrita nas subclasses
     virtual void descricao() const = 0; 
-    int getCodigo() const { return ano; }  // Simula código como ano
-    bool isDisponivel() const { return disponivel; } 
+    virtual string getCodigo() const = 0;
+    string getCategoria();
+    string getTitulo();
+
+    bool isDisponivel();
+    void setDisponivel();
+    void setInDisponivel();
 };
 
 #endif // GERAL_H

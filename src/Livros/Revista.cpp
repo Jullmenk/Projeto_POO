@@ -10,9 +10,11 @@ Revista::~Revista()
     //dtor
 }
 
-void Revista::descricao() const
-{
+void Revista::descricao() const {
     Geral::descricao();
-    cout << "ISSN: " << ISSN << "\n";
-    cout << "Tema: " << Tema << "\n";
+    cout << " | ISSN: " << ISSN
+         << " | Tema: " << Tema << endl;
+}
+string Revista::getCodigo() const {
+    return ISSN;
 }

@@ -1,20 +1,19 @@
 #ifndef ESTUDANTE_H
 #define ESTUDANTE_H
 
-#include <Pessoa.h>
+#include "Pessoa.h"
 
 
 class Estudante : public Pessoa
 {
-    private:
+public:
+    Estudante(string nome, string id, int NumeroDeEmprestimos,int NumeroDeReservas,string categoria);
+    virtual ~Estudante();
 
-    public:
-        Estudante(string nome, string id,int NumerodeEmprestimos);
-        virtual ~Estudante();
-        
-        void descricao() const override;
-
-    protected:
-};
+    void descricao() const override;
+    int getPrazoDevolucao(string categoriaLivro) const override;
+    int getNumerodeReservas(string categoriaLivro) const override;
+    bool PodeReservar() const override;
+    bool PodeEmprestar() const override;};
 
 #endif // ESTUDANTE_H

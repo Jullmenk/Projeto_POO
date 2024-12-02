@@ -15,6 +15,7 @@ class LivroFiccao : public Geral
         LivroFiccao(string titulo, string autor, int ano, bool disponivel,string ISBN,string Genero_Literario, int Faixa_Etaria);
         virtual ~LivroFiccao();
         void descricao() const override;
+        string getCodigo() const override;
 
     protected:
 

@@ -14,6 +14,7 @@ class Revista : public Geral
         Revista(string titulo, string autor, int ano, bool disponivel,string ISSN, string Tema);
         virtual ~Revista();
         void descricao() const override;
+        string getCodigo() const override;
     protected:
 
 

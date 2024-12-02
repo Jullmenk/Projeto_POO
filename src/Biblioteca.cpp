@@ -14,11 +14,18 @@ Biblioteca::~Biblioteca() {
     }
 }
 
+map<string, list<Geral*>>& Biblioteca::getLivrosPorCategoria() {
+     return livrosPorCategoria; 
+    }
+map<string, list<Pessoa*>>& Biblioteca::getleitores() {
+    return leitores;
+}
+
 void Biblioteca::adicionarLivro(const string& categoria, Geral* livro) {
     livrosPorCategoria[categoria].push_back(livro);
 }
 
-void Biblioteca::removerLivro(const string& categoria, int codigo) {
+void Biblioteca::removerLivro(const string& categoria, string codigo) {
     auto it = livrosPorCategoria.find(categoria);
     if (it != livrosPorCategoria.end()) {
         auto& listaLivros = it->second;
@@ -32,21 +39,6 @@ void Biblioteca::removerLivro(const string& categoria, int codigo) {
     }
 }
 
-// void Biblioteca::listarLivros() const {
-//     if(livrosPorCategoria.empty()){
-//         cout << "Lista se encontra vazia";
-//     }
-//     else{
-//         for (const auto& categoria : livrosPorCategoria) {
-//             cout << "\nCategoria: " << categoria.first << "\n";
-//             for (const auto& livro : categoria.second) {
-//                 livro->descricao();
-//                 cout << "-------------------\n";
-//             }
-//         }
-//     }
-// }
-
 void Biblioteca::listarLivrosDisponiveis() const {
     for (const auto& categoria : livrosPorCategoria) {
         for (const auto& livro : categoria.second) {
@@ -58,7 +50,7 @@ void Biblioteca::listarLivrosDisponiveis() const {
     }
 }
 
-Geral* Biblioteca::buscarLivro(int codigo) {
+Geral* Biblioteca::buscarLivro(string codigo) {
     for (auto& categoria : livrosPorCategoria) {
         for (auto& livro : categoria.second) {
             if (livro->getCodigo() == codigo) {
@@ -81,7 +73,7 @@ void Biblioteca::RelatorioCategoria(const string& cat) const {
     }
 }
 
-void Biblioteca::listarLivrosComPaginacao(){
+void Biblioteca::listarLivrosComPaginacao(bool forSearch){
      // Vetor para manter a lista total de livros (com a categoria associada)
     vector<pair<string, Geral*>> todosLivros;
 
@@ -109,7 +101,7 @@ void Biblioteca::listarLivrosComPaginacao(){
 
         int inicio = paginaAtual * itensPorPagina;
         int fim = min(inicio + itensPorPagina, totalItens);
-
+        forSearch&&cout<<"**********\tGuarde o IDENTIFICADOR do que deseja para depois poder requisitar\n";
         cout << "Pagina " << (paginaAtual + 1) << " de " << totalPaginas << "\n";
         cout << "-----------------------------\n";
 
@@ -117,13 +109,12 @@ void Biblioteca::listarLivrosComPaginacao(){
             cout << "[" << (i + 1) << "] ";
             cout << "Categoria: " << todosLivros[i].first << " | ";
             todosLivros[i].second->descricao();
-            cout << "-------------------\n";
         }
 
         // Opções de navegação
         cout << "-----------------------------\n";
-        cout << "1 - Pagina Anterior | 2 - Proxima Pagina | 0 - Sair\n";
-        cout << "Escolha: ";
+        cout << "1 - Pagina Anterior | 2 - Proxima Pagina | 0 - " <<(!forSearch?"Sair\n":"Escolher o meu livro");
+        cout << "\nEscolha: ";
         cin >> opcao;
 
         // Navegação
@@ -139,37 +130,176 @@ void Biblioteca::listarLivrosComPaginacao(){
     }
 }
 
+void Biblioteca::registrarReserva(Pessoa* leitor, Geral* livro) {
+    // Adicionar o livro à lista de reservas da categoria
+    int opc;
+    cout << "O Livro neste momento encontra-se indisponivel, deseja reserva-lo? \n";
+    cout << "1 - Reservar | 0 - Sair\n";
+    cout << "Escolha :";
+    cin>> opc;
 
-// bool Biblioteca::SaveToFile(string nf)
-// {
-//     cout << "Um dia faco este metodo <" << __FUNCTION__ << ">" << endl;
-//     return true;
+    if(opc==1){
+    Emprestimo reserva(leitor->getNIF(), leitor->getNome(), livro->getCategoria(), livro->getTitulo(), time(0), time(0), false);
+    reservasPorCategoria[livro->getCategoria()].push_back(reserva); 
+    leitor->adicionarReserva(reserva);
+    cout << "Livro reservado com sucesso!\n";
+    }else{
+        cout<<"Livro nao reservado, saindo...\n";
+    }
+    system("pause");
+}
+
+  void Biblioteca::registrarEmprestimo(Pessoa* leitor,Geral *livro, time_t dataEmprestimo) {
+    // Verificar se o livro está disponível ou se há reservas
+    bool temp;
+
+    if (!livro->isDisponivel()) {
+        if(!leitor->PodeReservar()){
+            cout <<"Esse leitor Ja atingiu o numero maximo de reservas permitido\n";
+            system("pause");
+        } else{
+        registrarReserva(leitor, livro);
+        }
+        return;
+    }
+
+    if(!leitor->PodeEmprestar()){
+        cout<<"Esse leitor Ja atingiu o numero maximo de Emprestimos permitido";
+        system("pause");
+        return;
+    }
+
+    // Calcular a data de devolução de acordo com o tipo de leitor e tipo de livro
+    int prazo = leitor->getPrazoDevolucao(livro->getCategoria());
+    time_t dataDevolucao = dataEmprestimo + (prazo * 24 * 60 * 60);
+    /*
+     converte o número de dias (prazo) para segundos:
+        1 dia = 24 horas
+        1 hora = 60 minutos
+        1 minuto = 60 segundos
+        Logo, o total de segundos em um dia é 24 * 60 * 60 = 86.400 segundos.
+    */
+
+    Emprestimo novoEmprestimo(leitor->getNIF(), leitor->getNome(), livro->getCategoria(), livro->getTitulo(), dataEmprestimo, dataDevolucao, true);
+
+    emprestimosPorCategoria[livro->getCategoria()].push_back(novoEmprestimo);
+
+    leitor->adicionarEmprestimo(novoEmprestimo);
+    
+    livro->setInDisponivel();
+    cout << "Emprestimo realizado com sucesso!\n";\
+    system("pause");
+}
+
+// void Biblioteca::transformarReservaEmEmprestimo(Pessoa* leitor, Geral* livro) {
+//     // Verificar se o livro está disponível
+//     if (livrosPorCategoria[livro->getCategoria()].size() > 0) {
+//         // Se houver reservas para o livro, transformá-las em empréstimo
+//         for (auto it = reservasPorCategoria[livro->getCategoria()].begin(); it != reservasPorCategoria[livro->getCategoria()].end(); ++it) {
+//             if (it->getNIF() == leitor->getNIF()) {
+//                 // Criar o empréstimo baseado na reserva
+//                 Emprestimo novoEmprestimo = *it;
+//                 novoEmprestimo.setEmprestado(true); // Tornar a reserva um empréstimo
+//                 time_t dataEmprestimo = time(0);
+//                 novoEmprestimo.setDataEmprestimo(dataEmprestimo);
+//                 int prazo = leitor->getPrazoDevolucao(livro->getCategoria());
+//                 novoEmprestimo.setDataDevolucao(dataEmprestimo + (prazo * 24 * 60 * 60));
+
+//                 // Adicionar o empréstimo à lista de empréstimos
+//                 emprestimosPorCategoria[livro->getCategoria()].push_back(novoEmprestimo);
+
+//                 // Remover a reserva
+//                 reservasPorCategoria[livro->getCategoria()].remove(*it);
+
+//                 // Adicionar o livro à lista de livros emprestados
+//                 livrosPorCategoria[livro->getCategoria()].remove(livro);
+
+//                 cout << "Reserva transformada em empréstimo com sucesso!\n";
+//                 return;
+//             }
+//         }
+//     } else {
+//         cout << "O livro não está disponível no momento.\n";
+//     }
 // }
 
-// bool Biblioteca::LoadFile(string nf)
-// {
-//     cout << "Um dia faco este metodo <" << __FUNCTION__ << ">" << endl;
-//     return true;
-// }
+    // Listar todos os empréstimos de uma categoria
+    // void listarEmprestimosPorCategoria(const string& categoria) const {
+    //     auto it = emprestimosPorCategoria.find(categoria);
+    //     if (it != emprestimosPorCategoria.end()) {
+    //         cout << "Empréstimos na categoria: " << categoria << "\n";
+    //         for (const auto& emprestimo : it->second) {
+    //             emprestimo.mostrarDetalhes();
+    //             cout << "----------------------\n";
+    //         }
+    //     } else {
+    //         cout << "Nenhum empréstimo registrado na categoria " << categoria << ".\n";
+    //     }
+    // }
 
 
-// void Biblioteca::Prorrogacao_Emprestimos()
-// {
-//     cout << "Um dia faco este metodo <" << __FUNCTION__ << ">" << endl;
-// }
-// void Biblioteca::Sistema_Notificacoes_Atraso()
-// {
-//     cout << "Um dia faco este metodo <" << __FUNCTION__ << ">" << endl;
-// }
+void Biblioteca::adicionarLeitor(string categoria, Pessoa* leitor) {
+    leitores[categoria].push_back(leitor);
+    cout << "Leitor " << leitor->getNome() << " adicionado a biblioteca.\n";
+}
 
-// bool Biblioteca::Add_Leitores()
-// {
-//     cout << "Um dia faco este metodo <" << __FUNCTION__ << ">" << endl;
-//     return true;
-// }
-// bool Biblioteca::Add_Leitor(Pessoa *P)
-// {
-//     cout << "Um dia faco este metodo <" << __FUNCTION__ << ">" << endl;
-//     return true;
-// }
+void Biblioteca::listarLeitores(bool forSearch){
+     // Vetor para manter a lista total de livros (com a categoria associada)
+    vector<pair<string, Pessoa*>> Vleitor;
 
+    if(leitores.empty()){
+        cout << "Lista se Encontra vazia \n saindo...\n";
+        return;
+    }
+
+
+    for (const auto& categoria : leitores) {
+        for (const auto& livro : categoria.second) {
+            Vleitor.emplace_back(categoria.first, livro); // (Categoria, Livro)
+        }
+    }
+
+    const int itensPorPagina = 5;
+    int totalItens = Vleitor.size();
+    int totalPaginas = (totalItens + itensPorPagina - 1) / itensPorPagina; 
+    int paginaAtual = 0;
+
+    int opcao = -1;
+    while (opcao != 0) {
+        system("cls"); 
+
+
+        int inicio = paginaAtual * itensPorPagina;
+        int fim = min(inicio + itensPorPagina, totalItens);
+        
+        forSearch&&cout<< "**********\n\tGuarde o IDENTIFICADOR do Utilizador que deseja para depois poder requisitar**********\n\n";
+
+
+        cout << "Pagina " << (paginaAtual + 1) << " de " << totalPaginas << "\n";
+        cout << "-----------------------------\n";
+
+        for (int i = inicio; i < fim; ++i) {
+            cout << "[" << (i + 1) << "] ";
+            cout << "Categoria: " << Vleitor[i].first << " | ";
+            Vleitor[i].second->descricao();
+            !(i+1%5==0)&&cout << "-------------------\n"; // Se for divisivel por 5 nao imprimir isso, uma questao de design, nada mais;
+        }
+
+        // Opções de navegação
+        cout << "-----------------------------\n";
+        cout << "1 - Pagina Anterior | 2 - Proxima Pagina | 0 - " <<(!forSearch?"Sair":"Escolher o Utilizador");
+        cout << "\nEscolha: ";
+        cin >> opcao;
+
+        // Navegação
+        if (opcao == 1 && paginaAtual > 0) {
+            paginaAtual--;
+        } else if (opcao == 2 && paginaAtual < totalPaginas - 1) {
+            paginaAtual++;
+        } else if (opcao == 0) {
+            cout << "Saindo...\n";
+        } else {
+            cout << "Opcao invalida.\n";
+        }
+    }
+}

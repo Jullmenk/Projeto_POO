@@ -16,6 +16,7 @@ class LivroCientifico : public Geral
         LivroCientifico(string titulo, string autor, int ano, bool disponivel,string ISBN,const string& area, int edicao);
         virtual ~LivroCientifico();
         void descricao() const override;
+        string getCodigo() const override;
 
     protected:
 

@@ -1,31 +1,27 @@
-#ifndef EMPRESTIMO_H
-#define EMPRESTIMO_H
+#ifndef EMPRESTIMOS_H
+#define EMPRESTIMOS_H
 
 #include <string>
 #include <iostream>
 #include <ctime>
-#include "Leitor.h"
 
 using namespace std;
 
 class Emprestimo {
+
 private:
-    Leitor* leitor;
-    Geral* livro;
+    string NIFLeitor;     // ID do leitor que realizou o empréstimo
+    string nomeLeitor;   // Nome do leitor
+    string categoriaLivro;
+    string tituloLivro;
     time_t dataEmprestimo;
-    int prazo;
+    time_t dataDevolucao;
+    bool recebido;
 
 public:
-    Emprestimo(Leitor* leitor, Geral* livro)
-        : leitor(leitor), livro(livro) {
-        dataEmprestimo = time(nullptr);
-        prazo = leitor->prazoEmprestimo(*livro);
-    }
-
-    void detalhes() const {
-        cout << "Leitor: " << leitor->getNome() << " | Livro: " << livro->getTitulo() 
-             << " | Prazo: " << prazo << " dias\n";
-    }
+    Emprestimo(string NIFLeitor, string nomeLeitor, string categoriaLivro, string tituloLivro, time_t dataEmprestimo, time_t dataDevolucao,bool recebido);
+    virtual ~Emprestimo(); 
+    void Descricao() const;
 };
 
 #endif

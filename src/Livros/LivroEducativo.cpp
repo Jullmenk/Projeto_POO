@@ -11,22 +11,18 @@ LivroEducativo::~LivroEducativo()
     //dtor
 }
 
-void LivroEducativo::descricao() const
-{
+void LivroEducativo::descricao() const {
     Geral::descricao();
-    cout << "Codigo ISBN: " << ISBN << "\n";
-    cout << "Nivel Educacional: ";
-    switch (Nivel_Educacional)
-    {
-    case 1:
-        cout <<"Fundamental";
-        break;
-    case 2:
-        cout <<"Medio";
-        break;
-    case 3:
-        cout <<"Superior";
-        break;
+    cout << " | Codigo ISBN: " << ISBN
+         << " | Nivel Educacional: ";
+    switch (Nivel_Educacional) {
+        case 1: cout << "Fundamental"; break;
+        case 2: cout << "Medio"; break;
+        case 3: cout << "Superior"; break;
     }
-    cout << "\nMateria " << Materia << "\n";
+    cout << " | Materia: " << Materia << endl;
+}
+
+string LivroEducativo::getCodigo() const {
+    return ISBN;
 }

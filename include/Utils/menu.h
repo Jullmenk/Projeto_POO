@@ -2,12 +2,12 @@
 #define MENU_H
 
 #include <stdlib.h>
-#include <stdlib.h>
 #include "../Biblioteca.h"
+#include "Uteis.h"
 
-void MENU_PRINCIPAL (Biblioteca &biblioteca);
-void MENU_LIVROS (Biblioteca& biblioteca);
-void MENU_UTILIZADOR ();
-void MENU_LIVROS(Biblioteca *biblioteca);
+void MENU_PRINCIPAL (Biblioteca &biblioteca,Uteis uteis);
+void MENU_LIVROS (Biblioteca& biblioteca,Uteis uteis);
+void MENU_UTILIZADOR (Biblioteca &biblioteca,Uteis uteis);
+void MENU_LIVROS(Biblioteca *biblioteca,Uteis uteis);
  
 #endif

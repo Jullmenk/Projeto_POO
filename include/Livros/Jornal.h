@@ -14,6 +14,7 @@ class Jornal : public Geral
         Jornal(string titulo, string autor, int ano, bool disponivel,string ISSN, string Seccao);
         virtual ~Jornal();
         void descricao() const override;
+        string getCodigo() const override;
     protected:
  
 

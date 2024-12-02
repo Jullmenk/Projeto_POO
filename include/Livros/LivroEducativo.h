@@ -15,6 +15,7 @@ class LivroEducativo : public Geral
         LivroEducativo(string titulo, string autor, int ano, bool disponivel,string ISBN,int Nivel_Educacional,string Materia);
         virtual ~LivroEducativo();
         void descricao() const override;
+        string getCodigo() const override;
 
     protected:
 

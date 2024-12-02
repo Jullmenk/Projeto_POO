@@ -11,10 +11,13 @@ LivroCientifico::~LivroCientifico()
     //dtor
 }
 
-void LivroCientifico::descricao() const
-{
+void LivroCientifico::descricao() const {
     Geral::descricao();
-    cout << "Area: " << area << "\n";
-    cout << "Codigo ISBN: " << ISBN << "\n";
-    cout << "Edicao: " << edicao << "\n";
+    cout << " | Area: " << area
+         << " | Codigo ISBN: " << ISBN
+         << " | Edicao: " << edicao << endl;
+}
+
+string LivroCientifico::getCodigo() const {
+    return ISBN;
 }

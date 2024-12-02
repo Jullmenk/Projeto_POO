@@ -4,58 +4,59 @@
 #include <iostream>
 #include <vector>
 using namespace std;
+#include "../Utils/Emprestimos.h"
 
-
-struct LivroEmprestado {
-    string idLivro;
-    string titulo;
-    string categoria;
-    time_t dataEmprestimo;
-    bool recebido;
-    bool devolvido;
-
-    LivroEmprestado(std::string titulo = "", std::string dataEmprestimo = "", bool devolvido = false)
-        : titulo(titulo), dataEmprestimo(dataEmprestimo), devolvido(devolvido) {}
-};
 
 class Pessoa
 {
     protected:
     string nome;
-    string id;
+    string NIF;
     int livrosMaximos; // Número máximo de livros que pode requisitar
     double descontoMulta; // Desconto em multas (0.0 a 1.0)
     int totalMultaPorPagar;
     int totalMultaPago;
     int NumeroDeEmprestimosTotal;
     int NumeroDeEmprestimosAtivos;
-
-    struct LivroEmprestado {
-    string idLivro;
-    string titulo;
+    int NumeroDeReservas;
     string categoria;
-    time_t dataEmprestimo;
-    bool recebido;
-    };
+
+    vector<Emprestimo> Emprestimos;
+    vector<Emprestimo> Reservas;
 
     private:
-    vector<LivroEmprestado> livrosEmprestados;
-
+    
     public:
-        Pessoa(string nome, string id, int livrosMaximos, double descontoMulta,int NumeroDeEmprestimosTotal, int NumeroDeEmprestimosAtivos, struct LivroEmprestado );
+        // Construtor e destruidor
+        Pessoa(string nome, string NIF, int livrosMaximos, double descontoMulta, int NumeroDeEmprestimosTotal, int NumeroDeEmprestimosAtivos, int totalMultaPorPagar, int totalMultaPago,int NumeroDeReservas,string categoria);
         virtual ~Pessoa();
-        virtual void descricao() const ;
- 
+
+        // Método virtual para descrição
+        virtual void descricao() const;
+
+        // Métodos de acesso (getters)
         string getNome() const;
-        string getId() const;
+        string getNIF() const;
         int getLivrosMaximos() const;
         double getDescontoMulta() const;
-        void adicionarEmprestimo(string idLivro, string titulo,string categoria, time_t dataEmprestimo);
-        void listarEmprestimos() const;
+
+        // Métodos utilitários
         double calcularMultaTotal() const;
+        void adicionarMulta(int valor);
+        void pagarMulta(int valor);
+        void incrementarEmprestimosAtivos();
+        void decrementarEmprestimosAtivos();
+        void adicionarReserva();
+        void removerReserva();
+        void adicionarEmprestimo(Emprestimo& emprestimo);
+        void adicionarReserva(Emprestimo& emprestimo);
+        void listarEmprestimosAtivos() const;
 
-
-
-};
+        // Método puramente virtual
+        virtual int getPrazoDevolucao(string categoriaLivro) const = 0;
+        virtual int getNumerodeReservas(string categoriaLivro) const = 0;
+        virtual bool PodeReservar() const = 0;
+        virtual bool PodeEmprestar() const = 0;
+    };
 
 #endif // PESSOA_H

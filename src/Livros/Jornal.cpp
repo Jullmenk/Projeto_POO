@@ -10,9 +10,12 @@ Jornal::~Jornal()
     //dtor
 }
 
-void Jornal::descricao() const
-{
+void Jornal::descricao() const {
     Geral::descricao();
-    cout << "ISSN: " << ISSN << "\n";
-    cout << "Seccao: " << Seccao << "\n";
+    cout << " | ISSN: " << ISSN
+         << " | Seccao: " << Seccao << endl;
+}
+
+string Jornal::getCodigo() const {
+    return ISSN;
 }

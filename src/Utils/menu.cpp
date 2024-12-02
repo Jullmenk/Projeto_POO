@@ -9,8 +9,10 @@ using namespace std;
 #include "../../include/Livros/LivroFiccao.h"
 #include "../../include/Livros/LivroCientifico.h"
 #include "../../include/Livros/LivroEducativo.h"
+#include "../../include/Pessoas/Estudante.h"
 
-void MENU_PRINCIPAL(Biblioteca &biblioteca) {
+
+void MENU_PRINCIPAL(Biblioteca &biblioteca,Uteis uteis) {
 
     int num;
     do {
@@ -28,12 +30,12 @@ void MENU_PRINCIPAL(Biblioteca &biblioteca) {
 
         switch (num) {
             case 1:
-                MENU_LIVROS(biblioteca);
+                MENU_LIVROS(biblioteca,uteis);
                 system("pause");
                 break;
 
             case 2:
-                cout << "Menu do Utilizador (em desenvolvimento)" << endl;
+                MENU_UTILIZADOR(biblioteca,uteis);
                 break;
 
             case 0:
@@ -50,7 +52,7 @@ void MENU_PRINCIPAL(Biblioteca &biblioteca) {
 
 
 
-void MENU_LIVROS(Biblioteca &biblioteca) {
+void MENU_LIVROS(Biblioteca &biblioteca,Uteis uteis) {
     int num;
     do {
         system("cls");
@@ -60,8 +62,8 @@ void MENU_LIVROS(Biblioteca &biblioteca) {
         cout << "\t2. Adicionar Livros" << endl;
         cout << "\t3. Emprestar Livro" << endl;
         cout << "\t4. Remover Livro" << endl;
-        cout << "\t5. Devolver Livro" << endl;
-        cout << "\t6. Relatorios de Livros por Categoria" << endl;
+        cout << "\t6. Relatorios de Utilizadores por Categoria" << endl;
+        cout << "\t7. Voltar" << endl;
         cout << "\n\tEscolha uma opcao: ";
 
         cin >> num;
@@ -70,30 +72,35 @@ void MENU_LIVROS(Biblioteca &biblioteca) {
 
         switch (num) {
             case 1:{
-                biblioteca.listarLivrosComPaginacao();
+                biblioteca.listarLivrosComPaginacao(false);
                 system("pause");
                 break;
             }
             case 2:{
                 //Funcao para teste, adiciono Livros aleatórios
-                Uteis uteis;
                 cout << "\n\t***** Adicionar Livros *****" << endl;
-                    for (int i = 1; i <= 10; ++i) {
-                        Geral* livroEducativo = new LivroEducativo("Educativo Livro " + to_string(i), "Julino Mendonca", 2002+i, true,"213123"+to_string(i), 18,"Fisica");
-                        biblioteca.adicionarLivro("Educativo", livroEducativo);
-                    }
-                    for (int i = 1; i <= 10; ++i) {
-                        Geral* livroCientifico = new LivroCientifico("Cientifico Livro " + to_string(i), "Jose Arrais", 1002+i, true,"3123"+to_string(i),"Matematica", 18);
-                        biblioteca.adicionarLivro("Cientifico", livroCientifico);                    }
-                    for (int i = 1; i <= 10; ++i) {
-                        Geral* livroFiccao = new LivroFiccao("Ficcao Livro " + to_string(i), "Rodrigo Caxinde ", 4002+i, true,"73913"+to_string(i),"Romance",18);
-                        biblioteca.adicionarLivro("Ficcao", livroFiccao);
-                    }
-                    cout<<"Livros Adicionados com sucesso\n";
-                    system("pause");
-                // uteis.CriarLivroUser(biblioteca);
-                // cout << "" << endl;
+                 for (int i = 1; i <= 10; ++i) {
+                     Geral* livroEducativo = new LivroEducativo("Educativo Livro " + to_string(i), "Julino Mendonca", 2002+i, true,"213123"+to_string(i), 18,"Fisica");
+                     biblioteca.adicionarLivro("Educativo", livroEducativo);
+                 }
+                 for (int i = 1; i <= 10; ++i) {
+                     Geral* livroCientifico = new LivroCientifico("Cientifico Livro " + to_string(i), "Jose Arrais", 1002+i, true,"3123"+to_string(i),"Matematica", 18);
+                     biblioteca.adicionarLivro("Cientifico", livroCientifico);                    }
+                 for (int i = 1; i <= 10; ++i) {
+                     Geral* livroFiccao = new LivroFiccao("Ficcao Livro " + to_string(i), "Rodrigo Caxinde ", 4002+i, true,"73913"+to_string(i),"Romance",18);
+                     biblioteca.adicionarLivro("Ficcao", livroFiccao);
+                 }
+                 cout<<"Livros Adicionados com sucesso\n";
+                 system("pause");
+                 //uteis.CriarLivroUser(biblioteca);
+                 //cout << "" << endl;
                 break;}
+            case 3:
+            uteis.EmprestimoFuncaoPrincipal(biblioteca);
+            break;
+            case 7:
+                MENU_PRINCIPAL(biblioteca,uteis);
+                break;
 
             case 0:
                 cout << "Saindo do programa..." << endl;
@@ -103,6 +110,54 @@ void MENU_LIVROS(Biblioteca &biblioteca) {
             default:
                 cout << "\n\tOpcao invalida!" << endl;
                 break;
+        }
+    } while (num != 0);
+}
+
+
+
+
+void MENU_UTILIZADOR(Biblioteca &biblioteca,Uteis uteis) {
+    int num;
+    do {
+        system("cls");
+
+        cout << "\n\t***** Biblioteca - Utilizador *****" << endl;
+        cout << "\t1. Ver Utilizadores" << endl;
+        cout << "\t2. Adicionar Utilizador" << endl;
+        cout << "\t3. Ver Historico de Utilizador" << endl;
+        cout << "\t4. Devolver Livro" << endl;
+        cout << "\t5. Relatorios de Livros por Categoria" << endl;
+        cout << "\t6. Voltar" << endl;
+        cout << "\n\tEscolha uma opcao: ";
+
+        cin >> num;
+
+        system("cls");
+
+        switch (num) {
+            case 1:{
+                biblioteca.listarLeitores(false);
+                system("pause");
+                break;
+            }
+            case 2:{
+                //Funcao para teste, adiciono Livros aleatórios
+                cout << "\n\t***** Criar Utilizador *****" << endl;
+                     for (int i = 1; i <= 10; ++i) {
+                         Pessoa* estudante = new Estudante("Julino" + to_string(i),"2182"+ to_string(i),0,0,"Estudante");
+                         biblioteca.adicionarLeitor("Estudante", estudante);
+                     }
+                     cout<<"Utilizadores Adicionados com sucesso\n";
+                     system("pause");
+
+                    //uteis.CriarUser(biblioteca);
+                break;}
+
+            case 3: uteis.ConsultarHistorico(biblioteca);break;
+            case 6:MENU_PRINCIPAL(biblioteca,uteis);break;
+            case 0:cout << "Saindo do programa..." << endl;exit(0);break;
+            default:cout << "\n\tOpcao invalida!" << endl;break;
         }
     } while (num != 0);
 }
