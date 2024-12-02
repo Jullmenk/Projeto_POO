@@ -63,7 +63,8 @@ void MENU_LIVROS(Biblioteca &biblioteca,Uteis uteis) {
         cout << "\t3. Emprestar Livro" << endl;
         cout << "\t4. Remover Livro" << endl;
         cout << "\t6. Relatorio de Emprestimos por Tipo de Livro" << endl;
-        cout << "\t7. Voltar" << endl;
+        cout << "\t7. Relatorio Multas Pendentes" << endl;
+        cout << "\t8. Voltar" << endl;
         cout << "\n\tEscolha uma opcao: ";
 
         cin >> num;
@@ -95,14 +96,17 @@ void MENU_LIVROS(Biblioteca &biblioteca,Uteis uteis) {
                  //uteis.CriarLivroUser(biblioteca);
                 break;}
             case 3:
-            uteis.EmprestimoFuncaoPrincipal(biblioteca);
-            break;
+                uteis.EmprestimoFuncaoPrincipal(biblioteca);
+                break;
             case 6:
-            uteis.RelatorioTipoDeLivro(biblioteca);
+                uteis.RelatorioTipoDeLivro(biblioteca);
+                break;
             case 7:
+                biblioteca.RelatorioMultasPendentes();
+                break;
+            case 8:
                 MENU_PRINCIPAL(biblioteca,uteis);
                 break;
-
             case 0:
                 cout << "Saindo do programa..." << endl;
                 exit(0);

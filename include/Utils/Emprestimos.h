@@ -22,6 +22,7 @@ public:
     Emprestimo(string NIFLeitor, string nomeLeitor, string categoriaLivro, string tituloLivro, time_t dataEmprestimo, time_t dataDevolucao,bool recebido);
     virtual ~Emprestimo(); 
     void Descricao() const;
+    string getNif() const;
 };
 
 #endif

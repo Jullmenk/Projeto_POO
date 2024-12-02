@@ -22,6 +22,7 @@ void Pessoa::descricao() const {
 
 string Pessoa::getNome() const { return nome; }
 string Pessoa::getNIF() const { return NIF; }
+string Pessoa::getCategoria() const { return categoria; }
 int Pessoa::getLivrosMaximos() const { return livrosMaximos; }
 double Pessoa::getDescontoMulta() const { return descontoMulta; }
 

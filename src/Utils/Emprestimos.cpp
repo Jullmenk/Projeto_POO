@@ -25,3 +25,7 @@ void Emprestimo::Descricao() const {
          << " | Data de Emprestimo: " << dataEmprestimoStr
          << " | Data de Devolucao: " << dataDevolucaoStr << endl;
 }
+
+string Emprestimo::getNif() const{
+    return NIFLeitor;
+}

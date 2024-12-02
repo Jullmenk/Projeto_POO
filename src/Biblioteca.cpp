@@ -279,6 +279,40 @@ bool Biblioteca::listarLeitores(bool forSearch,string categoria){
     }
 }
 
+void Biblioteca::RelatorioMultasPendentes(){
+ if (leitores.empty()) {
+        cout << "Nao ha leitores cadastrados.\n";
+        return;
+    }
+
+    cout << "Relatorio de Multas Pendentes\n";
+
+    // Mapa para agrupar multas por tipo de leitor
+    map<string, double> multasPorTipo;
+
+    // Iterar por todas as categorias de leitores
+    for (const auto& categoriaLeitores : leitores) {
+        for (const auto& leitor : categoriaLeitores.second) {
+            double multaPendente = leitor->calcularMultaTotal();
+            if (multaPendente > 0) {
+                // Agrupar as multas por categoria de leitor
+                multasPorTipo[leitor->getCategoria()] += multaPendente;
+
+                // Exibir detalhes individuais (opcional)
+                cout << "Leitor: " << leitor->getNome()
+                     << " | NIF: " << leitor->getNIF()
+                     << " | Multa Pendente: " << multaPendente << " EUR\n";
+            }
+        }
+    }
+
+    // Exibir o resumo das multas por tipo de leitor
+    cout << "\nResumo das Multas por Tipo de Leitor:\n";
+    for (const auto& entry : multasPorTipo) {
+        cout << "Categoria: " << entry.first << " | Total de Multas: " << entry.second << " EUR\n";
+    }
+}
+
 void Biblioteca::RelatorioEmprestimosTipoDeLivro(string cat){
     auto it = emprestimosPorCategoria.find(cat);
     if (it != emprestimosPorCategoria.end()) {
@@ -287,7 +321,39 @@ void Biblioteca::RelatorioEmprestimosTipoDeLivro(string cat){
         for (const auto& emprestimo : it->second) {
             emprestimo.Descricao();
         }
-    } else {
-        cout << "Categoria nao encontrada.\n";
+
+        cout << "Tipo de Leitor que mais requisita:";
+        map<string, int> contadorTiposDeLeitores;
+
+        for (const auto& LeitoresCat : leitores) { // Iterar por categorias de leitores
+            for (const auto& leitor : LeitoresCat.second) { // Iterar por leitores específicos
+                // Verificar se o leitor possui empréstimos dessa categoria
+                for (const auto& emprestimo : it->second) {
+                    if (emprestimo.getNif() == leitor->getNIF()) {
+                        // Incrementar o contador do tipo de leitor
+                        contadorTiposDeLeitores[leitor->getCategoria()]++;
+                    }
+                }
+            }
+        }
+
+        // Determinar o tipo de leitor mais frequente
+        string tipoMaisFrequente;
+        int maxCount = 0;
+
+        for (const auto& entry : contadorTiposDeLeitores) { // Iterar manualmente no map
+                const string& tipo = entry.first;
+                int count = entry.second;
+
+                if (count > maxCount) {
+                    maxCount = count;
+                    tipoMaisFrequente = tipo;
+                }
+            }
+
+            cout << "Tipo de Leitor que mais requisita: " << tipoMaisFrequente
+                 << " (" << maxCount << " emprestimos)\n";
+        } else {
+            cout << "Categoria nao encontrada.\n";
     }
 }

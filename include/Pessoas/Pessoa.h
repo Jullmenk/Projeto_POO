@@ -37,6 +37,7 @@ class Pessoa
         // Métodos de acesso (getters)
         string getNome() const;
         string getNIF() const;
+        string getCategoria() const;
         int getLivrosMaximos() const;
         double getDescontoMulta() const;
 

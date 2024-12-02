@@ -362,3 +362,4 @@ void Uteis::ConsultarHistoricoDeReservas(Biblioteca& bib){
     bib.RelatorioEmprestimosTipoDeLivro(escolha.categoria);
     system("pause");
 }
+
