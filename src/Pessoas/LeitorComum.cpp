@@ -12,9 +12,6 @@ void LeitorComum::descricao() const {
 }
 
 int LeitorComum::getPrazoDevolucao(string categoriaLivro) const {
-    if (categoriaLivro == "Educativo") {
-        return 15; 
-    }
     return 15; 
 }
 

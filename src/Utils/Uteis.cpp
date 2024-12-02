@@ -40,7 +40,7 @@ retorno RetornarType_String(){
     cout << "\t5. Jornal" << endl;
     cout << "\t0. Sair" << endl;
     cout << "\n" << endl;    
-    cout << "\tQue deseja Adicionar?"<< endl;
+    cout << "\tSelecione uma categoria de Livro"<< endl;
     cout << "\n\tEscolha uma opcao: ";
     
     cin>> type;
@@ -174,6 +174,15 @@ void Uteis::CriarLivroUser(Biblioteca& bib){
         Uteis::LivroInfo(Retornado.type,Retornado.categoria,bib);        
 }
 
+void Uteis::ListarPorCategoriaLivro(Biblioteca& bib,bool search){
+        retorno Retornado = RetornarType_String();
+        bib.listarLivrosComPaginacao(search,Retornado.categoria);  
+}
+
+void Uteis::ListarPorCategoriaUtilizador(Biblioteca& bib,bool search){
+        retorno Retornado = RetornarType_String_User();
+        bib.listarLeitores(search,Retornado.categoria);  
+}
 
 retorno RetornarType_String_User(){
     int type=-1;
@@ -186,7 +195,7 @@ retorno RetornarType_String_User(){
     cout << "\t4. Leitor Comum" << endl;
     cout << "\t0. Sair" << endl;
     cout << "\n" << endl;    
-    cout << "\tQual Utilizador deseja criar?"<< endl;
+    cout << "\tSelecione uma categoria de utilizador"<< endl;
     cout << "\n\tEscolha uma opcao: ";
     
     cin>> type;
@@ -299,13 +308,16 @@ int opc;
     string id_Pessoa;
     string id_Livro;
 
-    bib.listarLeitores(true);
+    retorno user = RetornarType_String_User();
+    bib.listarLeitores(true,user.categoria);
     cout << "\t Digite o NIF do utilizador\n";
     cin>> id_Pessoa;
     Pessoa *pessoa = ProcurarUtilizador(id_Pessoa,bib);
     if(!pessoa)return;
-    
-    bib.listarLivrosComPaginacao(true);
+
+    retorno escolha =  RetornarType_String();
+    bool check = bib.listarLivrosComPaginacao(true,escolha.categoria);
+    if(!check)return;
     cout << "\t Digite o ISBN/ISSN do Livro que deseja \n";
     cin>> id_Livro;
     Geral* livro = ProcurarLivro(id_Livro,bib);
@@ -319,11 +331,34 @@ int opc;
     string id_Pessoa;
     string id_Livro;
 
-    bib.listarLeitores(true);
-    cout << "\t Digite o NIF do utilizador que deseja requisitar um livro\n";
+    retorno user = RetornarType_String_User();
+    bool check = bib.listarLeitores(true,user.categoria);
+    cout << "\t Digite o NIF do utilizador que procuras\n";
+    if(!check)return;
     cin>> id_Pessoa;
     Pessoa *pessoa = ProcurarUtilizador(id_Pessoa,bib);
     if(!pessoa)return;
-    pessoa->listarEmprestimosAtivos();
+    pessoa->listarEmprestimos();
     system("pause");
  }
+
+void Uteis::ConsultarHistoricoDeReservas(Biblioteca& bib){
+    string id_Pessoa;
+    string id_Livro;
+
+    retorno user = RetornarType_String_User();
+    bool check = bib.listarLeitores(true,user.categoria);
+    if(!check)return;
+    cout << "\t Digite o NIF do utilizador que procuras\n";
+    cin>> id_Pessoa;
+    Pessoa *pessoa = ProcurarUtilizador(id_Pessoa,bib);
+    if(!pessoa)return;
+    pessoa->listarReservas();
+    system("pause");
+ }
+
+ void Uteis::RelatorioTipoDeLivro(Biblioteca& bib){
+    retorno escolha = RetornarType_String();
+    bib.RelatorioEmprestimosTipoDeLivro(escolha.categoria);
+    system("pause");
+}

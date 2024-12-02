@@ -62,7 +62,7 @@ void MENU_LIVROS(Biblioteca &biblioteca,Uteis uteis) {
         cout << "\t2. Adicionar Livros" << endl;
         cout << "\t3. Emprestar Livro" << endl;
         cout << "\t4. Remover Livro" << endl;
-        cout << "\t6. Relatorios de Utilizadores por Categoria" << endl;
+        cout << "\t6. Relatorio de Emprestimos por Tipo de Livro" << endl;
         cout << "\t7. Voltar" << endl;
         cout << "\n\tEscolha uma opcao: ";
 
@@ -72,7 +72,7 @@ void MENU_LIVROS(Biblioteca &biblioteca,Uteis uteis) {
 
         switch (num) {
             case 1:{
-                biblioteca.listarLivrosComPaginacao(false);
+                uteis.ListarPorCategoriaLivro(biblioteca,false);
                 system("pause");
                 break;
             }
@@ -80,7 +80,7 @@ void MENU_LIVROS(Biblioteca &biblioteca,Uteis uteis) {
                 //Funcao para teste, adiciono Livros aleatórios
                 cout << "\n\t***** Adicionar Livros *****" << endl;
                  for (int i = 1; i <= 10; ++i) {
-                     Geral* livroEducativo = new LivroEducativo("Educativo Livro " + to_string(i), "Julino Mendonca", 2002+i, true,"213123"+to_string(i), 18,"Fisica");
+                     Geral* livroEducativo = new LivroEducativo("Educativo Livro " + to_string(i), "Julino Mendonca", 2002+i, false,"213123"+to_string(i), 18,"Fisica");
                      biblioteca.adicionarLivro("Educativo", livroEducativo);
                  }
                  for (int i = 1; i <= 10; ++i) {
@@ -93,11 +93,12 @@ void MENU_LIVROS(Biblioteca &biblioteca,Uteis uteis) {
                  cout<<"Livros Adicionados com sucesso\n";
                  system("pause");
                  //uteis.CriarLivroUser(biblioteca);
-                 //cout << "" << endl;
                 break;}
             case 3:
             uteis.EmprestimoFuncaoPrincipal(biblioteca);
             break;
+            case 6:
+            uteis.RelatorioTipoDeLivro(biblioteca);
             case 7:
                 MENU_PRINCIPAL(biblioteca,uteis);
                 break;
@@ -125,10 +126,11 @@ void MENU_UTILIZADOR(Biblioteca &biblioteca,Uteis uteis) {
         cout << "\n\t***** Biblioteca - Utilizador *****" << endl;
         cout << "\t1. Ver Utilizadores" << endl;
         cout << "\t2. Adicionar Utilizador" << endl;
-        cout << "\t3. Ver Historico de Utilizador" << endl;
-        cout << "\t4. Devolver Livro" << endl;
-        cout << "\t5. Relatorios de Livros por Categoria" << endl;
-        cout << "\t6. Voltar" << endl;
+        cout << "\t3. Ver Historico de Emprestimo do Utilizador" << endl;
+        cout << "\t4. Ver Historico de Reservas do Utilizador" << endl;
+        cout << "\t5. Devolver Livro" << endl;
+        cout << "\t6. Relatorios de Livros por Categoria" << endl;
+        cout << "\t7. Voltar" << endl;
         cout << "\n\tEscolha uma opcao: ";
 
         cin >> num;
@@ -137,7 +139,7 @@ void MENU_UTILIZADOR(Biblioteca &biblioteca,Uteis uteis) {
 
         switch (num) {
             case 1:{
-                biblioteca.listarLeitores(false);
+                uteis.ListarPorCategoriaUtilizador(biblioteca,false);
                 system("pause");
                 break;
             }
@@ -155,7 +157,8 @@ void MENU_UTILIZADOR(Biblioteca &biblioteca,Uteis uteis) {
                 break;}
 
             case 3: uteis.ConsultarHistorico(biblioteca);break;
-            case 6:MENU_PRINCIPAL(biblioteca,uteis);break;
+            case 4: uteis.ConsultarHistoricoDeReservas(biblioteca);break;
+            case 7:MENU_PRINCIPAL(biblioteca,uteis);break;
             case 0:cout << "Saindo do programa..." << endl;exit(0);break;
             default:cout << "\n\tOpcao invalida!" << endl;break;
         }

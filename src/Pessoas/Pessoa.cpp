@@ -10,15 +10,10 @@ Pessoa::~Pessoa() {}
 void Pessoa::descricao() const {
     cout << "Nome: " << nome 
          << " | NIF: " << NIF 
-         << " | Numero maximo de Livros que Pode requisitar: " << livrosMaximos 
+         << " | Maximo de Livros que Pode requisitar: " << livrosMaximos 
          << " | Desconto Multa: " << descontoMulta;
-
-    if (totalMultaPago == 0) {
         cout << " | Multa a Pagar: " << totalMultaPorPagar;
-    } else {
         cout << " | Multa Paga: " << totalMultaPago;
-    }
-
     cout << " | Emprestimos Totais: " << NumeroDeEmprestimosTotal
          << " | Emprestimos Ativos: " << NumeroDeEmprestimosAtivos
          << " | Reservas: " << NumeroDeReservas
@@ -81,8 +76,7 @@ void Pessoa::removerReserva() {
 // Adicionar empréstimo
 void Pessoa::adicionarEmprestimo( Emprestimo& emprestimo) {
         Emprestimos.push_back(emprestimo);
-        NumeroDeEmprestimosTotal++;
-        NumeroDeEmprestimosAtivos++;
+        incrementarEmprestimosAtivos();
 }
 
 void Pessoa::adicionarReserva( Emprestimo& emprestimo) {
@@ -93,13 +87,27 @@ void Pessoa::adicionarReserva( Emprestimo& emprestimo) {
 // Remover empréstimo
 
 // Listar empréstimos ativos
-void Pessoa::listarEmprestimosAtivos() const {
+void Pessoa::listarEmprestimos() const {
+    system("cls");
     if(NumeroDeEmprestimosTotal<=0){
-        cout<<"Este Utilizador ainda nao requisitou livros\n";
+        cout<<"Este Utilizador ainda nao tem livros emprestados\n";
         return;
     }
-    cout << "Emprestimos ativos para o leitor: " << nome << endl;
+    cout << "Emprestimos do leitor: " << nome << endl;
     for (const auto& emprestimo : Emprestimos) {
         emprestimo.Descricao(); // Assumindo que a classe Emprestimo possui um método `descricao`
     };
 }
+
+void Pessoa::listarReservas() const {
+    system("cls");
+    if(NumeroDeReservas<=0){
+        cout<<"Este Utilizador nao tem livros reservados\n";
+        return;
+    }
+    cout << "Reservas do leitor: " << nome << endl;
+    for (const auto& reservas : Reservas) {
+        reservas.Descricao(); // Assumindo que a classe Emprestimo possui um método `descricao`
+    };
+}
+

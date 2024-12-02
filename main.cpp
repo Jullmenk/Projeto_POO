@@ -6,6 +6,7 @@ using namespace std;
 
 
 int main() {
+    // Checkpoint 9.
     Biblioteca biblioteca;
     Uteis uteis;
     MENU_PRINCIPAL(biblioteca,uteis);

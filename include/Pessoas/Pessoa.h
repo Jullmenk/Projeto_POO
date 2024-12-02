@@ -50,7 +50,10 @@ class Pessoa
         void removerReserva();
         void adicionarEmprestimo(Emprestimo& emprestimo);
         void adicionarReserva(Emprestimo& emprestimo);
-        void listarEmprestimosAtivos() const;
+        void listarEmprestimos() const;
+        void listarReservas() const;
+        
+        
 
         // Método puramente virtual
         virtual int getPrazoDevolucao(string categoriaLivro) const = 0;

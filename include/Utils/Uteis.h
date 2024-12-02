@@ -15,9 +15,14 @@ class Uteis
         void CriarUser(Biblioteca& bib);
         void UserInfo(int opcao,string categoria,Biblioteca& biblioteca);
         void EmprestimoFuncaoPrincipal(Biblioteca& bib);
+        void ListarPorCategoriaLivro(Biblioteca& bib,bool search);
+        void ListarPorCategoriaUtilizador(Biblioteca& bib,bool search);
         void ConsultarHistorico(Biblioteca& bib);
+        void RelatorioTipoDeLivro(Biblioteca& bib);
+        void ConsultarHistoricoDeReservas(Biblioteca& bib);
         Geral* ProcurarLivro(string id,Biblioteca& bib);
         Pessoa* ProcurarUtilizador(string id,Biblioteca& bib);
+        
 
     private:
 };

@@ -61,33 +61,17 @@ Geral* Biblioteca::buscarLivro(string codigo) {
     return nullptr;
 }
 
-void Biblioteca::RelatorioCategoria(const string& cat) const {
-    auto it = livrosPorCategoria.find(cat);
-    if (it != livrosPorCategoria.end()) {
-        cout << "\nRelatorio da categoria: " << cat << "\n";
-        for (const auto& livro : it->second) {
-            livro->descricao();
-        }
-    } else {
-        cout << "Categoria nao encontrada.\n";
-    }
-}
 
-void Biblioteca::listarLivrosComPaginacao(bool forSearch){
-     // Vetor para manter a lista total de livros (com a categoria associada)
-    vector<pair<string, Geral*>> todosLivros;
+bool Biblioteca::listarLivrosComPaginacao(bool forSearch,string categoria){
 
-    if(livrosPorCategoria.empty()){
-        cout << "Lista se Encontra vazia \n saindo...\n";
-        return;
+    auto it = livrosPorCategoria.find(categoria);
+    if (it == livrosPorCategoria.end() || it->second.empty()) {
+        cout << "Nao ha livros na categoria *"<<categoria<<"*\n";
+        system("pause");
+        return false;
     }
 
-
-    for (const auto& categoria : livrosPorCategoria) {
-        for (const auto& livro : categoria.second) {
-            todosLivros.emplace_back(categoria.first, livro); // (Categoria, Livro)
-        }
-    }
+    vector<Geral*> todosLivros(it->second.begin(), it->second.end());
 
     const int itensPorPagina = 5;
     int totalItens = todosLivros.size();
@@ -101,18 +85,15 @@ void Biblioteca::listarLivrosComPaginacao(bool forSearch){
 
         int inicio = paginaAtual * itensPorPagina;
         int fim = min(inicio + itensPorPagina, totalItens);
-        forSearch&&cout<<"**********\tGuarde o IDENTIFICADOR do que deseja para depois poder requisitar\n";
+        forSearch&&cout<<"**********Guarde o IDENTIFICADOR do que deseja para depois poder requisitar\n";
         cout << "Pagina " << (paginaAtual + 1) << " de " << totalPaginas << "\n";
-        cout << "-----------------------------\n";
 
         for (int i = inicio; i < fim; ++i) {
             cout << "[" << (i + 1) << "] ";
-            cout << "Categoria: " << todosLivros[i].first << " | ";
-            todosLivros[i].second->descricao();
+            todosLivros[i]->descricao();
         }
 
         // Opções de navegação
-        cout << "-----------------------------\n";
         cout << "1 - Pagina Anterior | 2 - Proxima Pagina | 0 - " <<(!forSearch?"Sair\n":"Escolher o meu livro");
         cout << "\nEscolha: ";
         cin >> opcao;
@@ -124,6 +105,7 @@ void Biblioteca::listarLivrosComPaginacao(bool forSearch){
             paginaAtual++;
         } else if (opcao == 0) {
             cout << "Saindo...\n";
+            return true;
         } else {
             cout << "Opcao invalida.\n";
         }
@@ -243,21 +225,17 @@ void Biblioteca::adicionarLeitor(string categoria, Pessoa* leitor) {
     cout << "Leitor " << leitor->getNome() << " adicionado a biblioteca.\n";
 }
 
-void Biblioteca::listarLeitores(bool forSearch){
+bool Biblioteca::listarLeitores(bool forSearch,string categoria){
      // Vetor para manter a lista total de livros (com a categoria associada)
-    vector<pair<string, Pessoa*>> Vleitor;
 
-    if(leitores.empty()){
-        cout << "Lista se Encontra vazia \n saindo...\n";
-        return;
+    auto it = leitores.find(categoria);
+    if (it == leitores.end() || it->second.empty()) {
+        cout << "Nao ha Leitores na categoria *"<<categoria<<"*\n";
+        system("pause");
+        return false;
     }
 
-
-    for (const auto& categoria : leitores) {
-        for (const auto& livro : categoria.second) {
-            Vleitor.emplace_back(categoria.first, livro); // (Categoria, Livro)
-        }
-    }
+    vector<Pessoa*> Vleitor(it->second.begin(), it->second.end());
 
     const int itensPorPagina = 5;
     int totalItens = Vleitor.size();
@@ -272,21 +250,17 @@ void Biblioteca::listarLeitores(bool forSearch){
         int inicio = paginaAtual * itensPorPagina;
         int fim = min(inicio + itensPorPagina, totalItens);
         
-        forSearch&&cout<< "**********\n\tGuarde o IDENTIFICADOR do Utilizador que deseja para depois poder requisitar**********\n\n";
+        forSearch&&cout<< "**********Guarde o IDENTIFICADOR do Utilizador que deseja para depois poder requisitar**********\n\n";
 
 
         cout << "Pagina " << (paginaAtual + 1) << " de " << totalPaginas << "\n";
-        cout << "-----------------------------\n";
 
         for (int i = inicio; i < fim; ++i) {
             cout << "[" << (i + 1) << "] ";
-            cout << "Categoria: " << Vleitor[i].first << " | ";
-            Vleitor[i].second->descricao();
-            !(i+1%5==0)&&cout << "-------------------\n"; // Se for divisivel por 5 nao imprimir isso, uma questao de design, nada mais;
+            Vleitor[i]->descricao();
         }
 
         // Opções de navegação
-        cout << "-----------------------------\n";
         cout << "1 - Pagina Anterior | 2 - Proxima Pagina | 0 - " <<(!forSearch?"Sair":"Escolher o Utilizador");
         cout << "\nEscolha: ";
         cin >> opcao;
@@ -298,8 +272,22 @@ void Biblioteca::listarLeitores(bool forSearch){
             paginaAtual++;
         } else if (opcao == 0) {
             cout << "Saindo...\n";
+            return true;
         } else {
             cout << "Opcao invalida.\n";
         }
+    }
+}
+
+void Biblioteca::RelatorioEmprestimosTipoDeLivro(string cat){
+    auto it = emprestimosPorCategoria.find(cat);
+    if (it != emprestimosPorCategoria.end()) {
+        cout << "\nRelatorio da categoria: " << cat << "\n";
+        cout << "Emprestimos: \n";
+        for (const auto& emprestimo : it->second) {
+            emprestimo.Descricao();
+        }
+    } else {
+        cout << "Categoria nao encontrada.\n";
     }
 }

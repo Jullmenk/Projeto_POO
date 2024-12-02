@@ -32,17 +32,16 @@ public:
     void adicionarLivro(const string& categoria, Geral* livro);
     Geral* buscarLivro(string codigo);
     void removerLivro(const string& categoria, string codigo);
-    void listarLivrosComPaginacao(bool forSearch);
+    bool listarLivrosComPaginacao(bool forSearch,string categoria);
 
     //Leitor
     void adicionarLeitor(string categoria,Pessoa* leitor);
-    void listarLeitores(bool forSearch);
+    bool listarLeitores(bool forSearch,string categoria);
     Pessoa* buscarLeitor(string NIF) const;
 
     //Emprestimo
     void registrarEmprestimo(Pessoa* leitor, Geral* livro, time_t dataEmprestimo);
-    void listarEmprestimosPorCategoria(const string& categoria) const;
-    void RelatorioCategoria(const string& cat) const;
+    void RelatorioEmprestimosTipoDeLivro(string cat);
     void Prorrogacao_Emprestimos();
     void Sistema_Notificacoes_Atraso();
     void registrarReserva(Pessoa* leitor, Geral* livro);
