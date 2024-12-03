@@ -21,6 +21,10 @@ map<string, list<Pessoa*>>& Biblioteca::getleitores() {
     return leitores;
 }
 
+map<string, list<Emprestimo>>& Biblioteca::getEmprestimosPorCategoria(){
+    return emprestimosPorCategoria;
+}
+
 void Biblioteca::adicionarLivro(const string& categoria, Geral* livro) {
     livrosPorCategoria[categoria].push_back(livro);
 }
@@ -121,7 +125,7 @@ void Biblioteca::registrarReserva(Pessoa* leitor, Geral* livro) {
     cin>> opc;
 
     if(opc==1){
-    Emprestimo reserva(leitor->getNIF(), leitor->getNome(), livro->getCategoria(), livro->getTitulo(), time(0), time(0), false);
+    Emprestimo reserva(leitor->getNIF(), leitor->getNome(), livro->getCategoria(), livro->getTitulo(), time(0), time(0),livro->getCodigo());
     reservasPorCategoria[livro->getCategoria()].push_back(reserva); 
     leitor->adicionarReserva(reserva);
     cout << "Livro reservado com sucesso!\n";
@@ -162,7 +166,7 @@ void Biblioteca::registrarReserva(Pessoa* leitor, Geral* livro) {
         Logo, o total de segundos em um dia é 24 * 60 * 60 = 86.400 segundos.
     */
 
-    Emprestimo novoEmprestimo(leitor->getNIF(), leitor->getNome(), livro->getCategoria(), livro->getTitulo(), dataEmprestimo, dataDevolucao, true);
+    Emprestimo novoEmprestimo(leitor->getNIF(), leitor->getNome(), livro->getCategoria(), livro->getTitulo(), dataEmprestimo, dataDevolucao, livro->getCodigo());
 
     emprestimosPorCategoria[livro->getCategoria()].push_back(novoEmprestimo);
 
@@ -173,39 +177,14 @@ void Biblioteca::registrarReserva(Pessoa* leitor, Geral* livro) {
     system("pause");
 }
 
-// void Biblioteca::transformarReservaEmEmprestimo(Pessoa* leitor, Geral* livro) {
-//     // Verificar se o livro está disponível
-//     if (livrosPorCategoria[livro->getCategoria()].size() > 0) {
-//         // Se houver reservas para o livro, transformá-las em empréstimo
-//         for (auto it = reservasPorCategoria[livro->getCategoria()].begin(); it != reservasPorCategoria[livro->getCategoria()].end(); ++it) {
-//             if (it->getNIF() == leitor->getNIF()) {
-//                 // Criar o empréstimo baseado na reserva
-//                 Emprestimo novoEmprestimo = *it;
-//                 novoEmprestimo.setEmprestado(true); // Tornar a reserva um empréstimo
-//                 time_t dataEmprestimo = time(0);
-//                 novoEmprestimo.setDataEmprestimo(dataEmprestimo);
-//                 int prazo = leitor->getPrazoDevolucao(livro->getCategoria());
-//                 novoEmprestimo.setDataDevolucao(dataEmprestimo + (prazo * 24 * 60 * 60));
-
-//                 // Adicionar o empréstimo à lista de empréstimos
-//                 emprestimosPorCategoria[livro->getCategoria()].push_back(novoEmprestimo);
-
-//                 // Remover a reserva
-//                 reservasPorCategoria[livro->getCategoria()].remove(*it);
-
-//                 // Adicionar o livro à lista de livros emprestados
-//                 livrosPorCategoria[livro->getCategoria()].remove(livro);
-
-//                 cout << "Reserva transformada em empréstimo com sucesso!\n";
-//                 return;
-//             }
-//         }
-//     } else {
-//         cout << "O livro não está disponível no momento.\n";
-//     }
-// }
-
-    // Listar todos os empréstimos de uma categoria
+ void Biblioteca::transformarReservaEmEmprestimo(Pessoa* leitor, Geral* livro) {
+   
+    auto it =  reservasPorCategoria.find(cat);
+        if (it != emprestimosPorCategoria.end()) {
+            se 
+        }
+  }
+   // Listar todos os empréstimos de uma categoria
     // void listarEmprestimosPorCategoria(const string& categoria) const {
     //     auto it = emprestimosPorCategoria.find(categoria);
     //     if (it != emprestimosPorCategoria.end()) {

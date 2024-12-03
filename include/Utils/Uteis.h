@@ -20,6 +20,7 @@ class Uteis
         void ConsultarHistorico(Biblioteca& bib);
         void RelatorioTipoDeLivro(Biblioteca& bib);
         void ConsultarHistoricoDeReservas(Biblioteca& bib);
+        void DevolverLivro(Biblioteca& bib);
         Geral* ProcurarLivro(string id,Biblioteca& bib);
         Pessoa* ProcurarUtilizador(string id,Biblioteca& bib);
         

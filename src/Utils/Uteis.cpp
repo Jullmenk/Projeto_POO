@@ -184,6 +184,7 @@ void Uteis::ListarPorCategoriaUtilizador(Biblioteca& bib,bool search){
         bib.listarLeitores(search,Retornado.categoria);  
 }
 
+
 retorno RetornarType_String_User(){
     int type=-1;
     string categoria;
@@ -333,8 +334,8 @@ int opc;
 
     retorno user = RetornarType_String_User();
     bool check = bib.listarLeitores(true,user.categoria);
-    cout << "\t Digite o NIF do utilizador que procuras\n";
     if(!check)return;
+    cout << "\t Digite o NIF do utilizador que procuras\n";
     cin>> id_Pessoa;
     Pessoa *pessoa = ProcurarUtilizador(id_Pessoa,bib);
     if(!pessoa)return;
@@ -363,3 +364,41 @@ void Uteis::ConsultarHistoricoDeReservas(Biblioteca& bib){
     system("pause");
 }
 
+
+void Uteis::DevolverLivro(Biblioteca& bib){
+    string id_Pessoa;
+    string id_Livro;
+    retorno user = RetornarType_String_User();
+    bib.listarLeitores(true,user.categoria);
+    cout << "\t Digite o NIF do utilizador\n";
+    cin>> id_Pessoa;
+    Pessoa *pessoa = ProcurarUtilizador(id_Pessoa,bib);
+    if(!pessoa)return;
+    pessoa->listarEmprestimos();
+    if(pessoa->getNumeroDeEmprestimosTotais()<=0)return;
+
+    cout<< "\tDigite o ISBN/ISSN do Livro Deseja Devolver:";
+    cin >> id_Livro;
+    Geral *livro = ProcurarLivro(id_Livro,bib);
+    if(!livro)return;
+    
+     auto& empresLista = bib.getEmprestimosPorCategoria();
+    auto it = empresLista.find(livro->getCategoria());
+    if (it == empresLista.end()) {
+        cout << "Nenhum empréstimo encontrado para a categoria do livro.\n";
+        return;
+    }
+
+    // Iteração de trás para frente com iteradores reversos
+    for (auto rit = it->second.rbegin(); rit != it->second.rend(); ++rit) {
+        const auto& emprestimo = *rit;
+        if ((emprestimo.getNif() == pessoa->getNIF()) && (emprestimo.getIDLivro() == livro->getCodigo())) {
+            livro->setDisponivel();
+            cout << "Livro devolvido com sucesso, iremos analisar se já não foi reservado.\n";
+            system("pause");
+            
+            return; // Saia após devolver o livro para evitar múltiplas devoluções
+        }
+    }
+
+}

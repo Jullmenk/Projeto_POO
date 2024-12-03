@@ -85,6 +85,10 @@ void Pessoa::adicionarReserva( Emprestimo& emprestimo) {
         NumeroDeReservas++;
 }
 
+int Pessoa::getNumeroDeEmprestimosTotais(){
+    return NumeroDeEmprestimosTotal;
+}
+
 // Remover empréstimo
 
 // Listar empréstimos ativos

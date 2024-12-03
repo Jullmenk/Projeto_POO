@@ -53,6 +53,7 @@ class Pessoa
         void adicionarReserva(Emprestimo& emprestimo);
         void listarEmprestimos() const;
         void listarReservas() const;
+        int getNumeroDeEmprestimosTotais();
         
         
 

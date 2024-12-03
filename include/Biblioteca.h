@@ -27,6 +27,7 @@ public:
     //Livro
     map<string, list<Geral*>>& getLivrosPorCategoria();
     map<string, list<Pessoa*>>& getleitores();
+    map<string, list<Emprestimo>>& getEmprestimosPorCategoria();
 
     void listarLivrosDisponiveis() const;
     void adicionarLivro(const string& categoria, Geral* livro);
