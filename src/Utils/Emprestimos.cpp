@@ -43,3 +43,6 @@ string Emprestimo::getCategoriaLivro() const{
     return categoriaLivro;
 };
 
+time_t Emprestimo::getDataDevolucao() const{
+    return dataDevolucao;
+};

@@ -30,19 +30,10 @@ double Pessoa::calcularMultaTotal() const {
     return totalMultaPorPagar * (1 - descontoMulta);
 }
 
-// Métodos utilitários
-void Pessoa::adicionarMulta(int valor) {
-    totalMultaPorPagar += valor;
+void Pessoa::incrementarMulta(){
+    totalMultaPorPagar+=5;
 }
 
-void Pessoa::pagarMulta(int valor) {
-    if (valor <= totalMultaPorPagar) {
-        totalMultaPorPagar -= valor;
-        totalMultaPago += valor;
-    } else {
-        cout << "Valor de pagamento excede o total de multas pendentes!\n";
-    }
-}
 
 void Pessoa::incrementarEmprestimosAtivos() {
     if (NumeroDeEmprestimosAtivos < livrosMaximos) {

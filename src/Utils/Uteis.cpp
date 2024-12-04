@@ -370,6 +370,12 @@ void Uteis::DevolverLivro(Biblioteca& bib){
         if ((emprestimo.getNif() == pessoa->getNIF()) && (emprestimo.getIDLivro() == livro->getCodigo())) {
             livro->setDisponivel();
             pessoa->decrementarEmprestimosAtivos();
+            time_t dataAtual = time(nullptr);
+            if(emprestimo.getDataDevolucao() < dataAtual){
+                pessoa->incrementarMulta();
+                cout<<"O prazo de devolução já expirou, foi acrescentado uma multa de"<<5*(1 - pessoa->getDescontoMulta())<<"EUR.\n";
+                system("pause");
+            }
             cout << "Livro devolvido com sucesso.\n";
             bib.transformarReservaEmEmprestimo(emprestimo.getCategoriaLivro(),emprestimo.getIDLivro());
             system("pause");

@@ -27,11 +27,13 @@ public:
     string getIDLivro() const;
     string getCategoriaLeitor()const;
     string getCategoriaLivro() const;
+    time_t getDataDevolucao() const;
         bool operator==(const Emprestimo& other) const {
         return (this->getNif() == other.getNif() &&
                 this->getIDLivro() == other.getIDLivro() &&
                 this->getCategoriaLivro() == other.getCategoriaLivro());
     }
+
 };
 
 #endif

@@ -40,11 +40,11 @@ class Pessoa
         string getCategoria() const;
         int getLivrosMaximos() const;
         double getDescontoMulta() const;
+        int getNumeroDeEmprestimosTotais();
+
 
         // Métodos utilitários
         double calcularMultaTotal() const;
-        void adicionarMulta(int valor);
-        void pagarMulta(int valor);
         void incrementarEmprestimosAtivos();
         void decrementarEmprestimosAtivos();
         void adicionarReserva();
@@ -53,7 +53,7 @@ class Pessoa
         void adicionarReserva(Emprestimo& emprestimo);
         void listarEmprestimos() const;
         void listarReservas() const;
-        int getNumeroDeEmprestimosTotais();
+        void incrementarMulta();
 
         //Notificacoes
         void EnviarNotificacoesdeAtraso();
