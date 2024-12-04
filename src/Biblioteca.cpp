@@ -5,6 +5,7 @@
 #include <vector>
 using namespace std;
 #include <cstdlib> 
+#include "../include/Utils/Uteis.h"
 
 Biblioteca::~Biblioteca() {
     for (auto& categoria : livrosPorCategoria) {
@@ -24,6 +25,32 @@ map<string, list<Pessoa*>>& Biblioteca::getleitores() {
 map<string, list<Emprestimo>>& Biblioteca::getEmprestimosPorCategoria(){
     return emprestimosPorCategoria;
 }
+
+Pessoa* Biblioteca::ProcurarUtilizador(string id){
+    for (auto& categoria : leitores) {
+        for ( auto& pessoafound : categoria.second) {
+            if (pessoafound->getNIF() == id) {
+                return pessoafound;
+            }
+        }
+    }
+    cout<<"Lamentamos, mas esse utilizador ainda nao foi registado nessa biblioteca\n";
+    system("pause");
+    return nullptr;
+}
+
+Geral* Biblioteca::ProcurarLivro(string id){
+    for (auto& categoria : livrosPorCategoria) {
+        for ( auto& livro : categoria.second) {
+            if (livro->getCodigo() == id) {
+                return livro;
+            }
+        }
+    }
+    cout<<"Lamentamos, mas esse livro ainda nao existe nessa biblioteca";
+    return nullptr;
+}
+
 
 void Biblioteca::adicionarLivro(const string& categoria, Geral* livro) {
     livrosPorCategoria[categoria].push_back(livro);
@@ -125,7 +152,7 @@ void Biblioteca::registrarReserva(Pessoa* leitor, Geral* livro) {
     cin>> opc;
 
     if(opc==1){
-    Emprestimo reserva(leitor->getNIF(), leitor->getNome(), livro->getCategoria(), livro->getTitulo(), time(0), time(0),livro->getCodigo());
+    Emprestimo reserva(leitor->getNIF(), leitor->getNome(), livro->getCategoria(), livro->getTitulo(), time(0), time(0),livro->getCodigo(),leitor->getCategoria());
     reservasPorCategoria[livro->getCategoria()].push_back(reserva); 
     leitor->adicionarReserva(reserva);
     cout << "Livro reservado com sucesso!\n";
@@ -135,8 +162,9 @@ void Biblioteca::registrarReserva(Pessoa* leitor, Geral* livro) {
     system("pause");
 }
 
-  void Biblioteca::registrarEmprestimo(Pessoa* leitor,Geral *livro, time_t dataEmprestimo) {
+  void Biblioteca::registrarEmprestimo(Pessoa* leitor,Geral *livro) {
     // Verificar se o livro está disponível ou se há reservas
+    time_t dataEmprestimo = time(nullptr);
     bool temp;
 
     if (!livro->isDisponivel()) {
@@ -166,7 +194,7 @@ void Biblioteca::registrarReserva(Pessoa* leitor, Geral* livro) {
         Logo, o total de segundos em um dia é 24 * 60 * 60 = 86.400 segundos.
     */
 
-    Emprestimo novoEmprestimo(leitor->getNIF(), leitor->getNome(), livro->getCategoria(), livro->getTitulo(), dataEmprestimo, dataDevolucao, livro->getCodigo());
+    Emprestimo novoEmprestimo(leitor->getNIF(), leitor->getNome(), livro->getCategoria(), livro->getTitulo(), dataEmprestimo, dataDevolucao, livro->getCodigo(),leitor->getCategoria());
 
     emprestimosPorCategoria[livro->getCategoria()].push_back(novoEmprestimo);
 
@@ -177,13 +205,74 @@ void Biblioteca::registrarReserva(Pessoa* leitor, Geral* livro) {
     system("pause");
 }
 
- void Biblioteca::transformarReservaEmEmprestimo(Pessoa* leitor, Geral* livro) {
-   
-    auto it =  reservasPorCategoria.find(cat);
-        if (it != emprestimosPorCategoria.end()) {
-            se 
+ void Biblioteca::transformarReservaEmEmprestimo(string cat,string idLivro) {
+    Emprestimo* res = nullptr;
+    Geral* livro=nullptr;
+    Pessoa* leitor = nullptr;
+    bool reservaTransformada = false;
+    int iteracao = 0;
+
+    while (!reservaTransformada) {
+        // Encontra reservas na categoria fornecida
+        auto it = reservasPorCategoria.find(cat);
+        if (it == reservasPorCategoria.end()) {
+            cout << "Nenhuma reserva encontrada na categoria: " << cat << ".\n";
+            return;
         }
-  }
+
+        // Itera sobre as reservas
+        for (auto& reserva : it->second) {
+            if (reserva.getIDLivro() == idLivro) {
+                // Busca o leitor associado à reserva
+                Pessoa* leitorReserva = ProcurarUtilizador(reserva.getNif());
+                if (!leitorReserva) {
+                    cout << "Erro: Utilizador associado à reserva não encontrado.\n";
+                    continue;
+                }
+
+                if (leitorReserva->PodeEmprestar()) {
+                    // Estudantes têm prioridade para livros educativos
+                    if (reserva.getCategoriaLivro() == "Educativo" && leitorReserva->getCategoria() == "Estudante") {
+                        res = &reserva;
+                        reservaTransformada = true;
+                        break;
+                    }
+
+                    // Após a primeira iteração, remove a reserva e processa
+                    if (iteracao > 0) {
+                        res = &reserva;
+                        it->second.erase(std::remove(it->second.begin(), it->second.end(), reserva), it->second.end());
+                        reservaTransformada = true;
+                        break;
+                    }
+                } else {
+                    // Envia notificação e exclui a reserva
+                    if (livro) {
+                        leitorReserva->EnviarNotificacoesdeExlusaoDeReserva(livro->getTitulo());
+                    }
+                    it->second.erase(std::remove(it->second.begin(), it->second.end(), reserva), it->second.end());
+                }
+            }
+        }
+
+        if (!reservaTransformada && iteracao > 0) {
+            cout << "Nao foi possivel transformar a reserva em emprestimo.\n";
+            return;
+        }
+
+        iteracao++;
+    }
+
+    if (res && leitor && livro) {
+        registrarEmprestimo(leitor, livro);
+        cout << "Reserva transformada em emprestimo com sucesso!\n";
+        leitor->EnviarNotificacoesdeAquisicaoDaReserva(livro->getCategoria());
+    } else {
+        cout << "Erro: Dados insuficientes para registrar o empréstimo.\n";
+    }
+}
+
+        
    // Listar todos os empréstimos de uma categoria
     // void listarEmprestimosPorCategoria(const string& categoria) const {
     //     auto it = emprestimosPorCategoria.find(categoria);

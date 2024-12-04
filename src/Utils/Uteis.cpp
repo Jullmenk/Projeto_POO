@@ -274,57 +274,25 @@ void Uteis::CriarUser(Biblioteca& bib){
         Uteis::UserInfo(Retornado.type,Retornado.categoria,bib);        
 }
 
-Geral* Uteis::ProcurarLivro(string id, Biblioteca& bib){
-
- auto& livros = bib.getLivrosPorCategoria();
-    for (auto& categoria : livros) {
-        for ( auto& livro : categoria.second) {
-            if (livro->getCodigo() == id) {
-                cout << "Livro encontrado\n";
-                return livro;
-            }
-        }
-    }
-    cout<<"Lamentamos, mas esse livro ainda nao existe nessa biblioteca";
-    return nullptr;
-}
-
-Pessoa* Uteis::ProcurarUtilizador(string id, Biblioteca& bib){
-int opc;
- auto& pessoa = bib.getleitores();
-    for (auto& categoria : pessoa) {
-        for ( auto& pessoafound : categoria.second) {
-            if (pessoafound->getNIF() == id) {
-                return pessoafound;
-            }
-        }
-    }
-    cout<<"Lamentamos, mas esse utilizador ainda nao foi registado nessa biblioteca\n";
-    system("pause");
-    return nullptr;
-}
-
 
  void Uteis::EmprestimoFuncaoPrincipal(Biblioteca& bib){
     string id_Pessoa;
     string id_Livro;
 
     retorno user = RetornarType_String_User();
-    bib.listarLeitores(true,user.categoria);
+    if(!bib.listarLeitores(true,user.categoria))return;
     cout << "\t Digite o NIF do utilizador\n";
     cin>> id_Pessoa;
-    Pessoa *pessoa = ProcurarUtilizador(id_Pessoa,bib);
+    Pessoa *pessoa = bib.ProcurarUtilizador(id_Pessoa);
     if(!pessoa)return;
 
     retorno escolha =  RetornarType_String();
-    bool check = bib.listarLivrosComPaginacao(true,escolha.categoria);
-    if(!check)return;
+    if(!bib.listarLivrosComPaginacao(true,escolha.categoria))return;
     cout << "\t Digite o ISBN/ISSN do Livro que deseja \n";
     cin>> id_Livro;
-    Geral* livro = ProcurarLivro(id_Livro,bib);
+    Geral* livro = bib.ProcurarLivro(id_Livro);
     if(!livro)return;
-    time_t atual = time(nullptr);
-    bib.registrarEmprestimo(pessoa,livro,atual);
+    bib.registrarEmprestimo(pessoa,livro);
  }
 
  
@@ -333,11 +301,10 @@ int opc;
     string id_Livro;
 
     retorno user = RetornarType_String_User();
-    bool check = bib.listarLeitores(true,user.categoria);
-    if(!check)return;
+    if(!bib.listarLeitores(true,user.categoria))return;
     cout << "\t Digite o NIF do utilizador que procuras\n";
     cin>> id_Pessoa;
-    Pessoa *pessoa = ProcurarUtilizador(id_Pessoa,bib);
+    Pessoa *pessoa = bib.ProcurarUtilizador(id_Pessoa);
     if(!pessoa)return;
     pessoa->listarEmprestimos();
     system("pause");
@@ -348,11 +315,10 @@ void Uteis::ConsultarHistoricoDeReservas(Biblioteca& bib){
     string id_Livro;
 
     retorno user = RetornarType_String_User();
-    bool check = bib.listarLeitores(true,user.categoria);
-    if(!check)return;
+    if(!bib.listarLeitores(true,user.categoria))return;
     cout << "\t Digite o NIF do utilizador que procuras\n";
     cin>> id_Pessoa;
-    Pessoa *pessoa = ProcurarUtilizador(id_Pessoa,bib);
+    Pessoa *pessoa = bib.ProcurarUtilizador(id_Pessoa);
     if(!pessoa)return;
     pessoa->listarReservas();
     system("pause");
@@ -366,38 +332,48 @@ void Uteis::ConsultarHistoricoDeReservas(Biblioteca& bib){
 
 
 void Uteis::DevolverLivro(Biblioteca& bib){
-    string id_Pessoa;
-    string id_Livro;
+    string id_Pessoa,id_Livro;
+    bool findUser,findLivro;
+    Pessoa *pessoa=nullptr;
+    Geral *livro=nullptr;
     retorno user = RetornarType_String_User();
-    bib.listarLeitores(true,user.categoria);
-    cout << "\t Digite o NIF do utilizador\n";
-    cin>> id_Pessoa;
-    Pessoa *pessoa = ProcurarUtilizador(id_Pessoa,bib);
-    if(!pessoa)return;
+    while (!findUser)
+    {
+        if(!bib.listarLeitores(true,user.categoria))return;
+        cout << "\t Digite o NIF do utilizador\n";
+        cin>> id_Pessoa;
+        pessoa = bib.ProcurarUtilizador(id_Pessoa);
+        if(pessoa)findUser=true;
+    }
+
     pessoa->listarEmprestimos();
     if(pessoa->getNumeroDeEmprestimosTotais()<=0)return;
+    while (!findLivro)
+    {
+        cout<< "\tDigite o ISBN/ISSN do Livro Deseja Devolver:";
+        cin >> id_Livro;
+        livro = bib.ProcurarLivro(id_Livro);
+        if(!livro)findLivro=true;
 
-    cout<< "\tDigite o ISBN/ISSN do Livro Deseja Devolver:";
-    cin >> id_Livro;
-    Geral *livro = ProcurarLivro(id_Livro,bib);
-    if(!livro)return;
+    }    
     
-     auto& empresLista = bib.getEmprestimosPorCategoria();
+    auto& empresLista = bib.getEmprestimosPorCategoria();
     auto it = empresLista.find(livro->getCategoria());
     if (it == empresLista.end()) {
-        cout << "Nenhum empréstimo encontrado para a categoria do livro.\n";
+        cout << "Nenhum livro dessa categoria foi requisitado.\n";
         return;
     }
 
     // Iteração de trás para frente com iteradores reversos
     for (auto rit = it->second.rbegin(); rit != it->second.rend(); ++rit) {
-        const auto& emprestimo = *rit;
+        auto& emprestimo = *rit;
         if ((emprestimo.getNif() == pessoa->getNIF()) && (emprestimo.getIDLivro() == livro->getCodigo())) {
             livro->setDisponivel();
-            cout << "Livro devolvido com sucesso, iremos analisar se já não foi reservado.\n";
+            pessoa->decrementarEmprestimosAtivos();
+            cout << "Livro devolvido com sucesso.\n";
+            bib.transformarReservaEmEmprestimo(emprestimo.getCategoriaLivro(),emprestimo.getIDLivro());
             system("pause");
-            
-            return; // Saia após devolver o livro para evitar múltiplas devoluções
+            return; 
         }
     }
 

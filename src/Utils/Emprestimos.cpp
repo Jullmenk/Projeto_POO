@@ -2,8 +2,8 @@
 #include <cstring> 
 
 Emprestimo::Emprestimo(string NIFLeitor, string nomeLeitor, string categoriaLivro, 
-                string tituloLivro, time_t dataEmprestimo, time_t dataDevolucao,string idLivro):NIFLeitor(NIFLeitor), nomeLeitor(nomeLeitor), categoriaLivro(categoriaLivro),
-            tituloLivro(tituloLivro), dataEmprestimo(dataEmprestimo), dataDevolucao(dataDevolucao), idLivro(idLivro) {}
+                string tituloLivro, time_t dataEmprestimo, time_t dataDevolucao,string idLivro,string categoriaLeitor):NIFLeitor(NIFLeitor), nomeLeitor(nomeLeitor), categoriaLivro(categoriaLivro),
+            tituloLivro(tituloLivro), dataEmprestimo(dataEmprestimo), dataDevolucao(dataDevolucao), idLivro(idLivro),categoriaLeitor(categoriaLeitor) {}
 
 Emprestimo::~Emprestimo(){
 
@@ -19,7 +19,7 @@ void Emprestimo::Descricao() const {
 
     cout << "NIF: " << NIFLeitor
          << " | Nome do leitor: " << nomeLeitor
-         << " | Categoria do leitor: " << categoriaLivro
+         << " | Categoria de Livro: " << categoriaLeitor
          << " | Categoria de Livro: " << categoriaLivro
          << " | Identificador do Livro: " << idLivro
          << " | Titulo: " << tituloLivro
@@ -34,3 +34,12 @@ string Emprestimo::getNif() const{
 string Emprestimo::getIDLivro() const{
     return idLivro;
 }
+
+string Emprestimo::getCategoriaLeitor() const{
+    return categoriaLeitor;
+};
+
+string Emprestimo::getCategoriaLivro() const{
+    return categoriaLivro;
+};
+

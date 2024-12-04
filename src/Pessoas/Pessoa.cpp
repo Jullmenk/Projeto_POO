@@ -116,3 +116,21 @@ void Pessoa::listarReservas() const {
     };
 }
 
+
+void Pessoa::EnviarNotificacoesdeAtraso(){
+    cout << "";
+}
+void Pessoa::EnviarNotificacoesdeExlusaoDeReserva(string livro){
+    cout 
+    <<"Ola,"<<nome
+    <<"O Livro " <<livro<<" que havia reservado nesse momento se encontra disponivel,"
+    <<"mas verificamos que nesse momento atingiu o limite de livros que pode ter ao mesmo tempo"
+    <<"Sendo Assim, estamos a entrar em contato para avisa-lo que a sua reserva sera anulada e o livro sera entregue ao outro leitor"
+    <<"Atenciosamente, Biblioteca ESTGV.";
+}
+
+void Pessoa::EnviarNotificacoesdeAquisicaoDaReserva(string livro){
+    cout 
+    <<"Ola,"<<nome
+    <<"O Livro " <<livro<<" que havia reservado foi enviado para si.";
+}

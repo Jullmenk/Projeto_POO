@@ -162,6 +162,7 @@ void MENU_UTILIZADOR(Biblioteca &biblioteca,Uteis uteis) {
 
             case 3: uteis.ConsultarHistorico(biblioteca);break;
             case 4: uteis.ConsultarHistoricoDeReservas(biblioteca);break;
+            case 5: uteis.DevolverLivro(biblioteca);break;;
             case 7:MENU_PRINCIPAL(biblioteca,uteis);break;
             case 0:cout << "Saindo do programa..." << endl;exit(0);break;
             default:cout << "\n\tOpcao invalida!" << endl;break;

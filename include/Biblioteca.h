@@ -34,20 +34,22 @@ public:
     Geral* buscarLivro(string codigo);
     void removerLivro(const string& categoria, string codigo);
     bool listarLivrosComPaginacao(bool forSearch,string categoria);
+    Geral* ProcurarLivro(string id);
 
     //Leitor
     void adicionarLeitor(string categoria,Pessoa* leitor);
     bool listarLeitores(bool forSearch,string categoria);
     Pessoa* buscarLeitor(string NIF) const;
+    Pessoa* ProcurarUtilizador(string id);
 
     //Emprestimo
-    void registrarEmprestimo(Pessoa* leitor, Geral* livro, time_t dataEmprestimo);
+    void registrarEmprestimo(Pessoa* leitor, Geral* livro);
     void RelatorioEmprestimosTipoDeLivro(string cat);
     void RelatorioMultasPendentes();
     void Prorrogacao_Emprestimos();
     void Sistema_Notificacoes_Atraso();
     void registrarReserva(Pessoa* leitor, Geral* livro);
-    void transformarReservaEmEmprestimo(Pessoa* leitor, Geral* livro); 
+    void transformarReservaEmEmprestimo(string cat,string idLivro); 
 
 
 

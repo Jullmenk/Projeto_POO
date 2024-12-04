@@ -54,6 +54,11 @@ class Pessoa
         void listarEmprestimos() const;
         void listarReservas() const;
         int getNumeroDeEmprestimosTotais();
+
+        //Notificacoes
+        void EnviarNotificacoesdeAtraso();
+        void EnviarNotificacoesdeExlusaoDeReserva(string livro);
+        void EnviarNotificacoesdeAquisicaoDaReserva(string livro);
         
         
 
