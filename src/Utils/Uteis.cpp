@@ -296,7 +296,7 @@ void Uteis::CriarUser(Biblioteca& bib){
  }
 
  
- void Uteis::ConsultarHistorico(Biblioteca& bib){
+ void Uteis::ConsultarHistoricoUtilizador(Biblioteca& bib){
     string id_Pessoa;
     string id_Livro;
 

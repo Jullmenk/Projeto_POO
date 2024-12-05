@@ -12,7 +12,6 @@ public:
 
     void descricao() const override;
     int getPrazoDevolucao(string categoriaLivro) const override;
-    int getNumerodeReservas(string categoriaLivro) const override;
     bool PodeReservar() const override;
     bool PodeEmprestar() const override;};
 

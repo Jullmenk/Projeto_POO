@@ -67,7 +67,7 @@ void Pessoa::removerReserva() {
 
 // Adicionar empréstimo
 void Pessoa::adicionarEmprestimo( Emprestimo& emprestimo) {
-        Emprestimos.push_back(emprestimo);
+        EmprestimosUser.push_back(emprestimo);
         incrementarEmprestimosAtivos();
 }
 
@@ -90,7 +90,7 @@ void Pessoa::listarEmprestimos() const {
         return;
     }
     cout << "Emprestimos do leitor: " << nome << endl;
-    for (const auto& emprestimo : Emprestimos) {
+    for (const auto& emprestimo : EmprestimosUser) {
         emprestimo.Descricao(); // Assumindo que a classe Emprestimo possui um método `descricao`
     };
 }

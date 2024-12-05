@@ -12,17 +12,10 @@ void Professor::descricao() const{
 }
 
 int Professor::getPrazoDevolucao(string categoriaLivro) const {
-    if (categoriaLivro == "Educativo") {
-        return 360; 
+    if (categoriaLivro == "Cientifico") {
+        return 7; 
     }
-    return 15; 
-}
-
-int Professor::getNumerodeReservas(string categoriaLivro) const {
-    if (categoriaLivro == "Educativo") {
-        return 10; 
-    }
-    return 5;
+    return 2; 
 }
 
 

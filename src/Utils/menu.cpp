@@ -160,7 +160,7 @@ void MENU_UTILIZADOR(Biblioteca &biblioteca,Uteis uteis) {
                     //uteis.CriarUser(biblioteca);
                 break;}
 
-            case 3: uteis.ConsultarHistorico(biblioteca);break;
+            case 3: uteis.ConsultarHistoricoUtilizador(biblioteca);break;
             case 4: uteis.ConsultarHistoricoDeReservas(biblioteca);break;
             case 5: uteis.DevolverLivro(biblioteca);break;;
             case 7:MENU_PRINCIPAL(biblioteca,uteis);break;

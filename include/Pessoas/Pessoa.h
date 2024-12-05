@@ -21,7 +21,7 @@ class Pessoa
     int NumeroDeReservas;
     string categoria;
 
-    vector<Emprestimo> Emprestimos;
+    vector<Emprestimo> EmprestimosUser;
     vector<Emprestimo> Reservas;
 
     private:
@@ -64,7 +64,6 @@ class Pessoa
 
         // Método puramente virtual
         virtual int getPrazoDevolucao(string categoriaLivro) const = 0;
-        virtual int getNumerodeReservas(string categoriaLivro) const = 0;
         virtual bool PodeReservar() const = 0;
         virtual bool PodeEmprestar() const = 0;
     };

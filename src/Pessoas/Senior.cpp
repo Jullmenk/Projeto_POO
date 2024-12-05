@@ -13,17 +13,11 @@ void Senior::descricao() const {
 
 int Senior::getPrazoDevolucao(string categoriaLivro) const {
     if (categoriaLivro == "Educativo") {
-        return 30; 
+        return 14; 
     }
-    return 15; 
+    return 7; 
 }
 
-int Senior::getNumerodeReservas(string categoriaLivro) const {
-    if (categoriaLivro == "Educativo") {
-        return 15; 
-    }
-    return 10;
-}
 
 
 bool Senior::PodeReservar() const{

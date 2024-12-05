@@ -11,17 +11,11 @@ void Estudante::descricao() const {
 
 int Estudante::getPrazoDevolucao(string categoriaLivro) const {
     if (categoriaLivro == "Educativo") {
-        return 30; // 30 dias para livros educativos
+        return 4; // 4 dias para livros educativos
     }
-    return 15; // Prazo padrão para outros tipos de livros
+    return 2; // Prazo padrão para outros tipos de livros
 }
 
-int Estudante::getNumerodeReservas(string categoriaLivro) const {
-    if (categoriaLivro == "Educativo") {
-        return 5; 
-    }
-    return 2;
-}
 
 bool Estudante::PodeReservar() const{
     if(NumeroDeReservas>=2){

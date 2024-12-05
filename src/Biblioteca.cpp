@@ -359,8 +359,8 @@ void Biblioteca::RelatorioMultasPendentes(){
     map<string, double> multasPorTipo;
 
     // Iterar por todas as categorias de leitores
-    for (const auto& categoriaLeitores : leitores) {
-        for (const auto& leitor : categoriaLeitores.second) {
+    for ( auto& categoriaLeitores : leitores) {
+        for ( auto& leitor : categoriaLeitores.second) {
             double multaPendente = leitor->calcularMultaTotal();
             if (multaPendente > 0) {
                 // Agrupar as multas por categoria de leitor
@@ -386,17 +386,17 @@ void Biblioteca::RelatorioEmprestimosTipoDeLivro(string cat){
     if (it != emprestimosPorCategoria.end()) {
         cout << "\nRelatorio da categoria: " << cat << "\n";
         cout << "Emprestimos: \n";
-        for (const auto& emprestimo : it->second) {
+        for ( auto& emprestimo : it->second) {
             emprestimo.Descricao();
         }
 
         cout << "Tipo de Leitor que mais requisita:";
         map<string, int> contadorTiposDeLeitores;
 
-        for (const auto& LeitoresCat : leitores) { // Iterar por categorias de leitores
-            for (const auto& leitor : LeitoresCat.second) { // Iterar por leitores específicos
+        for ( auto& LeitoresCat : leitores) { // Iterar por categorias de leitores
+            for ( auto& leitor : LeitoresCat.second) { // Iterar por leitores específicos
                 // Verificar se o leitor possui empréstimos dessa categoria
-                for (const auto& emprestimo : it->second) {
+                for ( auto& emprestimo : it->second) {
                     if (emprestimo.getNif() == leitor->getNIF()) {
                         // Incrementar o contador do tipo de leitor
                         contadorTiposDeLeitores[leitor->getCategoria()]++;

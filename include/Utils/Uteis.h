@@ -17,7 +17,7 @@ class Uteis
         void EmprestimoFuncaoPrincipal(Biblioteca& bib);
         void ListarPorCategoriaLivro(Biblioteca& bib,bool search);
         void ListarPorCategoriaUtilizador(Biblioteca& bib,bool search);
-        void ConsultarHistorico(Biblioteca& bib);
+        void ConsultarHistoricoUtilizador(Biblioteca& bib);
         void RelatorioTipoDeLivro(Biblioteca& bib);
         void ConsultarHistoricoDeReservas(Biblioteca& bib);
         void DevolverLivro(Biblioteca& bib);

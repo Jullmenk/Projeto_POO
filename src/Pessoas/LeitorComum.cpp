@@ -12,11 +12,7 @@ void LeitorComum::descricao() const {
 }
 
 int LeitorComum::getPrazoDevolucao(string categoriaLivro) const {
-    return 15; 
-}
-
-int LeitorComum::getNumerodeReservas(string categoriaLivro) const {
-    return 2;
+    return 2; 
 }
 
 bool LeitorComum::PodeReservar() const{
