@@ -16,10 +16,6 @@ class LivroEducativo : public Geral
         virtual ~LivroEducativo();
         void descricao() const override;
         string getCodigo() const override;
-
-    protected:
-
-    private:
 };
 
 #endif // LIVROEDUCATIVO_H

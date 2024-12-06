@@ -12,8 +12,6 @@ class Pessoa
     protected:
     string nome;
     string NIF;
-    int livrosMaximos; // Número máximo de livros que pode requisitar
-    double descontoMulta; // Desconto em multas (0.0 a 1.0)
     int totalMultaPorPagar;
     int totalMultaPago;
     int NumeroDeEmprestimosTotal;
@@ -23,12 +21,10 @@ class Pessoa
 
     vector<Emprestimo> EmprestimosUser;
     vector<Emprestimo> Reservas;
-
-    private:
     
     public:
         // Construtor e destruidor
-        Pessoa(string nome, string NIF, int livrosMaximos, double descontoMulta, int NumeroDeEmprestimosTotal, int NumeroDeEmprestimosAtivos, int totalMultaPorPagar, int totalMultaPago,int NumeroDeReservas,string categoria);
+        Pessoa(string nome, string NIF, int NumeroDeEmprestimosTotal, int NumeroDeEmprestimosAtivos, int totalMultaPorPagar, int totalMultaPago,int NumeroDeReservas,string categoria);
         virtual ~Pessoa();
 
         // Método virtual para descrição

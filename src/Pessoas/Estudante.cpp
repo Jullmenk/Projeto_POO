@@ -1,7 +1,7 @@
 #include "../../include/Pessoas/Estudante.h"
 
-Estudante::Estudante(string nome, string id, int NumeroDeEmprestimos,int NumeroDeReservas,string categoria)
-    : Pessoa(nome, id, 5, 0.2, NumeroDeEmprestimos, 0, 0, 0,NumeroDeReservas,categoria) {} // 5 livros máximos, 20% de desconto
+Estudante::Estudante(string nome, string NIF, int NumeroDeEmprestimosTotal, int NumeroDeEmprestimosAtivos, int totalMultaPorPagar, int totalMultaPago,int NumeroDeReservas,string categoria,int livrosMaximos,double descontoMulta)
+    : Pessoa(nome, id, NumeroDeEmprestimos, 0, 0, 0,NumeroDeReservas,categoria) {} // 5 livros máximos, 20% de desconto
 
 Estudante::~Estudante() {}
 

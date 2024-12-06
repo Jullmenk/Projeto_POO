@@ -15,9 +15,6 @@ class Revista : public Geral
         virtual ~Revista();
         void descricao() const override;
         string getCodigo() const override;
-    protected:
-
-
 };
 
 #endif // REVISTA_H

@@ -1,6 +1,6 @@
 #include "../../include/Pessoas/Professor.h"
 
-Professor::Professor(string nome,string id,int NumerodeEmprestimos,int NumeroDeReservas,string categoria):Pessoa(nome, id, 10, 0.5,NumerodeEmprestimos, 0, 0, 0,NumeroDeReservas,categoria) {} // 10 livros máximos, 50% de desconto em multas{}
+Professor::Professor(string nome, string NIF, int NumeroDeEmprestimosTotal, int NumeroDeEmprestimosAtivos, int totalMultaPorPagar, int totalMultaPago,int NumeroDeReservas,string categoria,int livrosMaximos,double descontoMulta):Pessoa(nome, id, 10, 0.5,NumerodeEmprestimos, 0, 0, 0,NumeroDeReservas,categoria) {} // 10 livros máximos, 50% de desconto em multas{}
 
 Professor::~Professor()
 {

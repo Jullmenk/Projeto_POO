@@ -1,6 +1,6 @@
 #include "../../include/Pessoas/LeitorComum.h"
 
-LeitorComum::LeitorComum(string nome, string id, int NumeroDeEmprestimos,int NumeroDeReservas,string categoria):Pessoa(nome,id,3,0.0,NumeroDeEmprestimos, 0, 0, 0,NumeroDeReservas, categoria){} // 3 livros máximos, sem desconto em multas
+LeitorComum::LeitorComum(string nome, string NIF, int NumeroDeEmprestimosTotal, int NumeroDeEmprestimosAtivos, int totalMultaPorPagar, int totalMultaPago,int NumeroDeReservas,string categoria,int livrosMaximos,double descontoMulta):Pessoa(nome,id,3,0.0,NumeroDeEmprestimos, 0, 0, 0,NumeroDeReservas, categoria){} // 3 livros máximos, sem desconto em multas
 
 LeitorComum::~LeitorComum()
 {

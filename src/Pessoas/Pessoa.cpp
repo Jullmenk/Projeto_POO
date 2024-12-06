@@ -1,8 +1,7 @@
 #include "../../include/Pessoas/Pessoa.h"
 
-Pessoa::Pessoa(string nome, string NIF, int livrosMaximos, double descontoMulta, int NumeroDeEmprestimosTotal, int NumeroDeEmprestimosAtivos, int totalMultaPorPagar, int totalMultaPago,int NumeroDeReservas,string categoria)
-    : nome(nome), NIF(NIF), livrosMaximos(livrosMaximos), descontoMulta(descontoMulta), 
-    NumeroDeEmprestimosTotal(NumeroDeEmprestimosTotal), NumeroDeEmprestimosAtivos(NumeroDeEmprestimosAtivos),
+Pessoa::Pessoa(string nome, string NIF, int NumeroDeEmprestimosTotal, int NumeroDeEmprestimosAtivos, int totalMultaPorPagar, int totalMultaPago,int NumeroDeReservas,string categoria)
+    : nome(nome), NIF(NIF),NumeroDeEmprestimosTotal(NumeroDeEmprestimosTotal), NumeroDeEmprestimosAtivos(NumeroDeEmprestimosAtivos),
     totalMultaPorPagar(totalMultaPorPagar), totalMultaPago(totalMultaPago), NumeroDeReservas(NumeroDeReservas),categoria(categoria) {}
 
 Pessoa::~Pessoa() {}

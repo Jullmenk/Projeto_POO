@@ -16,10 +16,6 @@ class LivroFiccao : public Geral
         virtual ~LivroFiccao();
         void descricao() const override;
         string getCodigo() const override;
-
-    protected:
-
-    private:
 };
 
 #endif // LIVROFICCAO_H

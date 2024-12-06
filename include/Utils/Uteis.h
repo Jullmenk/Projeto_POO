@@ -4,9 +4,7 @@
 
 
 class Uteis
-{
-    protected:
-    
+{    
     public:
         Uteis();
         virtual ~Uteis();
@@ -21,9 +19,6 @@ class Uteis
         void RelatorioTipoDeLivro(Biblioteca& bib);
         void ConsultarHistoricoDeReservas(Biblioteca& bib);
         void DevolverLivro(Biblioteca& bib);
-        
-
-    private:
 };
 
 struct retorno {
