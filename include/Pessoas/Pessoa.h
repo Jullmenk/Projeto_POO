@@ -49,15 +49,16 @@ class Pessoa
         void EnviarNotificacoesdeExlusaoDeReserva(string livro);
         void EnviarNotificacoesdeAquisicaoDaReserva(string livro);
 
-        // Método puramente virtual
+        // Método puramente virtual = 0 , só é acedida pelsa subclasses
         virtual int getPrazoDevolucao(string categoriaLivro) const = 0;
         virtual bool PodeReservar() const = 0;
         virtual bool PodeEmprestar() const = 0;
-        virtual int getLivrosMaximos();
-        virtual double getDescontoMulta();
-        virtual double calcularMultaTotal();
-        virtual void incrementarEmprestimosAtivos();
-        virtual void addEmprestimo(Emprestimo& emprestimo);
+        virtual int getLivrosMaximos() = 0;
+        virtual double getDescontoMulta() = 0;
+        virtual double calcularMultaTotal() = 0;
+        virtual void incrementarEmprestimosAtivos() = 0;
+        virtual void addEmprestimo(Emprestimo& emprestimo) = 0;
+    
     };
 
 #endif // PESSOA_H

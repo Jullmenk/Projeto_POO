@@ -23,16 +23,10 @@ string LivroCientifico::getCodigo() const {
 }
 
 bool LivroCientifico::escreverFicheiro(ofstream& file) {
-    if (!file.is_open()) {
-        return false;
-    }
-
-    file << "Livro Científico\n";
-    file << "Título: " << titulo << "\n";
-    file << "Autor: " << autor << "\n";
-    file << "Área: " << area << "\n";
-    file << "ISBN: " << ISBN << "\n";
-    file << "Edição: " << edicao << "\n";
-    file << "---\n"; // Separador entre livros
+    Geral::escreverFicheiro(file);
+    file
+    << area << " ; "
+    << ISBN << " ; "
+    << edicao << " \n";
     return true;
 }

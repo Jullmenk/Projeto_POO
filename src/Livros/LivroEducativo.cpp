@@ -26,3 +26,12 @@ void LivroEducativo::descricao() const {
 string LivroEducativo::getCodigo() const {
     return ISBN;
 }
+
+bool LivroEducativo::escreverFicheiro(ofstream& file) {
+    Geral::escreverFicheiro(file);
+    file
+    << Nivel_Educacional << " ; "
+    << ISBN << " ; "
+    << Materia << " \n";
+    return true;
+}

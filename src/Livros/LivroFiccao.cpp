@@ -20,3 +20,12 @@ void LivroFiccao::descricao() const {
 string LivroFiccao::getCodigo() const {
     return ISBN;
 }
+
+bool LivroFiccao::escreverFicheiro(ofstream& file) {
+    Geral::escreverFicheiro(file);
+    file
+    << Faixa_Etaria << " ; "
+    << ISBN << " ; "
+    << Genero_Literario << " \n";
+    return true;
+}

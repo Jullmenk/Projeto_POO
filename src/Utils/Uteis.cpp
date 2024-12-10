@@ -92,8 +92,8 @@ void Uteis::LivroInfo(int opcao,string categoria,Biblioteca& biblioteca)
         case 1: { // Livro de Ficção
             string genero,isbn;
             int Faixa_Etaria;
-            // cout << "\t Digite o genero: " <<endl;
-            // cin.ignore(); // Limpa o buffer
+            cout << "\t Digite o genero: " <<endl;
+            cin.ignore(); // Limpa o buffer
             getline(cin, genero);
             cout << "\t Digite o ISBN: "<<endl;
             cin.ignore(); 

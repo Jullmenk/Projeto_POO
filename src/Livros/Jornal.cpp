@@ -19,3 +19,11 @@ void Jornal::descricao() const {
 string Jornal::getCodigo() const {
     return ISSN;
 }
+
+bool Jornal::escreverFicheiro(ofstream& file) {
+    Geral::escreverFicheiro(file);
+    file
+    << Seccao << " ; "
+    << ISSN << "\n";
+    return true;
+}

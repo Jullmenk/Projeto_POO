@@ -18,3 +18,11 @@ void Revista::descricao() const {
 string Revista::getCodigo() const {
     return ISSN;
 }
+
+bool Revista::escreverFicheiro(ofstream& file) {
+    Geral::escreverFicheiro(file);
+    file
+    << Tema << " ; "
+    << ISSN << "\n";
+    return true;
+}

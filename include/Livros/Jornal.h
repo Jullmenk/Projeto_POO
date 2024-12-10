@@ -15,7 +15,7 @@ class Jornal : public Geral
         virtual ~Jornal();
         void descricao() const override;
         string getCodigo() const override; 
-
+        bool escreverFicheiro(ofstream& file) override;
 };
 
 #endif // Jornal_H

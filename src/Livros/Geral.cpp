@@ -23,3 +23,14 @@ void Geral::setDisponivel(){
 void Geral::setInDisponivel(){
     disponivel=false;
 }
+
+bool Geral::escreverFicheiro(ofstream& file){
+    if (!file.is_open()) {
+        return false;
+    }
+    file<< categoria << " ; "
+    << titulo << " ; "
+    << autor << " ; "
+    << ano << " ; "
+    << disponivel << " ; ";
+}
