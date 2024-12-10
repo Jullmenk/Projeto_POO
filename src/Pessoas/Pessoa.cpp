@@ -35,10 +35,6 @@ void Pessoa::decrementarEmprestimosAtivos() {
     }
 }
 
-void Pessoa::adicionarReserva() {
-    NumeroDeReservas++;
-}
-
 void Pessoa::removerReserva() {
     if (NumeroDeReservas > 0) {
         NumeroDeReservas--;

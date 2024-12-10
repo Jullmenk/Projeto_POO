@@ -17,6 +17,7 @@ class LivroCientifico : public Geral
         virtual ~LivroCientifico();
         void descricao() const override;
         string getCodigo() const override;
+        bool escreverFicheiro(ofstream& file) override;
 };
 
 #endif // LIVROCIENTIFICO_H

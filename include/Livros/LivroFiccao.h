@@ -16,6 +16,8 @@ class LivroFiccao : public Geral
         virtual ~LivroFiccao();
         void descricao() const override;
         string getCodigo() const override;
+        bool escreverFicheiro(ofstream& file) override;
+
 };
 
 #endif // LIVROFICCAO_H

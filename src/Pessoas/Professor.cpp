@@ -40,13 +40,12 @@ bool Professor::PodeEmprestar() const{
     }
 }
 
-
 int Professor::getLivrosMaximos() { return livrosMaximos; }
 double Professor::getDescontoMulta() { return descontoMulta; }
 double Professor::calcularMultaTotal() {
     return totalMultaPorPagar * (1 - descontoMulta);
 }
-void Professor::incrementarEmprestimosAtivos() {
+void Professor::incrementarEmprestimosAtivos()  {
     if (NumeroDeEmprestimosAtivos < livrosMaximos) {
         NumeroDeEmprestimosAtivos++;
         NumeroDeEmprestimosTotal++;
@@ -55,7 +54,7 @@ void Professor::incrementarEmprestimosAtivos() {
     }
 }
 
-void Professor::adicionarEmprestimo( Emprestimo& emprestimo) {
+void Professor::addEmprestimo( Emprestimo& emprestimo)  {
         EmprestimosUser.push_back(emprestimo);
         incrementarEmprestimosAtivos();
 }

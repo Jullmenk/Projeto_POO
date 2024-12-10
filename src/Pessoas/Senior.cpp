@@ -41,13 +41,12 @@ bool Senior::PodeEmprestar() const{
     }
 }
 
-
 int Senior::getLivrosMaximos() { return livrosMaximos; }
 double Senior::getDescontoMulta() { return descontoMulta; }
 double Senior::calcularMultaTotal() {
     return totalMultaPorPagar * (1 - descontoMulta);
 }
-void Senior::incrementarEmprestimosAtivos() {
+void Senior::incrementarEmprestimosAtivos()  {
     if (NumeroDeEmprestimosAtivos < livrosMaximos) {
         NumeroDeEmprestimosAtivos++;
         NumeroDeEmprestimosTotal++;
@@ -56,7 +55,7 @@ void Senior::incrementarEmprestimosAtivos() {
     }
 }
 
-void Senior::adicionarEmprestimo( Emprestimo& emprestimo) {
+void Senior::addEmprestimo( Emprestimo& emprestimo)  {
         EmprestimosUser.push_back(emprestimo);
         incrementarEmprestimosAtivos();
 }

@@ -241,22 +241,22 @@ void Uteis::UserInfo(int opcao,string categoria,Biblioteca& biblioteca)
 
     switch (opcao) {
         case 1: { // Estudante
-            Pessoa* estudante = new Estudante(nome,NIF,0,0,categoria);
+            Pessoa* estudante = new Estudante(nome,NIF,0,0,0,0,0,categoria,limitesPorCategoria[categoria],descontoPorCategoria[categoria]);
             biblioteca.adicionarLeitor(categoria, estudante);
             break;
         }
         case 2: { // Comum
-            Pessoa* leitorComum = new LeitorComum(nome,NIF,0,0,categoria);
+            Pessoa* leitorComum = new LeitorComum(nome,NIF,0,0,0,0,0,categoria,limitesPorCategoria[categoria],descontoPorCategoria[categoria]);
             biblioteca.adicionarLeitor(categoria, leitorComum);
             break;
         }
         case 3: { // Professor
-            Pessoa* professor = new Professor(nome,NIF,0,0,categoria);
+            Pessoa* professor = new Professor(nome,NIF,0,0,0,0,0,categoria,limitesPorCategoria[categoria],descontoPorCategoria[categoria]);
             biblioteca.adicionarLeitor(categoria, professor);
             break;
         }
         case 4: { // Senior
-            Pessoa* senior = new Senior(nome,NIF,0,0,categoria);
+            Pessoa* senior = new Senior(nome,NIF,0,0,0,0,0,categoria,limitesPorCategoria[categoria],descontoPorCategoria[categoria]);
             biblioteca.adicionarLeitor(categoria, senior);
             break;
         }
@@ -265,15 +265,13 @@ void Uteis::UserInfo(int opcao,string categoria,Biblioteca& biblioteca)
             return;
     }
 
-    cout << "Livro adicionado com sucesso!\n";
+    cout << "Utilizador adicionado com sucesso!\n";
 }
-
 
 void Uteis::CriarUser(Biblioteca& bib){
         retorno Retornado = RetornarType_String_User();
         Uteis::UserInfo(Retornado.type,Retornado.categoria,bib);        
 }
-
 
  void Uteis::EmprestimoFuncaoPrincipal(Biblioteca& bib){
     string id_Pessoa;
@@ -294,7 +292,6 @@ void Uteis::CriarUser(Biblioteca& bib){
     if(!livro)return;
     bib.registrarEmprestimo(pessoa,livro);
  }
-
  
  void Uteis::ConsultarHistoricoUtilizador(Biblioteca& bib){
     string id_Pessoa;
@@ -383,4 +380,29 @@ void Uteis::DevolverLivro(Biblioteca& bib){
         }
     }
 
+}
+
+void alterarLimitesLivro(map<string, int>& limites) {
+    string categoria;
+    int novoLimite;
+
+    cout << "Categorias disponíveis: " << endl;
+    for (const auto& par : limites) {
+        cout << par.first << " (atual: " << par.second << " livros)" << endl;
+    }
+
+    cout << "Digite o nome da categoria que deseja alterar: ";
+    cin >> categoria;
+
+    // Verificar se a categoria existe no map
+    if (limites.find(categoria) != limites.end()) {
+        cout << "Digite o novo limite para a categoria '" << categoria << "': ";
+        cin >> novoLimite;
+
+        // Atualizar o limite
+        limites[categoria] = novoLimite;
+        cout << "O limite da categoria '" << categoria << "' foi atualizado para " << novoLimite << " livros." << endl;
+    } else {
+        cout << "Categoria '" << categoria << "' não encontrada!" << endl;
+    }
 }

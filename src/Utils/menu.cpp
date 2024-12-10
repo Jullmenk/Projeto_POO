@@ -21,6 +21,7 @@ void MENU_PRINCIPAL(Biblioteca &biblioteca,Uteis uteis) {
         cout << "\n\t***** Biblioteca *****" << endl;
         cout << "\t1. Livros" << endl;
         cout << "\t2. Utilizador" << endl;
+        cout << "\t2. Senior" << endl;
         cout << "\t0. Sair" << endl;
         cout << "\n\tEscolha uma opcao: ";
 
@@ -37,7 +38,8 @@ void MENU_PRINCIPAL(Biblioteca &biblioteca,Uteis uteis) {
             case 2:
                 MENU_UTILIZADOR(biblioteca,uteis);
                 break;
-
+            case 3: MENU_SENIOR(biblioteca,uteis);
+                break;
             case 0:
                 cout << "Saindo do programa..." << endl;
                 exit(0);
@@ -149,21 +151,53 @@ void MENU_UTILIZADOR(Biblioteca &biblioteca,Uteis uteis) {
             }
             case 2:{
                 //Funcao para teste, adiciono Livros aleatórios
-                cout << "\n\t***** Criar Utilizador *****" << endl;
-                     for (int i = 1; i <= 10; ++i) {
-                         Pessoa* estudante = new Estudante("Julino" + to_string(i),"2182"+ to_string(i),0,0,"Estudante");
-                         biblioteca.adicionarLeitor("Estudante", estudante);
-                     }
-                     cout<<"Utilizadores Adicionados com sucesso\n";
-                     system("pause");
+                // cout << "\n\t***** Criar Utilizador *****" << endl;
+                //      for (int i = 1; i <= 10; ++i) {
+                //          Pessoa* estudante = new Estudante("Julino" + to_string(i),"2182"+ to_string(i),0,0,"Estudante");
+                //          biblioteca.adicionarLeitor("Estudante", estudante);
+                //      }
+                //      cout<<"Utilizadores Adicionados com sucesso\n";
 
-                    //uteis.CriarUser(biblioteca);
+                uteis.CriarUser(biblioteca);
+                system("pause");
                 break;}
 
             case 3: uteis.ConsultarHistoricoUtilizador(biblioteca);break;
             case 4: uteis.ConsultarHistoricoDeReservas(biblioteca);break;
-            case 5: uteis.DevolverLivro(biblioteca);break;;
+            case 5: uteis.DevolverLivro(biblioteca);break;
             case 7:MENU_PRINCIPAL(biblioteca,uteis);break;
+            case 0:cout << "Saindo do programa..." << endl;exit(0);break;
+            default:cout << "\n\tOpcao invalida!" << endl;break;
+        }
+    } while (num != 0);
+}
+
+void MENU_SENIOR(Biblioteca &biblioteca,Uteis uteis) {
+    int num;
+    do {
+        system("cls");
+
+        cout << "\n\t***** Biblioteca - Senior *****" << endl;
+        cout << "\t1. Editar Informacoes de Leitor" << endl;
+        cout << "\t2. Editar Informacoes de Livro" << endl;
+        cout << "\t3. Voltar" << endl;
+        cout << "\n\tEscolha uma opcao: ";
+
+        cin >> num;
+
+        system("cls");
+
+        switch (num) {
+            case 1:{
+                uteis.ListarPorCategoriaUtilizador(biblioteca,false);
+                system("pause");
+                break;
+            }
+            case 2:{
+                uteis.CriarUser(biblioteca);
+                system("pause");
+                break;}
+            case 3:MENU_PRINCIPAL(biblioteca,uteis);break;
             case 0:cout << "Saindo do programa..." << endl;exit(0);break;
             default:cout << "\n\tOpcao invalida!" << endl;break;
         }

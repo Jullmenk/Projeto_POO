@@ -3,6 +3,8 @@
 #include <iostream>
 #include <string>
 using namespace std;
+#include <fstream>
+
 
 class Geral
 {
@@ -19,8 +21,10 @@ public:
 
     virtual void descricao() const = 0; 
     virtual string getCodigo() const = 0;
+    virtual bool escreverFicheiro(ofstream& file); 
+
     string getCategoria();
-    string getTitulo();
+    string getTitulo();    
 
     bool isDisponivel();
     void setDisponivel();

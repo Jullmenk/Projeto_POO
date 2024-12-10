@@ -15,6 +15,7 @@ class Revista : public Geral
         virtual ~Revista();
         void descricao() const override;
         string getCodigo() const override;
+        bool escreverFicheiro(ofstream& file) override;
 };
 
 #endif // REVISTA_H

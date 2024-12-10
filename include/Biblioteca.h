@@ -3,6 +3,7 @@
 #include <iostream>
 #include <list>
 #include <map>
+#include <fstream>
 #include "Pessoas/Pessoa.h"
 #include "Livros/Geral.h"
 #include "Utils/Emprestimos.h"
@@ -21,7 +22,11 @@ public:
     Biblioteca() = default;
     virtual ~Biblioteca();
     //File
-    bool SaveToFile(const string& nf);
+    bool GravarLivrosPorCategoria();
+    bool GravarEmprestimosPorCategoria();
+    bool GravarReservasPorCategoria();
+    bool GravarPessoasPorCategoria();
+
     bool LoadFile(const string& nf);
 
     //Livro

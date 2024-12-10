@@ -39,12 +39,12 @@ bool Estudante::PodeEmprestar() const{
 
 
 
-int Estudante::getLivrosMaximos() const { return livrosMaximos; }
-double Estudante::getDescontoMulta() const { return descontoMulta; }
-double Estudante::calcularMultaTotal() const {
+int Estudante::getLivrosMaximos() { return livrosMaximos; }
+double Estudante::getDescontoMulta() { return descontoMulta; }
+double Estudante::calcularMultaTotal() {
     return totalMultaPorPagar * (1 - descontoMulta);
 }
-void Estudante::incrementarEmprestimosAtivos()const  {
+void Estudante::incrementarEmprestimosAtivos()  {
     if (NumeroDeEmprestimosAtivos < livrosMaximos) {
         NumeroDeEmprestimosAtivos++;
         NumeroDeEmprestimosTotal++;
@@ -53,7 +53,7 @@ void Estudante::incrementarEmprestimosAtivos()const  {
     }
 }
 
-void Estudante::adicionarEmprestimo( Emprestimo& emprestimo) const  {
+void Estudante::addEmprestimo(Emprestimo& emprestimo){
         EmprestimosUser.push_back(emprestimo);
         incrementarEmprestimosAtivos();
 }

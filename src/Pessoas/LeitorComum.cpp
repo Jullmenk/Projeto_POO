@@ -35,14 +35,12 @@ bool LeitorComum::PodeEmprestar() const{
         return true;
     }
 }
-
-
 int LeitorComum::getLivrosMaximos() { return livrosMaximos; }
 double LeitorComum::getDescontoMulta() { return descontoMulta; }
 double LeitorComum::calcularMultaTotal() {
     return totalMultaPorPagar * (1 - descontoMulta);
 }
-void LeitorComum::incrementarEmprestimosAtivos() {
+void LeitorComum::incrementarEmprestimosAtivos()  {
     if (NumeroDeEmprestimosAtivos < livrosMaximos) {
         NumeroDeEmprestimosAtivos++;
         NumeroDeEmprestimosTotal++;
@@ -51,7 +49,7 @@ void LeitorComum::incrementarEmprestimosAtivos() {
     }
 }
 
-void LeitorComum::adicionarEmprestimo( Emprestimo& emprestimo) {
+void LeitorComum::addEmprestimo( Emprestimo& emprestimo)  {
         EmprestimosUser.push_back(emprestimo);
         incrementarEmprestimosAtivos();
 }

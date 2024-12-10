@@ -36,12 +36,9 @@ class Pessoa
         string getCategoria() const;
         int getNumeroDeEmprestimosTotais();
 
-
         // Métodos utilitários
         void decrementarEmprestimosAtivos();
-        void adicionarReserva();
         void removerReserva();
-        void adicionarEmprestimo(Emprestimo& emprestimo);
         void adicionarReserva(Emprestimo& emprestimo);
         void listarEmprestimos() const;
         void listarReservas() const;
@@ -51,18 +48,16 @@ class Pessoa
         void EnviarNotificacoesdeAtraso();
         void EnviarNotificacoesdeExlusaoDeReserva(string livro);
         void EnviarNotificacoesdeAquisicaoDaReserva(string livro);
-        
-        
 
         // Método puramente virtual
         virtual int getPrazoDevolucao(string categoriaLivro) const = 0;
         virtual bool PodeReservar() const = 0;
         virtual bool PodeEmprestar() const = 0;
-        virtual int getLivrosMaximos() const ;
-        virtual double getDescontoMulta() const ;
-        virtual double calcularMultaTotal()const;
-        virtual void incrementarEmprestimosAtivos() const ;
-        virtual void adicionarEmprestimo (Emprestimo &emprestimo)const ;
+        virtual int getLivrosMaximos();
+        virtual double getDescontoMulta();
+        virtual double calcularMultaTotal();
+        virtual void incrementarEmprestimosAtivos();
+        virtual void addEmprestimo(Emprestimo& emprestimo);
     };
 
 #endif // PESSOA_H

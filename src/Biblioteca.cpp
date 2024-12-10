@@ -198,7 +198,7 @@ void Biblioteca::registrarReserva(Pessoa* leitor, Geral* livro) {
 
     emprestimosPorCategoria[livro->getCategoria()].push_back(novoEmprestimo);
 
-    leitor->adicionarEmprestimo(novoEmprestimo);
+    leitor->addEmprestimo(novoEmprestimo);
     
     livro->setInDisponivel();
     cout << "Emprestimo realizado com sucesso!\n";\
@@ -424,4 +424,28 @@ void Biblioteca::RelatorioEmprestimosTipoDeLivro(string cat){
         } else {
             cout << "Categoria nao encontrada.\n";
     }
+}
+
+
+// Gravar em Ficheiros
+
+bool Biblioteca::GravarLivrosPorCategoria() {
+    ofstream file("livros.txt");
+    if (!file.is_open()) {
+        cerr << "Erro ao abrir o arquivo: livros.txt" << endl;
+        return false;
+    }
+
+    for (auto& par : livrosPorCategoria) {
+        file << "Categoria: " << par.first << "\n"; // Nome da categoria
+        for (const auto& livro : par.second) {
+            if (!livro->escreverFicheiro(file)) {
+                cerr << "Erro ao gravar informações do livro!" << endl;
+            }
+        }
+        file << "===\n"; // Separador entre categorias
+    }
+
+    file.close();
+    return true;
 }
