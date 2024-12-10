@@ -34,14 +34,10 @@ class Pessoa
         string getNome() const;
         string getNIF() const;
         string getCategoria() const;
-        int getLivrosMaximos() const;
-        double getDescontoMulta() const;
         int getNumeroDeEmprestimosTotais();
 
 
         // Métodos utilitários
-        double calcularMultaTotal() const;
-        void incrementarEmprestimosAtivos();
         void decrementarEmprestimosAtivos();
         void adicionarReserva();
         void removerReserva();
@@ -62,6 +58,11 @@ class Pessoa
         virtual int getPrazoDevolucao(string categoriaLivro) const = 0;
         virtual bool PodeReservar() const = 0;
         virtual bool PodeEmprestar() const = 0;
+        virtual int getLivrosMaximos() const ;
+        virtual double getDescontoMulta() const ;
+        virtual double calcularMultaTotal()const;
+        virtual void incrementarEmprestimosAtivos() const ;
+        virtual void adicionarEmprestimo (Emprestimo &emprestimo)const ;
     };
 
 #endif // PESSOA_H

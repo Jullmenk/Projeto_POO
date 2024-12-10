@@ -1,12 +1,14 @@
 #include "../../include/Pessoas/Estudante.h"
 
 Estudante::Estudante(string nome, string NIF, int NumeroDeEmprestimosTotal, int NumeroDeEmprestimosAtivos, int totalMultaPorPagar, int totalMultaPago,int NumeroDeReservas,string categoria,int livrosMaximos,double descontoMulta)
-    : Pessoa(nome, id, NumeroDeEmprestimos, 0, 0, 0,NumeroDeReservas,categoria) {} // 5 livros máximos, 20% de desconto
+    : Pessoa(nome, NIF, NumeroDeEmprestimosTotal, NumeroDeEmprestimosAtivos, totalMultaPorPagar, totalMultaPago, NumeroDeReservas,categoria),livrosMaximos(livrosMaximos),descontoMulta(descontoMulta) {} // 5 livros máximos, 20% de desconto
 
 Estudante::~Estudante() {}
 
 void Estudante::descricao() const {
     Pessoa::descricao();
+    cout << " | Maximo de Livros que Pode requisitar: " << livrosMaximos 
+    << " | Desconto Multa: " << descontoMulta;
 }
 
 int Estudante::getPrazoDevolucao(string categoriaLivro) const {
@@ -33,4 +35,25 @@ bool Estudante::PodeEmprestar() const{
     else{
         return true;
     }
+}
+
+
+
+int Estudante::getLivrosMaximos() const { return livrosMaximos; }
+double Estudante::getDescontoMulta() const { return descontoMulta; }
+double Estudante::calcularMultaTotal() const {
+    return totalMultaPorPagar * (1 - descontoMulta);
+}
+void Estudante::incrementarEmprestimosAtivos()const  {
+    if (NumeroDeEmprestimosAtivos < livrosMaximos) {
+        NumeroDeEmprestimosAtivos++;
+        NumeroDeEmprestimosTotal++;
+    } else {
+        cout << "Limite de empréstimos ativos atingido.\n";
+    }
+}
+
+void Estudante::adicionarEmprestimo( Emprestimo& emprestimo) const  {
+        EmprestimosUser.push_back(emprestimo);
+        incrementarEmprestimosAtivos();
 }

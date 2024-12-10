@@ -17,6 +17,12 @@ class LeitorComum : public Pessoa
         int getPrazoDevolucao(string categoriaLivro) const override;
         bool PodeReservar() const override;
         bool PodeEmprestar() const override;
+        int getLivrosMaximos() const override;
+        double getDescontoMulta() const override;
+        double calcularMultaTotal()const override;
+        void incrementarEmprestimosAtivos() const override;
+        void adicionarEmprestimo (Emprestimo &emprestimo)const override;
+
 };
 
 #endif // LEITORCOMUM_H

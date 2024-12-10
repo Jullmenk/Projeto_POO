@@ -1,6 +1,7 @@
 #include "../../include/Pessoas/LeitorComum.h"
 
-LeitorComum::LeitorComum(string nome, string NIF, int NumeroDeEmprestimosTotal, int NumeroDeEmprestimosAtivos, int totalMultaPorPagar, int totalMultaPago,int NumeroDeReservas,string categoria,int livrosMaximos,double descontoMulta):Pessoa(nome,id,3,0.0,NumeroDeEmprestimos, 0, 0, 0,NumeroDeReservas, categoria){} // 3 livros máximos, sem desconto em multas
+LeitorComum::LeitorComum(string nome, string NIF, int NumeroDeEmprestimosTotal, int NumeroDeEmprestimosAtivos, int totalMultaPorPagar, int totalMultaPago,int NumeroDeReservas,string categoria,int livrosMaximos,double descontoMulta)
+    : Pessoa(nome, NIF, NumeroDeEmprestimosTotal, NumeroDeEmprestimosAtivos, totalMultaPorPagar, totalMultaPago, NumeroDeReservas,categoria),livrosMaximos(livrosMaximos),descontoMulta(descontoMulta) {} // 5 livros máximos, 20% de desconto
 
 LeitorComum::~LeitorComum()
 {
@@ -9,6 +10,8 @@ LeitorComum::~LeitorComum()
 
 void LeitorComum::descricao() const {
     Pessoa::descricao();
+    cout << " | Maximo de Livros que Pode requisitar: " << livrosMaximos 
+    << " | Desconto Multa: " << descontoMulta;
 }
 
 int LeitorComum::getPrazoDevolucao(string categoriaLivro) const {
@@ -31,4 +34,24 @@ bool LeitorComum::PodeEmprestar() const{
     else{
         return true;
     }
+}
+
+
+int LeitorComum::getLivrosMaximos() { return livrosMaximos; }
+double LeitorComum::getDescontoMulta() { return descontoMulta; }
+double LeitorComum::calcularMultaTotal() {
+    return totalMultaPorPagar * (1 - descontoMulta);
+}
+void LeitorComum::incrementarEmprestimosAtivos() {
+    if (NumeroDeEmprestimosAtivos < livrosMaximos) {
+        NumeroDeEmprestimosAtivos++;
+        NumeroDeEmprestimosTotal++;
+    } else {
+        cout << "Limite de empréstimos ativos atingido.\n";
+    }
+}
+
+void LeitorComum::adicionarEmprestimo( Emprestimo& emprestimo) {
+        EmprestimosUser.push_back(emprestimo);
+        incrementarEmprestimosAtivos();
 }

@@ -8,9 +8,7 @@ Pessoa::~Pessoa() {}
 
 void Pessoa::descricao() const {
     cout << "Nome: " << nome 
-         << " | NIF: " << NIF 
-         << " | Maximo de Livros que Pode requisitar: " << livrosMaximos 
-         << " | Desconto Multa: " << descontoMulta;
+         << " | NIF: " << NIF;
         cout << " | Multa a Pagar: " << totalMultaPorPagar;
         cout << " | Multa Paga: " << totalMultaPago;
     cout << " | Emprestimos Totais: " << NumeroDeEmprestimosTotal
@@ -20,27 +18,13 @@ void Pessoa::descricao() const {
 }
 
 string Pessoa::getNome() const { return nome; }
-string Pessoa::getNIF() const { return NIF; }
-string Pessoa::getCategoria() const { return categoria; }
-int Pessoa::getLivrosMaximos() const { return livrosMaximos; }
-double Pessoa::getDescontoMulta() const { return descontoMulta; }
 
-double Pessoa::calcularMultaTotal() const {
-    return totalMultaPorPagar * (1 - descontoMulta);
-}
+string Pessoa::getNIF() const { return NIF; }
+
+string Pessoa::getCategoria() const { return categoria; }
 
 void Pessoa::incrementarMulta(){
     totalMultaPorPagar+=5;
-}
-
-
-void Pessoa::incrementarEmprestimosAtivos() {
-    if (NumeroDeEmprestimosAtivos < livrosMaximos) {
-        NumeroDeEmprestimosAtivos++;
-        NumeroDeEmprestimosTotal++;
-    } else {
-        cout << "Limite de empréstimos ativos atingido.\n";
-    }
 }
 
 void Pessoa::decrementarEmprestimosAtivos() {
@@ -63,12 +47,7 @@ void Pessoa::removerReserva() {
     }
 }
 
-
 // Adicionar empréstimo
-void Pessoa::adicionarEmprestimo( Emprestimo& emprestimo) {
-        EmprestimosUser.push_back(emprestimo);
-        incrementarEmprestimosAtivos();
-}
 
 void Pessoa::adicionarReserva( Emprestimo& emprestimo) {
         Reservas.push_back(emprestimo);
@@ -78,8 +57,6 @@ void Pessoa::adicionarReserva( Emprestimo& emprestimo) {
 int Pessoa::getNumeroDeEmprestimosTotais(){
     return NumeroDeEmprestimosTotal;
 }
-
-// Remover empréstimo
 
 // Listar empréstimos ativos
 void Pessoa::listarEmprestimos() const {
@@ -106,10 +83,10 @@ void Pessoa::listarReservas() const {
     };
 }
 
-
 void Pessoa::EnviarNotificacoesdeAtraso(){
     cout << "";
 }
+
 void Pessoa::EnviarNotificacoesdeExlusaoDeReserva(string livro){
     cout 
     <<"Ola,"<<nome

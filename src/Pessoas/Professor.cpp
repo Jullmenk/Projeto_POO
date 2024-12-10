@@ -1,6 +1,7 @@
 #include "../../include/Pessoas/Professor.h"
 
-Professor::Professor(string nome, string NIF, int NumeroDeEmprestimosTotal, int NumeroDeEmprestimosAtivos, int totalMultaPorPagar, int totalMultaPago,int NumeroDeReservas,string categoria,int livrosMaximos,double descontoMulta):Pessoa(nome, id, 10, 0.5,NumerodeEmprestimos, 0, 0, 0,NumeroDeReservas,categoria) {} // 10 livros máximos, 50% de desconto em multas{}
+Professor::Professor(string nome, string NIF, int NumeroDeEmprestimosTotal, int NumeroDeEmprestimosAtivos, int totalMultaPorPagar, int totalMultaPago,int NumeroDeReservas,string categoria,int livrosMaximos,double descontoMulta)
+    : Pessoa(nome, NIF, NumeroDeEmprestimosTotal, NumeroDeEmprestimosAtivos, totalMultaPorPagar, totalMultaPago, NumeroDeReservas,categoria),livrosMaximos(livrosMaximos),descontoMulta(descontoMulta) {} // 5 livros máximos, 20% de desconto
 
 Professor::~Professor()
 {
@@ -9,6 +10,8 @@ Professor::~Professor()
 
 void Professor::descricao() const{
     Pessoa::descricao();
+    cout << " | Maximo de Livros que Pode requisitar: " << livrosMaximos 
+    << " | Desconto Multa: " << descontoMulta;
 }
 
 int Professor::getPrazoDevolucao(string categoriaLivro) const {
@@ -35,4 +38,24 @@ bool Professor::PodeEmprestar() const{
     else{
         return true;
     }
+}
+
+
+int Professor::getLivrosMaximos() { return livrosMaximos; }
+double Professor::getDescontoMulta() { return descontoMulta; }
+double Professor::calcularMultaTotal() {
+    return totalMultaPorPagar * (1 - descontoMulta);
+}
+void Professor::incrementarEmprestimosAtivos() {
+    if (NumeroDeEmprestimosAtivos < livrosMaximos) {
+        NumeroDeEmprestimosAtivos++;
+        NumeroDeEmprestimosTotal++;
+    } else {
+        cout << "Limite de empréstimos ativos atingido.\n";
+    }
+}
+
+void Professor::adicionarEmprestimo( Emprestimo& emprestimo) {
+        EmprestimosUser.push_back(emprestimo);
+        incrementarEmprestimosAtivos();
 }
