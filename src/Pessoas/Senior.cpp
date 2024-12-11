@@ -59,3 +59,11 @@ void Senior::addEmprestimo( Emprestimo& emprestimo)  {
         EmprestimosUser.push_back(emprestimo);
         incrementarEmprestimosAtivos();
 }
+
+bool Senior::escreverFicheiro(ofstream& file) {
+    Pessoa::escreverFicheiro(file);
+    file
+    << livrosMaximos << " ; "
+    << descontoMulta << " ; ";
+    return true;
+}

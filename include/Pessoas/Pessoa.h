@@ -5,6 +5,8 @@
 #include <vector>
 using namespace std;
 #include "../Utils/Emprestimos.h"
+#include <fstream>
+
 
 
 class Pessoa
@@ -29,6 +31,8 @@ class Pessoa
 
         // Método virtual para descrição
         virtual void descricao() const;
+        virtual bool escreverFicheiro(ofstream& file); 
+
 
         // Métodos de acesso (getters)
         string getNome() const;

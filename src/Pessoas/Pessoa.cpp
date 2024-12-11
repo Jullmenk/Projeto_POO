@@ -97,3 +97,17 @@ void Pessoa::EnviarNotificacoesdeAquisicaoDaReserva(string livro){
     <<"Ola,"<<nome
     <<"O Livro " <<livro<<" que havia reservado foi enviado para si.";
 }
+
+bool Pessoa::escreverFicheiro(ofstream& file){
+    if (!file.is_open()) {
+        return false;
+    }
+    file<< categoria << " ; "
+    << nome << " ; "
+    << NIF << " ; "
+    << totalMultaPorPagar << " ; "
+    << totalMultaPago << " ; "
+    << NumeroDeEmprestimosTotal <<" ; "
+    << NumeroDeEmprestimosAtivos <<" ; "
+    << NumeroDeReservas <<" ; ";
+} 

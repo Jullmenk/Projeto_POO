@@ -200,8 +200,9 @@ void MENU_SENIOR(Biblioteca &biblioteca,Uteis uteis) {
                 break;}
             case 3:
                 {bool conf = biblioteca.GravarLivrosPorCategoria();
-                if(conf){
-                    cout<< "Livro Gravados com sucesso";
+                bool user = biblioteca.GravarPessoasPorCategoria();
+                if(conf && user){
+                    cout<< "Livro e Utilizadores Gravados com sucesso";
                     system("pause");
                 }
                 break;}

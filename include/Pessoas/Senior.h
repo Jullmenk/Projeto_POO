@@ -23,6 +23,7 @@ class Senior : public Pessoa
         double calcularMultaTotal() override;
         void incrementarEmprestimosAtivos() override;
         void addEmprestimo (Emprestimo &emprestimo) override;
+        bool escreverFicheiro(ofstream& file) override;
 };
 
 #endif // SENIOR_H_H

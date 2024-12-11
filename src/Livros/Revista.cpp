@@ -12,7 +12,7 @@ Revista::~Revista()
 
 void Revista::descricao() const {
     Geral::descricao();
-    cout << " | Issn: " << issn
+    cout << " | ISSN: " << issn
          << " | Tema: " << Tema << endl;
 }
 string Revista::getCodigo() const {

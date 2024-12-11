@@ -8,10 +8,10 @@ Geral::~Geral(){
 
 void Geral::descricao() const {
     cout
-        << "Titulo: " << titulo
+        << "Título: " << titulo
         << " | Autor: " << autor
         << " | Ano: " << ano
-        << " | Disponibilidade: " << (disponivel ? "Disponivel" : "Indisponivel");
+        << " | Disponibilidade: " << (disponivel ? "Disponível" : "Indisponível");
 }
 
 string Geral::getCategoria() { return categoria; }

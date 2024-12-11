@@ -22,6 +22,7 @@ class Professor : public Pessoa
         double calcularMultaTotal() override;
         void incrementarEmprestimosAtivos() override;
         void addEmprestimo (Emprestimo &emprestimo) override;
+        bool escreverFicheiro(ofstream& file) override;
 };
 
 #endif // PROFESSOR_H

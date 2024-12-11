@@ -58,3 +58,11 @@ void Professor::addEmprestimo( Emprestimo& emprestimo)  {
         EmprestimosUser.push_back(emprestimo);
         incrementarEmprestimosAtivos();
 }
+
+bool Professor::escreverFicheiro(ofstream& file) {
+    Pessoa::escreverFicheiro(file);
+    file
+    << livrosMaximos << " ; "
+    << descontoMulta << " ; ";
+    return true;
+}

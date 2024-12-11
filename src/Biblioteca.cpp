@@ -53,7 +53,23 @@ Geral* Biblioteca::ProcurarLivro(string id){
 
 
 void Biblioteca::adicionarLivro(const string& categoria, Geral* livro) {
+    for (auto& categori : livrosPorCategoria) {
+        if (categori.first == categoria) {
+            for (auto& li : categori.second) {
+                if (li->getCodigo() == livro->getCodigo()) {
+                    cout << "Esse livro/jornal já existe!" << endl;
+                    return; 
+                }
+            }
+            livrosPorCategoria[categoria].push_back(livro);
+            cout << "Livro/jornal adicionado com sucesso!" << endl;
+            return;
+        }
+    }
+
+    // Se a categoria não existir, cria uma nova e adiciona o livro/jornal
     livrosPorCategoria[categoria].push_back(livro);
+    cout << "Livro/jornal adicionado com sucesso na nova categoria!" << endl;
 }
 
 void Biblioteca::removerLivro(const string& categoria, string codigo) {
@@ -289,8 +305,24 @@ void Biblioteca::registrarReserva(Pessoa* leitor, Geral* livro) {
 
 
 void Biblioteca::adicionarLeitor(string categoria, Pessoa* leitor) {
+
+       for (auto& categori : leitores) {
+        if (categori.first == categoria) {
+            for (auto& ileitor : categori.second) {
+                if (ileitor->getNIF() == leitor->getNIF()) {
+                    cout << "Já existe um leitor com esse NIF!" << endl;
+                    return; 
+                }
+            }
+            leitores[categoria].push_back(leitor);
+            cout << "Leitor adicionado com sucesso a biblioteca!" << endl;
+            return;
+        }
+    }
+
+    // Se a categoria não existir, cria uma nova e adiciona o livro/jornal
     leitores[categoria].push_back(leitor);
-    cout << "Leitor " << leitor->getNome() << " adicionado a biblioteca.\n";
+    cout << "Utilizador adicionado com sucesso na nova categoria!" << endl;
 }
 
 bool Biblioteca::listarLeitores(bool forSearch,string categoria){
@@ -448,99 +480,22 @@ bool Biblioteca::GravarLivrosPorCategoria() {
     return true;
 }
 
-void trim(string& str) {
-    str.erase(0, str.find_first_not_of(' ')); // Remover espaços do início
-    str.erase(str.find_last_not_of(' ') + 1); // Remover espaços do final
-}
-
-
-bool Biblioteca::LerLivrosPorCategoria() {
-    ifstream file("livros.txt");
+bool Biblioteca::GravarPessoasPorCategoria() {
+    ofstream file("BD/Pessoas.txt");
     if (!file.is_open()) {
-        cerr << "Erro ao abrir o arquivo: livros.txt" << endl;
+        cerr << "Erro ao abrir o arquivo: Pessoas.txt" << endl;
         return false;
     }
 
-    string linha;
-    while (getline(file, linha)) {
-        stringstream ss(linha);
-        string categoria, titulo, autor, isbn, genero, tema, area, materia, seccao;
-        int ano, faixaEtaria, nivelEducacional, edicao;
-        bool disponivel;
-
-        // Identificar a categoria
-        getline(ss, categoria, ';');
-        trim(categoria);  // Remove espaços desnecessários
-
-        // Ler campos comuns
-        getline(ss, titulo, ';');
-        trim(titulo);
-
-        getline(ss, autor, ';');
-        trim(autor);
-
-        ss >> ano;
-        ss.ignore(); // Ignorar o delimitador ';'
-
-        ss >> disponivel;
-        ss.ignore();
-
-        // Criar objetos baseados na categoria
-        Geral* livro = nullptr;
-
-        if (categoria == "Ficcao") {
-            ss >> faixaEtaria;
-            ss.ignore();
-            getline(ss, isbn, ';');
-            trim(isbn);
-            getline(ss, genero, ';');
-            trim(genero);
-
-            livro = new LivroFiccao(categoria, titulo, autor, ano, disponivel, isbn, genero, faixaEtaria);
-        }
-        else if (categoria == "Educativo") {
-            getline(ss, isbn, ';');
-            trim(isbn);
-            ss >> nivelEducacional;
-            ss.ignore();
-            getline(ss, materia, ';');
-            trim(materia);
-
-            livro = new LivroEducativo(categoria, titulo, autor, ano, disponivel, isbn, nivelEducacional, materia);
-        }
-        else if (categoria == "Cientifico") {
-            getline(ss, area, ';');
-            trim(area);
-            getline(ss, isbn, ';');
-            trim(isbn);
-            ss >> edicao;
-            ss.ignore();
-
-            livro = new LivroCientifico(categoria, titulo, autor, ano, disponivel, area, isbn, edicao);
-        }
-        else if (categoria == "Revista") {
-            getline(ss, issn, ';');
-            trim(issn);
-            getline(ss, tema, ';');
-            trim(tema);
-
-            livro = new Revista(categoria, titulo, autor, ano, disponivel, issn, tema);
-        }
-        else if (categoria == "Jornal") {
-            getline(ss, issn, ';');
-            trim(issn);
-            getline(ss, seccao, ';');
-            trim(seccao);
-
-            livro = new Jornal(categoria, titulo, autor, ano, disponivel, issn, seccao);
-        }
-
-        // Adicionar ao mapa se o livro foi criado
-        if (livro != nullptr) {
-            livrosPorCategoria[categoria].push_back(livro);
+    for (auto& par : leitores) {
+        for (const auto& leitor : par.second) {
+            if (!leitor->escreverFicheiro(file)) {
+                cerr << "Erro ao gravar informações do livro!" << endl;
+            }
         }
     }
 
     file.close();
     return true;
 }
+

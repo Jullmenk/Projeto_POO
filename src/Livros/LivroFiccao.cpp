@@ -13,9 +13,9 @@ LivroFiccao::~LivroFiccao()
 void LivroFiccao::descricao() const {
     Geral::descricao();
     cout 
-         << " | Genero Literario: " << Genero_Literario
+         << " | Género Literário: " << Genero_Literario
          << " | Faixa Etaria: " << Faixa_Etaria 
-         << " | Isbn: " << isbn << endl;
+         << " | ISBN: " << isbn << endl;
 }
 
 string LivroFiccao::getCodigo() const {

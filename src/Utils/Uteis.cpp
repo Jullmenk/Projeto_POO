@@ -90,6 +90,7 @@ void Uteis::LivroInfo(int opcao,string categoria,Biblioteca& biblioteca)
     cin >> ano;
 
     cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    Geral* livro= nullptr;
 
     switch (opcao) {
         case 1: { // Livro de Ficção
@@ -105,13 +106,12 @@ void Uteis::LivroInfo(int opcao,string categoria,Biblioteca& biblioteca)
             cout << "\t Digite a Faixa Etaria: ";
             cin >> Faixa_Etaria;
             
-            Geral* livroFiccao = new LivroFiccao(categoria,titulo, autor, ano, disponivel,isbn,genero,Faixa_Etaria);
-            biblioteca.adicionarLivro(categoria, livroFiccao);
+            livro = new LivroFiccao(categoria,titulo, autor, ano, disponivel,isbn,genero,Faixa_Etaria);
+            biblioteca.adicionarLivro(categoria, livro);
             break;
         }
         case 2: { // Livro Científico
-            string area,isbn;
-            int edicao;
+            string area,isbn,edicao;
 
             cout << "\t Digite a area cientifica: ";
             getline(cin, area);
@@ -120,10 +120,10 @@ void Uteis::LivroInfo(int opcao,string categoria,Biblioteca& biblioteca)
             getline(cin, isbn);
 
             cout << "\t Digite a edicao: ";
-            cin >> edicao;
+            getline(cin, edicao);
 
-            Geral* livroCientifico = new LivroCientifico(categoria,titulo, autor, ano, disponivel, isbn,area,edicao);
-            biblioteca.adicionarLivro(categoria, livroCientifico);
+            livro = new LivroCientifico(categoria,titulo, autor, ano, disponivel,isbn,area,edicao);
+            biblioteca.adicionarLivro(categoria, livro);
             break;
         }
         case 3: { // Livro Educativo
@@ -138,8 +138,8 @@ void Uteis::LivroInfo(int opcao,string categoria,Biblioteca& biblioteca)
             cout << "\t Digite o nivel de escolaridade (1-Fundamental, 2-Medio, 3-Superior): ";
             cin >> nivelEscolaridade;
 
-            Geral* livroEducativo = new LivroEducativo(categoria,titulo, autor, ano, disponivel,isbn, nivelEscolaridade,materia);
-            biblioteca.adicionarLivro(categoria, livroEducativo);
+            livro = new LivroEducativo(categoria,titulo, autor, ano, disponivel,isbn, nivelEscolaridade,materia);
+            biblioteca.adicionarLivro(categoria, livro);
             break;
         }
         case 4: { // Revista
@@ -150,8 +150,8 @@ void Uteis::LivroInfo(int opcao,string categoria,Biblioteca& biblioteca)
             cout << "\t Digite o ISSN: ";
             getline(cin, issn);
 
-            Geral* revista = new Revista(categoria,titulo, autor, ano, disponivel,issn,tema);
-            biblioteca.adicionarLivro(categoria, revista);
+            livro = new Revista(categoria,titulo, autor, ano, disponivel,issn,tema);
+            biblioteca.adicionarLivro(categoria, livro);
             break;
         }
         case 5: { // Jornal
@@ -162,8 +162,8 @@ void Uteis::LivroInfo(int opcao,string categoria,Biblioteca& biblioteca)
             cout << "\t Digite o ISSN: ";
             getline(cin, issn);
 
-            Geral* jornal = new Jornal(categoria,titulo, autor, ano, disponivel,issn,seccao);
-            biblioteca.adicionarLivro(categoria, jornal);
+            livro = new Jornal(categoria,titulo, autor, ano, disponivel,issn,seccao);
+            biblioteca.adicionarLivro(categoria, livro);
             break;
         }
         default:
@@ -238,11 +238,11 @@ void Uteis::UserInfo(int opcao,string categoria,Biblioteca& biblioteca)
     string nome;
     string NIF;
 
-    cout << "\tDigite o Nome do Utilizador: " << endl;
+    cout << "\tDigite o Nome do Utilizador: " ;
     cin.ignore(); 
     getline(cin, nome);
 
-    cout << "\tDigite o NIF: " << endl;
+    cout << "\tDigite o NIF: ";
     getline(cin, NIF); 
 
     switch (opcao) {
@@ -271,7 +271,6 @@ void Uteis::UserInfo(int opcao,string categoria,Biblioteca& biblioteca)
             return;
     }
 
-    cout << "Utilizador adicionado com sucesso!\n";
 }
 
 void Uteis::CriarUser(Biblioteca& bib){
@@ -388,7 +387,7 @@ void Uteis::DevolverLivro(Biblioteca& bib){
 
 }
 
-void alterarLimitesLivro(map<string, int>& limites) {
+void Uteis::alterarLimitesLivro(map<string, int>& limites) {
     string categoria;
     int novoLimite;
 
@@ -409,6 +408,108 @@ void alterarLimitesLivro(map<string, int>& limites) {
         limites[categoria] = novoLimite;
         cout << "O limite da categoria '" << categoria << "' foi atualizado para " << novoLimite << " livros." << endl;
     } else {
-        cout << "Categoria '" << categoria << "' não encontrada!" << endl;
+        cout << "Categoria " << categoria << " Nao encontrada!" << endl;
     }
+}
+
+
+
+void ajustarCaracteres(string& str) {
+    str.erase(0, str.find_first_not_of(' ')); // Remover espaços do início
+    str.erase(str.find_last_not_of(' ') + 1); // Remover espaços do final
+}
+
+bool Uteis::LerLivrosPorCategoria(Biblioteca& biblioteca) {
+    ifstream file("livros.txt");
+    if (!file.is_open()) {
+        cerr << "Erro ao abrir o arquivo: livros.txt" << endl;
+        return false;
+    }
+
+    string linha;
+    while (getline(file, linha)) {
+        stringstream ss(linha);
+        string categoria, titulo, autor, isbn, issn, genero, tema, area, materia, seccao, disponivelStr,edicao;
+        int ano = 0, faixaEtaria = 0, nivelEducacional = 0;
+        bool disponivel = false;
+
+        getline(ss, categoria, ';');
+        ajustarCaracteres(categoria);
+
+        getline(ss, titulo, ';');
+        ajustarCaracteres(titulo);
+
+        getline(ss, autor, ';');
+        ajustarCaracteres(autor);
+
+        string anoStr;
+        getline(ss, anoStr, ';'); 
+        ano = stoi(anoStr);       
+
+        getline(ss, disponivelStr, ';');
+        ajustarCaracteres(disponivelStr);
+        disponivel = (disponivelStr == "1"); 
+
+        Geral* livro = nullptr;
+
+        if (categoria == "Ficcao") {
+            string faixaEtariaStr;
+            getline(ss, faixaEtariaStr, ';');
+            faixaEtaria = stoi(faixaEtariaStr);
+
+            getline(ss, isbn, ';');
+            ajustarCaracteres(isbn);
+
+            getline(ss, genero, ';');
+            ajustarCaracteres(genero);
+
+            livro = new LivroFiccao(categoria, titulo, autor, ano, disponivel, isbn, genero, faixaEtaria);
+        } else if (categoria == "Educativo") {
+            string nivelEducacionalStr;
+            getline(ss, nivelEducacionalStr, ';');
+            nivelEducacional = stoi(nivelEducacionalStr);
+
+            getline(ss, isbn, ';');
+            ajustarCaracteres(isbn);
+
+            getline(ss, materia, ';');
+            ajustarCaracteres(materia);
+
+            livro = new LivroEducativo(categoria, titulo, autor, ano, disponivel, isbn, nivelEducacional, materia);
+        } else if (categoria == "Cientifico") {
+            getline(ss, area, ';');
+            ajustarCaracteres(area);
+
+            getline(ss, isbn, ';');
+            ajustarCaracteres(isbn);
+
+            string edicaoStr;
+            getline(ss, edicaoStr, ';');
+
+            livro = new LivroCientifico(categoria, titulo, autor, ano, disponivel, isbn,area, edicaoStr);
+        } else if (categoria == "Revista") {
+            getline(ss, tema, ';');
+            ajustarCaracteres(tema);
+
+            getline(ss, issn, ';');
+            ajustarCaracteres(issn);
+
+            livro = new Revista(categoria, titulo, autor, ano, disponivel, issn, tema);
+        } else if (categoria == "Jornal") {
+            getline(ss, seccao, ';');
+            ajustarCaracteres(seccao);
+
+            getline(ss, issn, ';');
+            ajustarCaracteres(issn);
+
+            livro = new Jornal(categoria, titulo, autor, ano, disponivel, issn, seccao);
+        }
+
+        if (livro != nullptr) {
+            biblioteca.adicionarLivro(categoria, livro);
+        }
+    }
+
+    file.close();
+    return true;
 }

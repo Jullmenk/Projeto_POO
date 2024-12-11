@@ -12,8 +12,8 @@ Jornal::~Jornal()
 
 void Jornal::descricao() const {
     Geral::descricao();
-    cout << " | Issn: " << issn
-         << " | Seccao: " << Seccao << endl;
+    cout << " | ISSN: " << issn
+         << " | Secção: " << Seccao << endl;
 }
 
 string Jornal::getCodigo() const {
