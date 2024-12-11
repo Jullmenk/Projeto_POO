@@ -16,7 +16,7 @@ class Geral
     string categoria;
 
 public:
-    Geral(string titulo, string autor, int ano, bool disponivel);
+    Geral(string categoria,string titulo, string autor, int ano, bool disponivel);
     virtual ~Geral();
 
     virtual void descricao() const = 0; 

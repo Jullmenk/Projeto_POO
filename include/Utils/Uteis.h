@@ -2,6 +2,7 @@
 #define UTEIS_H
 #include "../Biblioteca.h"
 #include <map>
+#include <limits>
 
 class Uteis
 {    

@@ -7,11 +7,11 @@
 class Revista : public Geral
 {
     private:
-    string ISSN; //Identificador único para revistas.
+    string issn; //Identificador único para revistas.
     string Tema; //Moda, tecnologia, esportes, etc.
 
     public:
-        Revista(string titulo, string autor, int ano, bool disponivel,string ISSN, string Tema);
+        Revista(string categoria,string titulo, string autor, int ano, bool disponivel,string issn, string Tema);
         virtual ~Revista();
         void descricao() const override;
         string getCodigo() const override;

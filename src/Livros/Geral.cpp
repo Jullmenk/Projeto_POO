@@ -1,16 +1,17 @@
 #include "../../include/Livros/Geral.h"
 
-Geral::Geral(string titulo,  string autor, int ano, bool disponivel): titulo(titulo), autor(autor), ano(ano), disponivel(disponivel) {}
+Geral::Geral(string categoria,string titulo,  string autor, int ano, bool disponivel):categoria(categoria), titulo(titulo), autor(autor), ano(ano), disponivel(disponivel) {}
 
 Geral::~Geral(){
 
 };
 
 void Geral::descricao() const {
-    cout << "Titulo: " << titulo
-         << " | Autor: " << autor
-         << " | Ano: " << ano
-         << " | Disponibilidade: " << (disponivel ? "Disponivel" : "Indisponivel");
+    cout
+        << "Titulo: " << titulo
+        << " | Autor: " << autor
+        << " | Ano: " << ano
+        << " | Disponibilidade: " << (disponivel ? "Disponivel" : "Indisponivel");
 }
 
 string Geral::getCategoria() { return categoria; }
@@ -33,4 +34,4 @@ bool Geral::escreverFicheiro(ofstream& file){
     << autor << " ; "
     << ano << " ; "
     << disponivel << " ; ";
-}
+} 

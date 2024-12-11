@@ -1,7 +1,7 @@
 #include "../../include/Livros/LivroCientifico.h"
 
 
-LivroCientifico::LivroCientifico(string titulo, string autor, int ano, bool disponivel,string ISBN,const string& area,int edicao):Geral(titulo,autor,ano, disponivel),ISBN(ISBN),area(area),edicao(edicao)
+LivroCientifico::LivroCientifico(string categoria,string titulo, string autor, int ano, bool disponivel,string isbn,const string& area,int edicao):Geral(categoria,titulo,autor,ano, disponivel),isbn(isbn),area(area),edicao(edicao)
 {
     //ctor
 }
@@ -14,19 +14,19 @@ LivroCientifico::~LivroCientifico()
 void LivroCientifico::descricao() const {
     Geral::descricao();
     cout << " | Area: " << area
-         << " | Codigo ISBN: " << ISBN
+         << " | Isbn: " << isbn
          << " | Edicao: " << edicao << endl;
 }
 
 string LivroCientifico::getCodigo() const {
-    return ISBN;
+    return isbn;
 }
 
 bool LivroCientifico::escreverFicheiro(ofstream& file) {
     Geral::escreverFicheiro(file);
     file
     << area << " ; "
-    << ISBN << " ; "
+    << isbn << " ; "
     << edicao << " \n";
     return true;
 }

@@ -1,6 +1,6 @@
 #include "../../include/Livros/Jornal.h"
 
-Jornal::Jornal(string titulo, string autor, int ano, bool disponivel,string ISSN, string Seccao):Geral(titulo,autor,ano,disponivel),ISSN(ISSN),Seccao(Seccao)
+Jornal::Jornal(string categoria,string titulo, string autor, int ano, bool disponivel,string issn, string Seccao):Geral(categoria,titulo,autor,ano,disponivel),issn(issn),Seccao(Seccao)
 {
     //ctor
 }
@@ -12,18 +12,18 @@ Jornal::~Jornal()
 
 void Jornal::descricao() const {
     Geral::descricao();
-    cout << " | ISSN: " << ISSN
+    cout << " | Issn: " << issn
          << " | Seccao: " << Seccao << endl;
 }
 
 string Jornal::getCodigo() const {
-    return ISSN;
+    return issn;
 }
 
 bool Jornal::escreverFicheiro(ofstream& file) {
     Geral::escreverFicheiro(file);
     file
     << Seccao << " ; "
-    << ISSN << "\n";
+    << issn << "\n";
     return true;
 }

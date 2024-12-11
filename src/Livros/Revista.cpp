@@ -1,6 +1,6 @@
 #include "../../include/Livros/Revista.h"
 
-Revista::Revista(string titulo, string autor, int ano, bool disponivel,string ISSN, string Tema):Geral(titulo,autor,ano,disponivel),ISSN(ISSN),Tema(Tema)
+Revista::Revista(string categoria,string titulo, string autor, int ano, bool disponivel,string issn, string Tema):Geral(categoria,titulo,autor,ano,disponivel),issn(issn),Tema(Tema)
 {
     //ctor
 }
@@ -12,17 +12,17 @@ Revista::~Revista()
 
 void Revista::descricao() const {
     Geral::descricao();
-    cout << " | ISSN: " << ISSN
+    cout << " | Issn: " << issn
          << " | Tema: " << Tema << endl;
 }
 string Revista::getCodigo() const {
-    return ISSN;
+    return issn;
 }
 
 bool Revista::escreverFicheiro(ofstream& file) {
     Geral::escreverFicheiro(file);
     file
     << Tema << " ; "
-    << ISSN << "\n";
+    << issn << "\n";
     return true;
 }

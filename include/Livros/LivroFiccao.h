@@ -7,12 +7,12 @@
 class LivroFiccao : public Geral
 {
     private:
-    string ISBN;
+    string isbn;
     string Genero_Literario; // Ficção científica, fantasia, romance, mistério
     int Faixa_Etaria; // Idade Permitida para a leitura
 
     public:
-        LivroFiccao(string titulo, string autor, int ano, bool disponivel,string ISBN,string Genero_Literario, int Faixa_Etaria);
+        LivroFiccao(string categoria,string titulo, string autor, int ano, bool disponivel,string isbn,string Genero_Literario, int Faixa_Etaria);
         virtual ~LivroFiccao();
         void descricao() const override;
         string getCodigo() const override;

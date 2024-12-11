@@ -27,7 +27,7 @@ public:
     bool GravarReservasPorCategoria();
     bool GravarPessoasPorCategoria();
 
-    bool LoadFile(const string& nf);
+    bool LerLivrosPorCategoria();
 
     //Livro
     map<string, list<Geral*>>& getLivrosPorCategoria();

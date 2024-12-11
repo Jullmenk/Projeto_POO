@@ -1,7 +1,7 @@
 #include "../../include/Livros/LivroEducativo.h"
 
 
-LivroEducativo::LivroEducativo(string titulo, string autor, int ano, bool disponivel,string ISBN,int Nivel_Educacional,string Materia):Geral(titulo,autor,ano, disponivel),ISBN(ISBN),Nivel_Educacional(Nivel_Educacional)
+LivroEducativo::LivroEducativo(string categoria,string titulo, string autor, int ano, bool disponivel,string isbn,int Nivel_Educacional,string Materia):Geral(categoria,titulo,autor,ano, disponivel),isbn(isbn),Nivel_Educacional(Nivel_Educacional)
 {
     //ctor
 }
@@ -13,7 +13,7 @@ LivroEducativo::~LivroEducativo()
 
 void LivroEducativo::descricao() const {
     Geral::descricao();
-    cout << " | Codigo ISBN: " << ISBN
+    cout << " | Isbn: " << isbn
          << " | Nivel Educacional: ";
     switch (Nivel_Educacional) {
         case 1: cout << "Fundamental"; break;
@@ -24,14 +24,14 @@ void LivroEducativo::descricao() const {
 }
 
 string LivroEducativo::getCodigo() const {
-    return ISBN;
+    return isbn;
 }
 
 bool LivroEducativo::escreverFicheiro(ofstream& file) {
     Geral::escreverFicheiro(file);
     file
     << Nivel_Educacional << " ; "
-    << ISBN << " ; "
+    << isbn << " ; "
     << Materia << " \n";
     return true;
 }

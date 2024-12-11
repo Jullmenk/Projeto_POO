@@ -9,11 +9,11 @@ class LivroCientifico : public Geral
 {
     private:
     string area;  //Física, biologia, química, etc.
-    string ISBN;
+    string isbn;
     int edicao; // Número da edição do livro.
 
     public:
-        LivroCientifico(string titulo, string autor, int ano, bool disponivel,string ISBN,const string& area, int edicao);
+        LivroCientifico(string categoria,string titulo, string autor, int ano, bool disponivel,string isbn,const string& area, int edicao);
         virtual ~LivroCientifico();
         void descricao() const override;
         string getCodigo() const override;

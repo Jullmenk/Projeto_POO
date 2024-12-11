@@ -79,84 +79,90 @@ void Uteis::LivroInfo(int opcao,string categoria,Biblioteca& biblioteca)
     int ano;
     bool disponivel=true;
 
-    cout << "\t Digite o titulo: " << endl;
+    cout << "\t Digite o titulo: " ;;
     cin.ignore(); 
     getline(cin, titulo);
 
-    cout << "\t Digite o autor: " << endl;
+    cout << "\t Digite o autor: " ;;
     getline(cin, autor); 
+
     cout << "\t Digite o ano de publicacao: ";
     cin >> ano;
+
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
 
     switch (opcao) {
         case 1: { // Livro de Ficção
             string genero,isbn;
             int Faixa_Etaria;
-            cout << "\t Digite o genero: " <<endl;
-            cin.ignore(); // Limpa o buffer
+            
+            cout << "\t Digite o genero: " ;
             getline(cin, genero);
-            cout << "\t Digite o ISBN: "<<endl;
-            cin.ignore(); 
+
+            cout << "\t Digite o ISBN: ";
             getline(cin, isbn);
-            cout<<isbn <<"\n";
+
             cout << "\t Digite a Faixa Etaria: ";
             cin >> Faixa_Etaria;
-
-            Geral* livroFiccao = new LivroFiccao(titulo, autor, ano, disponivel,isbn,genero,Faixa_Etaria);
+            
+            Geral* livroFiccao = new LivroFiccao(categoria,titulo, autor, ano, disponivel,isbn,genero,Faixa_Etaria);
             biblioteca.adicionarLivro(categoria, livroFiccao);
             break;
         }
         case 2: { // Livro Científico
             string area,isbn;
             int edicao;
-            cout << "\t Digite a area cientifica: "<<endl;
-            cin.ignore();
+
+            cout << "\t Digite a area cientifica: ";
             getline(cin, area);
-            cout << "\t Digite o ISBN: "<<endl;
+            
+            cout << "\t Digite o ISBN: ";
             getline(cin, isbn);
+
             cout << "\t Digite a edicao: ";
             cin >> edicao;
 
-            Geral* livroCientifico = new LivroCientifico(titulo, autor, ano, disponivel, isbn,area,edicao);
+            Geral* livroCientifico = new LivroCientifico(categoria,titulo, autor, ano, disponivel, isbn,area,edicao);
             biblioteca.adicionarLivro(categoria, livroCientifico);
             break;
         }
         case 3: { // Livro Educativo
             string materia,isbn;
             int nivelEscolaridade;
-            cout << "\t Digite a materia: "<<endl;
-            cin.ignore();
+
+            cout << "\t Digite a materia: ";
             getline(cin, materia);
-            cout << "\t Digite o ISBN: "<<endl;
+
+            cout << "\t Digite o ISBN: ";
             getline(cin, isbn);
             cout << "\t Digite o nivel de escolaridade (1-Fundamental, 2-Medio, 3-Superior): ";
             cin >> nivelEscolaridade;
 
-            Geral* livroEducativo = new LivroEducativo(titulo, autor, ano, disponivel,isbn, nivelEscolaridade,materia);
+            Geral* livroEducativo = new LivroEducativo(categoria,titulo, autor, ano, disponivel,isbn, nivelEscolaridade,materia);
             biblioteca.adicionarLivro(categoria, livroEducativo);
             break;
         }
         case 4: { // Revista
             string tema,issn;
-            cout << "\t Digite o tema: "<<endl;
-            cin.ignore();
+            cout << "\t Digite o tema: ";
             getline(cin, tema);
-            cout << "\t Digite o ISSN: "<<endl;
+
+            cout << "\t Digite o ISSN: ";
             getline(cin, issn);
 
-            Geral* revista = new Revista(titulo, autor, ano, disponivel,issn,tema);
+            Geral* revista = new Revista(categoria,titulo, autor, ano, disponivel,issn,tema);
             biblioteca.adicionarLivro(categoria, revista);
             break;
         }
         case 5: { // Jornal
             string seccao,issn;
-            cout << "\t Digite a Seccao de circulação: "<<endl;
-            cin.ignore();
+            cout << "\t Digite a Seccao de circulação: ";
             getline(cin, seccao);
-            cout << "\t Digite o ISSN: "<<endl;
+
+            cout << "\t Digite o ISSN: ";
             getline(cin, issn);
 
-            Geral* jornal = new Jornal(titulo, autor, ano, disponivel,issn,seccao);
+            Geral* jornal = new Jornal(categoria,titulo, autor, ano, disponivel,issn,seccao);
             biblioteca.adicionarLivro(categoria, jornal);
             break;
         }

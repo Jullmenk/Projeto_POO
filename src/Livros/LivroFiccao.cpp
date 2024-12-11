@@ -1,6 +1,6 @@
 #include "../../include/Livros/LivroFiccao.h"
 
-LivroFiccao::LivroFiccao(string titulo, string autor, int ano, bool disponivel,string ISBN,string Genero_Literario,int Faixa_Etaria):Geral(titulo,autor,ano, disponivel),Genero_Literario(Genero_Literario),Faixa_Etaria(Faixa_Etaria)
+LivroFiccao::LivroFiccao(string categoria,string titulo, string autor, int ano, bool disponivel,string isbn,string Genero_Literario,int Faixa_Etaria):Geral(categoria,titulo,autor,ano, disponivel),Genero_Literario(Genero_Literario),Faixa_Etaria(Faixa_Etaria),isbn(isbn)
 {
     //ctor
 }
@@ -12,20 +12,21 @@ LivroFiccao::~LivroFiccao()
 
 void LivroFiccao::descricao() const {
     Geral::descricao();
-    cout << " | ISBN: " << ISBN
+    cout 
          << " | Genero Literario: " << Genero_Literario
-         << " | Faixa Etaria: " << Faixa_Etaria << endl;
+         << " | Faixa Etaria: " << Faixa_Etaria 
+         << " | Isbn: " << isbn << endl;
 }
 
 string LivroFiccao::getCodigo() const {
-    return ISBN;
+    return isbn;
 }
 
 bool LivroFiccao::escreverFicheiro(ofstream& file) {
     Geral::escreverFicheiro(file);
     file
     << Faixa_Etaria << " ; "
-    << ISBN << " ; "
+    << isbn << " ; "
     << Genero_Literario << " \n";
     return true;
-}
+} 
