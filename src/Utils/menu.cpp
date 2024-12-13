@@ -80,21 +80,6 @@ void MENU_LIVROS(Biblioteca &biblioteca,Uteis uteis) {
                 break;
             }
             case 2:{
-                // //Funcao para teste, adiciono Livros aleatórios
-                // cout << "\n\t***** Adicionar Livros *****" << endl;
-                //  for (int i = 1; i <= 10; ++i) {
-                //      Geral* livroEducativo = new LivroEducativo("Educativo Livro " + to_string(i), "Julino Mendonca", 2002+i, false,"213123"+to_string(i), 18,"Fisica");
-                //      biblioteca.adicionarLivro("Educativo", livroEducativo);
-                //  }
-                //  for (int i = 1; i <= 10; ++i) {
-                //      Geral* livroCientifico = new LivroCientifico("Cientifico Livro " + to_string(i), "Jose Arrais", 1002+i, true,"3123"+to_string(i),"Matematica", 18);
-                //      biblioteca.adicionarLivro("Cientifico", livroCientifico);                    }
-                //  for (int i = 1; i <= 10; ++i) {
-                //      Geral* livroFiccao = new LivroFiccao("Ficcao Livro " + to_string(i), "Rodrigo Caxinde ", 4002+i, true,"73913"+to_string(i),"Romance",18);
-                //      biblioteca.adicionarLivro("Ficcao", livroFiccao);
-                //  }
-                //  cout<<"Livros Adicionados com sucesso\n";
-                //  system("pause");
                  uteis.CriarLivroUser(biblioteca);
                 break;}
             case 3:
@@ -150,14 +135,6 @@ void MENU_UTILIZADOR(Biblioteca &biblioteca,Uteis uteis) {
                 break;
             }
             case 2:{
-                //Funcao para teste, adiciono Livros aleatórios
-                // cout << "\n\t***** Criar Utilizador *****" << endl;
-                //      for (int i = 1; i <= 10; ++i) {
-                //          Pessoa* estudante = new Estudante("Julino" + to_string(i),"2182"+ to_string(i),0,0,"Estudante");
-                //          biblioteca.adicionarLeitor("Estudante", estudante);
-                //      }
-                //      cout<<"Utilizadores Adicionados com sucesso\n";
-
                 uteis.CriarUser(biblioteca);
                 system("pause");
                 break;}
@@ -178,10 +155,11 @@ void MENU_SENIOR(Biblioteca &biblioteca,Uteis uteis) {
         system("cls");
 
         cout << "\n\t***** Biblioteca - Senior *****" << endl;
-        cout << "\t1. Editar Informacoes de Leitor" << endl;
-        cout << "\t2. Editar Informacoes de Livro" << endl;
-        cout << "\t3. Salvar Alteracoes" << endl;
-        cout << "\t4. Voltar" << endl;
+        cout << "\t1. Editar Livros máximos dos Leitores" << endl;
+        cout << "\t2. Editar Descontos de multa dos Leitores" << endl;
+        cout << "\t3. Editar Informacoes de Livro" << endl;
+        cout << "\t4. Salvar Alteracoes" << endl;
+        cout << "\t5. Voltar" << endl;
         cout << "\n\tEscolha uma opcao: ";
 
         cin >> num;
@@ -189,24 +167,23 @@ void MENU_SENIOR(Biblioteca &biblioteca,Uteis uteis) {
         system("cls");
 
         switch (num) {
-            case 1:{
-                uteis.ListarPorCategoriaUtilizador(biblioteca,false);
-                system("pause");
+            case 1:
+                uteis.MudarLimiteLivros(biblioteca);
                 break;
-            }
             case 2:{
-                uteis.CriarUser(biblioteca);
-                system("pause");
+                uteis.MudarDesconto(biblioteca);
                 break;}
-            case 3:
+            case 4:
                 {bool conf = biblioteca.GravarLivrosPorCategoria();
                 bool user = biblioteca.GravarPessoasPorCategoria();
-                if(conf && user){
-                    cout<< "Livro e Utilizadores Gravados com sucesso";
+                bool liv = uteis.gravarLimitesPorCategoria();
+                bool disc = uteis.gravarDesconto();
+                if(conf && user && liv && disc){
+                    cout<< "Livros, Utilizadores, Limites e Descontos de Livros Gravados com sucesso";
                     system("pause");
                 }
                 break;}
-            case 4:MENU_PRINCIPAL(biblioteca,uteis);break;
+            case 5:MENU_PRINCIPAL(biblioteca,uteis);break;
             case 0:cout << "Saindo do programa..." << endl;exit(0);break;
             default:cout << "\n\tOpcao invalida!" << endl;break;
         }

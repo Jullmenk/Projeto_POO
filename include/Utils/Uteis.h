@@ -8,19 +8,8 @@
 class Uteis
 {    
     private:
-    map<string, int> limitesPorCategoria={
-        {"Estudante", 5},
-        {"Professor", 10},
-        {"Senior", 10},
-        {"LeitorComum",3}
-    };
-
-    map<string, double> descontoPorCategoria={
-        {"Estudante", 0.2},
-        {"Professor", 0.5},
-        {"Senior", 0.5},
-        {"LeitorComum",0.0}
-    };
+    map<string, int> limitesPorCategoria;
+    map<string, double> descontoPorCategoria;
 
     public:
         Uteis();
@@ -28,7 +17,17 @@ class Uteis
         void CriarLivroUser(Biblioteca& bib);
         void LivroInfo(int opcao,string categoria,Biblioteca& biblioteca);
         bool LerLivrosPorCategoria(Biblioteca& bib);
-        void alterarLimitesLivro(map<string, int>& limites);
+        bool LerPessoasPorCategoria(Biblioteca& bib);
+        void MudarLimiteLivros(Biblioteca& bib);
+        void addLimiteLivros(string categoria, int limite);
+        bool LerLimitesPorCategoria();
+        bool gravarLimitesPorCategoria();
+        
+        void MudarDesconto(Biblioteca& bib);
+        void addDesconto(string categoria, double desconto);
+        bool LerDesconto();
+        bool gravarDesconto();
+
         void CriarUser(Biblioteca& bib);
         void UserInfo(int opcao,string categoria,Biblioteca& biblioteca);
         void EmprestimoFuncaoPrincipal(Biblioteca& bib);
@@ -38,6 +37,7 @@ class Uteis
         void RelatorioTipoDeLivro(Biblioteca& bib);
         void ConsultarHistoricoDeReservas(Biblioteca& bib);
         void DevolverLivro(Biblioteca& bib);
+        
 };
 
 struct retorno {

@@ -27,22 +27,36 @@ void Emprestimo::Descricao() const {
          << " | Data de Devolucao: " << dataDevolucaoStr << endl;
 }
 
-string Emprestimo::getNif() const{
+string Emprestimo::getNifEmprestimo() {
     return NIFLeitor;
 }
 
-string Emprestimo::getIDLivro() const{
+string Emprestimo::getIDLivroEmprestimo() {
     return idLivro;
 }
 
-string Emprestimo::getCategoriaLeitor() const{
+string Emprestimo::getCategoriaLeitorEmprestimo(){
     return categoriaLeitor;
 };
 
-string Emprestimo::getCategoriaLivro() const{
+string Emprestimo::getCategoriaLivroEmprestimo() {
     return categoriaLivro;
 };
 
-time_t Emprestimo::getDataDevolucao() const{
+time_t Emprestimo::getDataDevolucaoEmprestimo(){
     return dataDevolucao;
 };
+
+bool Emprestimo::escreverFicheiro(ofstream& file){
+    if (!file.is_open()) {
+        return false;
+    }
+    file<< NIFLeitor << " ; "
+    << nomeLeitor << " ; "
+    << categoriaLivro << " ; "
+    << categoriaLeitor << " ; "
+    << tituloLivro << " ; "
+    << idLivro << " ; "
+    << dataEmprestimo << " ; "
+    << dataDevolucao << " ; ";
+} 

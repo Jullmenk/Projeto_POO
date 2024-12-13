@@ -4,6 +4,8 @@
 #include <string>
 #include <iostream>
 #include <ctime>
+#include <fstream>
+
 
 using namespace std;
 
@@ -23,16 +25,12 @@ public:
     Emprestimo(string NIFLeitor, string nomeLeitor, string categoriaLivro, string tituloLivro, time_t dataEmprestimo, time_t dataDevolucao,string idLivro,string categoriaLeitor);
     virtual ~Emprestimo(); 
     void Descricao() const;
-    string getNif() const;
-    string getIDLivro() const;
-    string getCategoriaLeitor()const;
-    string getCategoriaLivro() const;
-    time_t getDataDevolucao() const;
-        bool operator==(const Emprestimo& other) const {
-        return (this->getNif() == other.getNif() &&
-                this->getIDLivro() == other.getIDLivro() &&
-                this->getCategoriaLivro() == other.getCategoriaLivro());
-    }
+    bool escreverFicheiro(ofstream& file); 
+    string getNifEmprestimo();
+    string getIDLivroEmprestimo() ;
+    string getCategoriaLeitorEmprestimo();
+    string getCategoriaLivroEmprestimo() ;
+    time_t getDataDevolucaoEmprestimo()  ;
 
 };
 

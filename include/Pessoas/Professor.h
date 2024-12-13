@@ -18,6 +18,8 @@ class Professor : public Pessoa
         bool PodeReservar() const override;
         bool PodeEmprestar() const override;
         int getLivrosMaximos() override;
+        void alterarLivrosMaximos(int max) override;
+        void alterarDescontos(int desc) override;
         double getDescontoMulta() override;
         double calcularMultaTotal() override;
         void incrementarEmprestimosAtivos() override;

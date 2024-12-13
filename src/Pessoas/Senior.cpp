@@ -11,7 +11,7 @@ Senior::~Senior()
 void Senior::descricao() const {
     Pessoa::descricao();
     cout << " | Maximo de Livros que Pode requisitar: " << livrosMaximos 
-    << " | Desconto Multa: " << descontoMulta;
+    << " | Desconto Multa: " << descontoMulta<< "\n";
 }
 
 int Senior::getPrazoDevolucao(string categoriaLivro) const {
@@ -64,6 +64,14 @@ bool Senior::escreverFicheiro(ofstream& file) {
     Pessoa::escreverFicheiro(file);
     file
     << livrosMaximos << " ; "
-    << descontoMulta << " ; ";
+    << descontoMulta << "\n";
     return true;
 }
+
+void Senior::alterarLivrosMaximos(int max) {
+    livrosMaximos = max;
+};
+
+void Senior::alterarDescontos(int desc) {
+    descontoMulta = desc;
+};

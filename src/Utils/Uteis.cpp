@@ -369,47 +369,22 @@ void Uteis::DevolverLivro(Biblioteca& bib){
     // Iteração de trás para frente com iteradores reversos
     for (auto rit = it->second.rbegin(); rit != it->second.rend(); ++rit) {
         auto& emprestimo = *rit;
-        if ((emprestimo.getNif() == pessoa->getNIF()) && (emprestimo.getIDLivro() == livro->getCodigo())) {
+        if ((emprestimo.getNifEmprestimo() == pessoa->getNIF()) && (emprestimo.getIDLivroEmprestimo() == livro->getCodigo())) {
             livro->setDisponivel();
             pessoa->decrementarEmprestimosAtivos();
             time_t dataAtual = time(nullptr);
-            if(emprestimo.getDataDevolucao() < dataAtual){
+            if(emprestimo.getDataDevolucaoEmprestimo() < dataAtual){
                 pessoa->incrementarMulta();
                 cout<<"O prazo de devolução já expirou, foi acrescentado uma multa de"<<5*(1 - pessoa->getDescontoMulta())<<"EUR.\n";
                 system("pause");
             }
             cout << "Livro devolvido com sucesso.\n";
-            bib.transformarReservaEmEmprestimo(emprestimo.getCategoriaLivro(),emprestimo.getIDLivro());
+            bib.transformarReservaEmEmprestimo(emprestimo.getCategoriaLivroEmprestimo(),emprestimo.getIDLivroEmprestimo());
             system("pause");
             return; 
         }
     }
 
-}
-
-void Uteis::alterarLimitesLivro(map<string, int>& limites) {
-    string categoria;
-    int novoLimite;
-
-    cout << "Categorias disponíveis: " << endl;
-    for (const auto& par : limites) {
-        cout << par.first << " (atual: " << par.second << " livros)" << endl;
-    }
-
-    cout << "Digite o nome da categoria que deseja alterar: ";
-    cin >> categoria;
-
-    // Verificar se a categoria existe no map
-    if (limites.find(categoria) != limites.end()) {
-        cout << "Digite o novo limite para a categoria '" << categoria << "': ";
-        cin >> novoLimite;
-
-        // Atualizar o limite
-        limites[categoria] = novoLimite;
-        cout << "O limite da categoria '" << categoria << "' foi atualizado para " << novoLimite << " livros." << endl;
-    } else {
-        cout << "Categoria " << categoria << " Nao encontrada!" << endl;
-    }
 }
 
 
@@ -420,9 +395,10 @@ void ajustarCaracteres(string& str) {
 }
 
 bool Uteis::LerLivrosPorCategoria(Biblioteca& biblioteca) {
-    ifstream file("livros.txt");
+    ifstream file("./data/livros.txt");
     if (!file.is_open()) {
         cerr << "Erro ao abrir o arquivo: livros.txt" << endl;
+        system("pause");
         return false;
     }
 
@@ -513,3 +489,251 @@ bool Uteis::LerLivrosPorCategoria(Biblioteca& biblioteca) {
     file.close();
     return true;
 }
+
+
+
+bool Uteis::LerPessoasPorCategoria(Biblioteca& biblioteca) {
+    ifstream file("./data/Pessoas.txt");
+    if (!file.is_open()) {
+        cerr << "Erro ao abrir o arquivo: Pessoas.txt" << endl;
+        system("pause");
+        return false;
+    }
+
+    string linha;
+    while (getline(file, linha)) {
+        stringstream ss(linha);
+        string nome, NIF,categoria;
+        int NumeroDeEmprestimosTotal,NumeroDeEmprestimosAtivos,totalMultaPorPagar,totalMultaPago,NumeroDeReservas;
+
+        getline(ss, categoria, ';');
+        ajustarCaracteres(categoria);
+        
+        getline(ss, nome, ';');
+        ajustarCaracteres(nome);
+
+        getline(ss, NIF, ';');
+        ajustarCaracteres(NIF);
+
+        string StrtotalMultaPorPagar;
+        getline(ss, StrtotalMultaPorPagar, ';');
+        totalMultaPorPagar = stoi(StrtotalMultaPorPagar);
+
+        string StrtotalMultaPago;
+        getline(ss, StrtotalMultaPago, ';');
+        totalMultaPago = stoi(StrtotalMultaPago);
+
+        string StrNumeroDeEmprestimosTotal;
+        getline(ss, StrNumeroDeEmprestimosTotal, ';');
+        NumeroDeEmprestimosTotal = stoi(StrNumeroDeEmprestimosTotal);
+
+        string StrNumeroDeEmprestimosAtivos;
+        getline(ss, StrNumeroDeEmprestimosAtivos, ';');
+        NumeroDeEmprestimosAtivos = stoi(StrNumeroDeEmprestimosAtivos);
+
+        string StrNumeroDeReservas;
+        getline(ss, StrNumeroDeReservas, ';');
+        NumeroDeReservas = stoi(StrNumeroDeReservas);
+
+        Pessoa* leitor = nullptr;
+
+        if (categoria == "Estudante") {
+
+            leitor = new Estudante( nome,  NIF,  NumeroDeEmprestimosTotal,  NumeroDeEmprestimosAtivos,  totalMultaPorPagar,  totalMultaPago, NumeroDeReservas, categoria, limitesPorCategoria[categoria], descontoPorCategoria[categoria]);
+
+        } else if (categoria == "LeitorComum") {
+
+            leitor = new LeitorComum( nome,  NIF,  NumeroDeEmprestimosTotal,  NumeroDeEmprestimosAtivos,  totalMultaPorPagar,  totalMultaPago, NumeroDeReservas, categoria, limitesPorCategoria[categoria], descontoPorCategoria[categoria]);
+
+        } else if (categoria == "Professor") {
+
+            leitor = new Professor( nome,  NIF,  NumeroDeEmprestimosTotal,  NumeroDeEmprestimosAtivos,  totalMultaPorPagar,  totalMultaPago, NumeroDeReservas, categoria, limitesPorCategoria[categoria], descontoPorCategoria[categoria]);
+
+        } else if (categoria == "Senior") {
+
+            leitor = new Senior( nome,  NIF,  NumeroDeEmprestimosTotal,  NumeroDeEmprestimosAtivos,  totalMultaPorPagar,  totalMultaPago, NumeroDeReservas, categoria, limitesPorCategoria[categoria], descontoPorCategoria[categoria]);
+        }
+
+        if (leitor != nullptr) {
+            biblioteca.adicionarLeitor(categoria, leitor);
+        }
+    }
+
+    file.close();
+    return true;
+}
+
+void Uteis::addLimiteLivros(string categoria, int limite) {
+    auto it = limitesPorCategoria.find(categoria);
+    if (it != limitesPorCategoria.end()) {
+        it->second = limite;
+        cout << "Limite da categoria '" << categoria << "' atualizado para " << limite << ".\n";
+
+    } else {
+        limitesPorCategoria[categoria] = limite;
+        cout << "Nova categoria '" << categoria << "' criada com limite " << limite << ".\n";
+    }
+}
+
+void Uteis::MudarLimiteLivros(Biblioteca& bib) {
+    retorno Retornado = RetornarType_String_User();
+    int limite=-1;
+    while (limite<0)
+    {
+        cout << "\tDigite o novo Limite de Livros para " << Retornado.categoria <<" : ";
+        cin>> limite;
+    }
+    
+    auto it = limitesPorCategoria.find(Retornado.categoria);
+    if (it != limitesPorCategoria.end()) {
+            it->second = limite;
+            auto& leitores = bib.getleitores();
+            auto it = leitores.find(Retornado.categoria);
+            if (it == leitores.end()) {
+                cout << "Nao existe nenhum Leitor dessa categoria.\n";
+                return;
+            }else{
+                for (auto& categoria : leitores) {
+                for ( auto& pessoa : categoria.second) {
+                        pessoa->alterarLivrosMaximos(limite);
+                    }
+                 }
+                cout << "Limite da categoria '" << Retornado.categoria << "' atualizado para " << limite << ".\n";
+                system("pause");
+            }
+    }
+}
+
+
+
+bool Uteis::LerLimitesPorCategoria() {
+    ifstream file("./data/limitesPorCategoria.txt");
+    if (!file.is_open()) {
+        cerr << "Erro ao abrir o arquivo: limitesPorCategoria.txt" << endl;
+        system("pause");
+        return false;
+    }
+
+    string linha;
+    while (getline(file, linha)) {
+        stringstream ss(linha);
+        string categoria;
+        int limite;
+
+        getline(ss, categoria, ';');
+        ajustarCaracteres(categoria);
+
+        string Strlimite;
+        getline(ss, Strlimite, ';');
+        limite = stoi(Strlimite);
+
+        addLimiteLivros(categoria,limite);
+    }
+
+    file.close();
+    return true;
+}
+
+bool Uteis::gravarLimitesPorCategoria(){
+    ofstream file("./data/limitesPorCategoria.txt");
+    if (!file.is_open()) {
+        cerr << "Erro ao abrir o arquivo: limitesPorCategoria.txt" << endl;
+        return false;
+    }
+
+    for (auto& limit : limitesPorCategoria) {
+        file << limit.first << " ; " << limit.second << "\n";
+    }
+
+    file.close();
+    return true;
+};
+
+
+// Desconto
+
+
+void Uteis::addDesconto(string categoria, double desconto) {
+    auto it = descontoPorCategoria.find(categoria);
+    if (it != descontoPorCategoria.end()) {
+        it->second = desconto;
+        cout << "Desconto da categoria do desconto '" << categoria << "' atualizado para " << desconto << ".\n";
+
+    } else {
+        descontoPorCategoria[categoria] = desconto;
+        cout << "Nova categoria do desconto '" << categoria << "' criada com desconto " << desconto << ".\n";
+    }
+}
+
+void Uteis::MudarDesconto(Biblioteca& bib) {
+    retorno Retornado = RetornarType_String_User();
+    int desconto=-1;
+    while (desconto<0)
+    {
+        cout << "\tDigite o novo desconto das multas para " << Retornado.categoria <<" : ";
+        cin>> desconto;
+    }
+    desconto = desconto / 100;
+    
+    auto it = descontoPorCategoria.find(Retornado.categoria);
+    if (it != descontoPorCategoria.end()) {
+            it->second = desconto;
+            auto& leitores = bib.getleitores();
+            auto it = leitores.find(Retornado.categoria);
+            if (it == leitores.end()) {
+                cout << "Nao existe nenhum Leitor dessa categoria.\n";
+                return;
+            }else{
+                for (auto& categoria : leitores) {
+                for ( auto& pessoa : categoria.second) {
+                        pessoa->alterarDescontos(desconto);
+                    }
+                 }
+                cout << "Desconto da categoria '" << Retornado.categoria << "' atualizado para " << desconto << ".\n";
+                system("pause");
+            }
+    }
+}
+
+
+
+bool Uteis::LerDesconto() {
+    ifstream file("./data/descontoPorCategoria.txt");
+    if (!file.is_open()) {
+        cerr << "Erro ao abrir o arquivo: descontoPorCategoria.txt" << endl;
+        system("pause");
+        return false;
+    }
+
+    string linha;
+    while (getline(file, linha)) {
+        stringstream ss(linha);
+        string categoria;
+        double desconto;
+
+        getline(ss, categoria, ';');
+        ajustarCaracteres(categoria);
+
+        string Strdesconto;
+        getline(ss, Strdesconto, ';');
+        desconto = stod(Strdesconto);
+        addDesconto(categoria,desconto);
+    }
+
+    file.close();
+    return true;
+}
+
+bool Uteis::gravarDesconto(){
+    ofstream file("./data/descontoPorCategoria.txt");
+    if (!file.is_open()) {
+        cerr << "Erro ao abrir o arquivo: descontoPorCategoria.txt" << endl;
+        return false;
+    }
+
+    for (auto& desconto : descontoPorCategoria) {
+        file << desconto.first << " ; " << desconto.second << "\n";
+    }
+    file.close();
+    return true;
+};

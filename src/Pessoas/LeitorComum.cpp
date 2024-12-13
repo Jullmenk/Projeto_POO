@@ -11,7 +11,7 @@ LeitorComum::~LeitorComum()
 void LeitorComum::descricao() const {
     Pessoa::descricao();
     cout << " | Maximo de Livros que Pode requisitar: " << livrosMaximos 
-    << " | Desconto Multa: " << descontoMulta;
+    << " | Desconto Multa: " << descontoMulta<< "\n";
 }
 
 int LeitorComum::getPrazoDevolucao(string categoriaLivro) const {
@@ -58,6 +58,14 @@ bool LeitorComum::escreverFicheiro(ofstream& file) {
     Pessoa::escreverFicheiro(file);
     file
     << livrosMaximos << " ; "
-    << descontoMulta << " ; ";
+    << descontoMulta << "\n";
     return true;
 }
+
+void LeitorComum::alterarLivrosMaximos(int max) {
+    livrosMaximos = max;
+};
+
+void LeitorComum::alterarDescontos(int desc) {
+    descontoMulta = desc;
+};

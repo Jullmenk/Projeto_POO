@@ -11,7 +11,7 @@ Professor::~Professor()
 void Professor::descricao() const{
     Pessoa::descricao();
     cout << " | Maximo de Livros que Pode requisitar: " << livrosMaximos 
-    << " | Desconto Multa: " << descontoMulta;
+    << " | Desconto Multa: " << descontoMulta<< "\n";
 }
 
 int Professor::getPrazoDevolucao(string categoriaLivro) const {
@@ -63,6 +63,14 @@ bool Professor::escreverFicheiro(ofstream& file) {
     Pessoa::escreverFicheiro(file);
     file
     << livrosMaximos << " ; "
-    << descontoMulta << " ; ";
+    << descontoMulta << "\n";
     return true;
 }
+
+void Professor::alterarLivrosMaximos(int max) {
+    livrosMaximos = max;
+};
+
+void Professor::alterarDescontos(int desc) {
+    descontoMulta = desc;
+};

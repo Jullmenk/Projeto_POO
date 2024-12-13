@@ -58,6 +58,7 @@ void Biblioteca::adicionarLivro(const string& categoria, Geral* livro) {
             for (auto& li : categori.second) {
                 if (li->getCodigo() == livro->getCodigo()) {
                     cout << "Esse livro/jornal já existe!" << endl;
+                    system("pause");
                     return; 
                 }
             }
@@ -238,9 +239,9 @@ void Biblioteca::registrarReserva(Pessoa* leitor, Geral* livro) {
 
         // Itera sobre as reservas
         for (auto& reserva : it->second) {
-            if (reserva.getIDLivro() == idLivro) {
+            if (reserva.getIDLivroEmprestimo() == idLivro) {
                 // Busca o leitor associado à reserva
-                Pessoa* leitorReserva = ProcurarUtilizador(reserva.getNif());
+                Pessoa* leitorReserva = ProcurarUtilizador(reserva.getNifEmprestimo());
                 if (!leitorReserva) {
                     cout << "Erro: Utilizador associado à reserva não encontrado.\n";
                     continue;
@@ -248,7 +249,7 @@ void Biblioteca::registrarReserva(Pessoa* leitor, Geral* livro) {
 
                 if (leitorReserva->PodeEmprestar()) {
                     // Estudantes têm prioridade para livros educativos
-                    if (reserva.getCategoriaLivro() == "Educativo" && leitorReserva->getCategoria() == "Estudante") {
+                    if (reserva.getCategoriaLivroEmprestimo() == "Educativo" && leitorReserva->getCategoria() == "Estudante") {
                         res = &reserva;
                         reservaTransformada = true;
                         break;
@@ -429,7 +430,7 @@ void Biblioteca::RelatorioEmprestimosTipoDeLivro(string cat){
             for ( auto& leitor : LeitoresCat.second) { // Iterar por leitores específicos
                 // Verificar se o leitor possui empréstimos dessa categoria
                 for ( auto& emprestimo : it->second) {
-                    if (emprestimo.getNif() == leitor->getNIF()) {
+                    if (emprestimo.getNifEmprestimo() == leitor->getNIF()) {
                         // Incrementar o contador do tipo de leitor
                         contadorTiposDeLeitores[leitor->getCategoria()]++;
                     }
@@ -462,7 +463,7 @@ void Biblioteca::RelatorioEmprestimosTipoDeLivro(string cat){
 // Gravar em Ficheiros
 
 bool Biblioteca::GravarLivrosPorCategoria() {
-    ofstream file("livros.txt");
+    ofstream file("./data/livros.txt");
     if (!file.is_open()) {
         cerr << "Erro ao abrir o arquivo: livros.txt" << endl;
         return false;
@@ -481,7 +482,7 @@ bool Biblioteca::GravarLivrosPorCategoria() {
 }
 
 bool Biblioteca::GravarPessoasPorCategoria() {
-    ofstream file("BD/Pessoas.txt");
+    ofstream file("./data/Pessoas.txt");
     if (!file.is_open()) {
         cerr << "Erro ao abrir o arquivo: Pessoas.txt" << endl;
         return false;
@@ -490,7 +491,26 @@ bool Biblioteca::GravarPessoasPorCategoria() {
     for (auto& par : leitores) {
         for (const auto& leitor : par.second) {
             if (!leitor->escreverFicheiro(file)) {
-                cerr << "Erro ao gravar informações do livro!" << endl;
+                cerr << "Erro ao gravar informações do Utilizador!" << endl;
+            }
+        }
+    }
+
+    file.close();
+    return true;
+}
+
+bool Biblioteca::GravarEmprestimosPorCategoria() {
+    ofstream file("./data/Emprestimos.txt");
+    if (!file.is_open()) {
+        cerr << "Erro ao abrir o arquivo: Emprestimos.txt" << endl;
+        return false;
+    }
+
+    for (auto& par : emprestimosPorCategoria) {
+        for ( auto& emprestimo : par.second) {
+            if (!emprestimo.escreverFicheiro(file)) {
+                cerr << "Erro ao gravar informações do Emprestimo!" << endl;
             }
         }
     }

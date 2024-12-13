@@ -58,6 +58,8 @@ class Pessoa
         virtual bool PodeReservar() const = 0;
         virtual bool PodeEmprestar() const = 0;
         virtual int getLivrosMaximos() = 0;
+        virtual void alterarLivrosMaximos(int max) = 0;
+        virtual void alterarDescontos(int desc) = 0;
         virtual double getDescontoMulta() = 0;
         virtual double calcularMultaTotal() = 0;
         virtual void incrementarEmprestimosAtivos() = 0;

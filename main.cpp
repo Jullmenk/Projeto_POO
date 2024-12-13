@@ -11,7 +11,10 @@ int main() {
     SetConsoleOutputCP(CP_UTF8); 
     Biblioteca biblioteca;
     Uteis uteis;
+    uteis.LerLimitesPorCategoria();
+    uteis.LerDesconto();
     uteis.LerLivrosPorCategoria(biblioteca);
+    uteis.LerPessoasPorCategoria(biblioteca);
     MENU_PRINCIPAL(biblioteca,uteis);
     return 0;
 }

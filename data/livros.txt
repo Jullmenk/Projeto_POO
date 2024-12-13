@@ -1,0 +1,32 @@
+Cientifico ; Física Quântica ; Albert Einstein ; 1915 ; 1 ; Física ; 9780135042435 ;        1ª Edição       
+Cientifico ; Biologia Molecular ; James Watson ; 1961 ; 1 ; Biologia ; 9780198509371 ;        2ª Edição       
+Cientifico ; Inteligência Artificial ; Marvin Minsky ; 1967 ; 1 ; Computação ; 9780262033861 ;        1ª Edição       
+Cientifico ; Teoria da Relatividade ; Albert Einstein ; 1916 ; 1 ; Física ; 9780393090765 ;        3ª Edição       
+Educativo ; Matemática para Crianças ; John Smith ; 2015 ; 1 ; 1 ; 9781537636421 ; Matemática 
+Educativo ; História do Brasil ; Sérgio Buarque de Holanda ; 1990 ; 1 ; 2 ; 9788502084319 ; História 
+Educativo ; Introdução à Geografia ; Maria de Souza ; 2018 ; 1 ; 2 ; 9788502107216 ; Geografia 
+Educativo ; Educação Infantil ; Paulo Freire ; 1970 ; 1 ; 1 ; 9788526003082 ; Educação 
+Educativo ; Física para Iniciantes ; José Silva ; 2015 ; 1 ; 1 ; 9788535203485 ; Física 
+Educativo ; Literatura Brasileira ; Clarice Lispector ; 1995 ; 1 ; 2 ; 9788502085279 ; Literatura 
+Educativo ; Química Orgânica ; Carlos Souza ; 2003 ; 1 ; 3 ; 9788535230238 ; Química 
+Educativo ; Matemática Avançada ; Alice Oliveira ; 2010 ; 1 ; 3 ; 9788522107369 ; Matemática 
+Educativo ; História Antiga ; Luiz Andrade ; 2012 ; 1 ; 2 ; 9788535234533 ; História 
+Ficcao ; Duna ; Frank Herbert ; 1965 ; 1 ; 16 ; 9780441172719 ; Ficcao Cientifica 
+Ficcao ; O Senhor dos Aneis: A Sociedade do Anel ; J.R.R. Tolkien ; 1954 ; 1 ; 14 ; 9780261103573 ; Fantasia 
+Ficcao ; O Codigo Da Vinci ; Dan Brown ; 2003 ; 1 ; 18 ; 9780307474278 ; Suspense 
+Ficcao ; Orgulho e Preconceito ; Jane Austen ; 1813 ; 1 ; 12 ; 9780141439518 ; Historico 
+Ficcao ; 1984 ; George Orwell ; 1949 ; 1 ; 16 ; 9780451524935 ; Distopia 
+Jornal ; A Verdade do Mundo ; João Silva ; 2020 ; 1 ; Política ; 1234-5678
+Jornal ; Economia Atual ; Maria Costa ; 2022 ; 1 ; Economia ; 9876-5432
+Jornal ; Notícias de Hoje ; Pedro Lima ; 2021 ; 1 ; Internacional ; 1111-2222
+Jornal ; O Mundo em Pauta ; Ana Santos ; 2019 ; 1 ; Cultura ; 3344-5566
+Jornal ; Reflexões Contemporâneas ; Ricardo Almeida ; 2023 ; 1 ; Ciências ; 7777-8888
+Jornal ; Saúde e Bem-estar ; Carla Pereira ; 2021 ; 1 ; Saúde ; 1234-9876
+Jornal ; A Voz do Povo ; Felipe Rocha ; 2022 ; 1 ; Sociedade ; 5566-4433
+Revista ; Ciência e Vida ; Luana Martins ; 2020 ; 1 ; Tecnologia ; 2345-6789
+Revista ; Inovação Hoje ; Carlos Souza ; 2021 ; 1 ; Negócios ; 8765-4321
+Revista ; História do Mundo ; Mariana Costa ; 2019 ; 1 ; História ; 1122-3344
+Revista ; Arte e Cultura ; Marcos Oliveira ; 2022 ; 1 ; Cultura ; 9988-6655
+Revista ; Saúde em Foco ; Beatriz Lima ; 2023 ; 1 ; Saúde ; 5566-7788
+Revista ; A Economia em Debate ; Fernanda Silva ; 2021 ; 1 ; Economia ; 3344-5566
+Revista ; Educação e Saber ; Jorge Almeida ; 2020 ; 1 ; Educação ; 6677-8899
