@@ -52,8 +52,6 @@ public:
     void registrarEmprestimo(Pessoa* leitor, Geral* livro);
     void RelatorioEmprestimosTipoDeLivro(string cat);
     void RelatorioMultasPendentes();
-    void Prorrogacao_Emprestimos();
-    void Sistema_Notificacoes_Atraso();
     void registrarReserva(Pessoa* leitor, Geral* livro);
     void transformarReservaEmEmprestimo(string cat,string idLivro); 
 

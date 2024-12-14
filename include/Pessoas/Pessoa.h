@@ -51,7 +51,7 @@ class Pessoa
         void listarEmprestimos() const;
         void listarReservas() const;
         void incrementarMulta();
-
+        void AlterarEmprestimo( Emprestimo& emprestimo, time_t dias);
         //Notificacoes
         void EnviarNotificacoesdeAtraso();
         void EnviarNotificacoesdeExlusaoDeReserva(string livro);

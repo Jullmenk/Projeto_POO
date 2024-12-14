@@ -13,10 +13,8 @@ void Emprestimo::Descricao() const {
     // Removendo a nova linha gerada por ctime() ao imprimir a data
     char* dataEmprestimoStr = ctime(&dataEmprestimo);
     dataEmprestimoStr[strlen(dataEmprestimoStr) - 1] = '\0';
-
-    char* dataDevolucaoStr = ctime(&dataDevolucao);
-    dataDevolucaoStr[strlen(dataDevolucaoStr) - 1] = '\0'; 
-
+    double diferencaSegundos = difftime(dataDevolucao, dataEmprestimo);
+    double diferencaDias = diferencaSegundos / (60 * 60 * 24);  // Convertendo segundos para dias
     cout << "NIF: " << NIFLeitor
          << " | Nome do leitor: " << nomeLeitor
          << " | Categoria do Leitor: " << categoriaLeitor
@@ -24,7 +22,7 @@ void Emprestimo::Descricao() const {
          << " | Id do Livro: " << idLivro
          << " | Titulo: " << tituloLivro
          << " | Data de Emprestimo: " << dataEmprestimoStr
-         << " | Data de Devolucao: " << dataDevolucaoStr << endl;
+         << " | Data de Devolucao: Depois de " << diferencaDias  << " dias" << endl;
 }
 
 string Emprestimo::getNifEmprestimo() const{
@@ -72,3 +70,5 @@ bool Emprestimo::operator==(const Emprestimo& other) const {
             dataEmprestimo == other.dataEmprestimo &&
             dataDevolucao == other.dataDevolucao);
 }
+
+

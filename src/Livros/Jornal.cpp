@@ -27,3 +27,16 @@ bool Jornal::escreverFicheiro(ofstream& file) {
     << issn << "\n";
     return true;
 }
+
+void AlterarInformacaoDoLivro(){
+    int type;
+    cout << "\nNos Jornais So é possivel alterar a Secção";
+    // cout << "O que deseja alterar ?";
+    // cout << "\t1. Seccao" << endl;
+    // cin>> type;
+
+    cout << "\n Digite a nova secção do Jornal";
+    cin.ignore(); 
+    getline(cin, seccao);
+
+}

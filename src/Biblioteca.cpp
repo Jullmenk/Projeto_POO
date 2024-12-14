@@ -133,7 +133,7 @@ bool Biblioteca::listarLivrosComPaginacao(bool forSearch,string categoria){
 
         int inicio = paginaAtual * itensPorPagina;
         int fim = min(inicio + itensPorPagina, totalItens);
-        forSearch&&cout<<"**********Guarde o IDENTIFICADOR do que deseja para depois poder requisitar\n";
+        forSearch&&cout<<"**********Guarde o IDENTIFICADOR do que deseja\n";
         cout << "Pagina " << (paginaAtual + 1) << " de " << totalPaginas << "\n";
 
         for (int i = inicio; i < fim; ++i) {
@@ -358,7 +358,7 @@ bool Biblioteca::listarLeitores(bool forSearch,string categoria){
         int inicio = paginaAtual * itensPorPagina;
         int fim = min(inicio + itensPorPagina, totalItens);
         
-        forSearch&&cout<< "**********Guarde o IDENTIFICADOR do Utilizador que deseja para depois poder requisitar**********\n\n";
+        forSearch&&cout<< "**********Guarde o IDENTIFICADOR do Utilizador que deseja **********\n\n";
 
 
         cout << "Pagina " << (paginaAtual + 1) << " de " << totalPaginas << "\n";

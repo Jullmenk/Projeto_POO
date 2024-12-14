@@ -62,6 +62,7 @@ void Pessoa::removerReserva( Emprestimo& emprestimo) {
 
 
 
+
 int Pessoa::getNumeroDeEmprestimosTotais(){
     return NumeroDeEmprestimosTotal;
 }
@@ -73,7 +74,7 @@ void Pessoa::listarEmprestimos() const {
         cout<<"Este Utilizador ainda nao tem livros emprestados\n";
         return;
     }
-    cout << "Emprestimos do leitor: " << nome << endl;
+    cout << "Emprestimos do leitor: " << nome << "\n\n"<<endl;
     for (const auto& emprestimo : EmprestimosUser) {
         emprestimo.Descricao(); // Assumindo que a classe Emprestimo possui um método `descricao`
     };

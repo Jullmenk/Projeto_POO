@@ -29,6 +29,8 @@ public:
     bool isDisponivel();
     void setDisponivel();
     void setInDisponivel();
+
+    virtual void AlterarInformacaoDoLivro() = 0; 
 };
 
 #endif // GERAL_H

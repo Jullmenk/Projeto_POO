@@ -23,7 +23,7 @@ void MENU_PRINCIPAL(Biblioteca &biblioteca,Uteis uteis) {
         cout << "\t2. Utilizador" << endl;
         cout << "\t3. Senior" << endl;
         cout << "\t0. Sair" << endl;
-        cout << "\n\tEscolha uma opcao: ";
+        cout << "\n\tEscolha uma opção: ";
 
         cin >> num;
 
@@ -46,7 +46,7 @@ void MENU_PRINCIPAL(Biblioteca &biblioteca,Uteis uteis) {
                 break;
 
             default:
-                cout << "\n\tOpcao invalida!" << endl;
+                cout << "\n\topção invalida!" << endl;
                 break;
         }
     } while (num != 0);
@@ -67,7 +67,7 @@ void MENU_LIVROS(Biblioteca &biblioteca,Uteis uteis) {
         cout << "\t6. Relatorio de Emprestimos por Tipo de Livro" << endl;
         cout << "\t7. Relatorio Multas Pendentes" << endl;
         cout << "\t8. Voltar" << endl;
-        cout << "\n\tEscolha uma opcao: ";
+        cout << "\n\tEscolha uma opção: ";
 
         cin >> num;
 
@@ -100,7 +100,7 @@ void MENU_LIVROS(Biblioteca &biblioteca,Uteis uteis) {
                 break;
 
             default:
-                cout << "\n\tOpcao invalida!" << endl;
+                cout << "\n\topção invalida!" << endl;
                 break;
         }
     } while (num != 0);
@@ -117,12 +117,11 @@ void MENU_UTILIZADOR(Biblioteca &biblioteca,Uteis uteis) {
         cout << "\n\t***** Biblioteca - Utilizador *****" << endl;
         cout << "\t1. Ver Utilizadores" << endl;
         cout << "\t2. Adicionar Utilizador" << endl;
-        cout << "\t3. Ver Historico de Emprestimo do Utilizador" << endl;
-        cout << "\t4. Ver Historico de Reservas do Utilizador" << endl;
+        cout << "\t3. Ver Histórico de Empréstimo do Utilizador" << endl;
+        cout << "\t4. Ver Histórico de Reservas do Utilizador" << endl;
         cout << "\t5. Devolver Livro" << endl;
-        cout << "\t6. Relatorios de Livros por Categoria" << endl;
         cout << "\t7. Voltar" << endl;
-        cout << "\n\tEscolha uma opcao: ";
+        cout << "\n\tEscolha uma opção: ";
 
         cin >> num;
 
@@ -144,7 +143,7 @@ void MENU_UTILIZADOR(Biblioteca &biblioteca,Uteis uteis) {
             case 5: uteis.DevolverLivro(biblioteca);break;
             case 7:MENU_PRINCIPAL(biblioteca,uteis);break;
             case 0:cout << "Saindo do programa..." << endl;exit(0);break;
-            default:cout << "\n\tOpcao invalida!" << endl;break;
+            default:cout << "\n\topção invalida!" << endl;break;
         }
     } while (num != 0);
 }
@@ -160,7 +159,7 @@ void MENU_SENIOR(Biblioteca &biblioteca,Uteis uteis) {
         cout << "\t3. Editar Informacoes de Livro" << endl;
         cout << "\t4. Salvar Alteracoes" << endl;
         cout << "\t5. Voltar" << endl;
-        cout << "\n\tEscolha uma opcao: ";
+        cout << "\n\tEscolha uma opção: ";
 
         cin >> num;
 
@@ -188,7 +187,7 @@ void MENU_SENIOR(Biblioteca &biblioteca,Uteis uteis) {
                 break;
             case 5:MENU_PRINCIPAL(biblioteca,uteis);break;
             case 0:cout << "Saindo do programa..." << endl;exit(0);break;
-            default:cout << "\n\tOpcao invalida!" << endl;break;
+            default:cout << "\n\topção invalida!" << endl;break;
         }
     } while (num != 0);
 }

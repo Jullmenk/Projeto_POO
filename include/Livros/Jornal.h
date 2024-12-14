@@ -16,6 +16,7 @@ class Jornal : public Geral
         void descricao() const override;
         string getCodigo() const override; 
         bool escreverFicheiro(ofstream& file) override;
+        void AlterarInformacaoDoLivro() override;
 };
 
 #endif // Jornal_H

@@ -41,7 +41,7 @@ retorno RetornarType_String(){
     cout << "\t0. Sair" << endl;
     cout << "\n" << endl;    
     cout << "\tSelecione uma categoria de Livro"<< endl;
-    cout << "\n\tEscolha uma opcao: ";
+    cout << "\n\tEscolha uma opção: ";
     
     cin>> type;
     }
@@ -202,8 +202,8 @@ retorno RetornarType_String_User(){
     cout << "\t4. Leitor Comum" << endl;
     cout << "\t0. Sair" << endl;
     cout << "\n" << endl;    
-    cout << "\tSelecione uma categoria de utilizador"<< endl;
-    cout << "\n\tEscolha uma opcao: ";
+    cout << "\tSelecione uma categoria do utilizador"<< endl;
+    cout << "\n\tEscolha uma opção: ";
     
     cin>> type;
     }
@@ -738,3 +738,4 @@ bool Uteis::gravarDesconto(){
     file.close();
     return true;
 };
+
