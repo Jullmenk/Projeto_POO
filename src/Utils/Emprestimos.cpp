@@ -19,35 +19,35 @@ void Emprestimo::Descricao() const {
 
     cout << "NIF: " << NIFLeitor
          << " | Nome do leitor: " << nomeLeitor
-         << " | Categoria de Livro: " << categoriaLeitor
-         << " | Categoria de Livro: " << categoriaLivro
-         << " | Identificador do Livro: " << idLivro
+         << " | Categoria do Leitor: " << categoriaLeitor
+         << " | Categoria do Livro: " << categoriaLivro
+         << " | Id do Livro: " << idLivro
          << " | Titulo: " << tituloLivro
          << " | Data de Emprestimo: " << dataEmprestimoStr
          << " | Data de Devolucao: " << dataDevolucaoStr << endl;
 }
 
-string Emprestimo::getNifEmprestimo() {
+string Emprestimo::getNifEmprestimo() const{
     return NIFLeitor;
 }
 
-string Emprestimo::getIDLivroEmprestimo() {
+string Emprestimo::getIDLivroEmprestimo() const{
     return idLivro;
 }
 
-string Emprestimo::getCategoriaLeitorEmprestimo(){
+string Emprestimo::getCategoriaLeitorEmprestimo() const{
     return categoriaLeitor;
 };
 
-string Emprestimo::getCategoriaLivroEmprestimo() {
+string Emprestimo::getCategoriaLivroEmprestimo() const{
     return categoriaLivro;
 };
 
-time_t Emprestimo::getDataDevolucaoEmprestimo(){
+time_t Emprestimo::getDataDevolucaoEmprestimo() const{
     return dataDevolucao;
 };
 
-bool Emprestimo::escreverFicheiro(ofstream& file){
+bool Emprestimo::escreverFicheiro(ofstream& file) const{
     if (!file.is_open()) {
         return false;
     }
@@ -58,5 +58,17 @@ bool Emprestimo::escreverFicheiro(ofstream& file){
     << tituloLivro << " ; "
     << idLivro << " ; "
     << dataEmprestimo << " ; "
-    << dataDevolucao << " ; ";
+    << dataDevolucao << "\n";
+    return true;
 } 
+
+
+bool Emprestimo::operator==(const Emprestimo& other) const {
+    return (NIFLeitor == other.NIFLeitor &&
+            idLivro == other.idLivro &&
+            categoriaLivro == other.categoriaLivro &&
+            categoriaLeitor == other.categoriaLeitor &&
+            tituloLivro == other.tituloLivro &&
+            dataEmprestimo == other.dataEmprestimo &&
+            dataDevolucao == other.dataDevolucao);
+}

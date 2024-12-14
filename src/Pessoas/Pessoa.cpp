@@ -35,20 +35,32 @@ void Pessoa::decrementarEmprestimosAtivos() {
     }
 }
 
-void Pessoa::removerReserva() {
-    if (NumeroDeReservas > 0) {
-        NumeroDeReservas--;
-    } else {
-        cout << "Nenhuma reserva ativa para remover.\n";
-    }
-}
-
 // Adicionar empréstimo
 
 void Pessoa::adicionarReserva( Emprestimo& emprestimo) {
         Reservas.push_back(emprestimo);
         NumeroDeReservas++;
 }
+
+void Pessoa::adicionarReservaPelaLeitura(Emprestimo& emprestimo){
+            Reservas.push_back(emprestimo);
+}
+
+void Pessoa::adicionarEmprestimoPelaLeitura(Emprestimo& emprestimo){
+            EmprestimosUser.push_back(emprestimo);
+}
+
+void Pessoa::removerReserva( Emprestimo& emprestimo) {
+    for (auto it = Reservas.begin(); it != Reservas.end(); ++it) {
+        if (it->getIDLivroEmprestimo() == emprestimo.getIDLivroEmprestimo()) {
+            Reservas.erase(it);
+            NumeroDeReservas--;
+            return;
+        }
+    }
+}
+
+
 
 int Pessoa::getNumeroDeEmprestimosTotais(){
     return NumeroDeEmprestimosTotal;

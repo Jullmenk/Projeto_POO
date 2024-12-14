@@ -174,15 +174,18 @@ void MENU_SENIOR(Biblioteca &biblioteca,Uteis uteis) {
                 uteis.MudarDesconto(biblioteca);
                 break;}
             case 4:
-                {bool conf = biblioteca.GravarLivrosPorCategoria();
+                { 
+                bool emp = biblioteca.GravarEmprestimosPorCategoria();
+                bool res = biblioteca.GravarReservasPorCategoria();
+                bool conf = biblioteca.GravarLivrosPorCategoria();
                 bool user = biblioteca.GravarPessoasPorCategoria();
                 bool liv = uteis.gravarLimitesPorCategoria();
                 bool disc = uteis.gravarDesconto();
-                if(conf && user && liv && disc){
-                    cout<< "Livros, Utilizadores, Limites e Descontos de Livros Gravados com sucesso";
-                    system("pause");
-                }
-                break;}
+                if(conf && user && liv && disc && emp && res){
+                     cout<< "Livros, Utilizadores, Limites e Descontos de Livros Gravados com sucesso";
+                     system("pause");
+                 }}
+                break;
             case 5:MENU_PRINCIPAL(biblioteca,uteis);break;
             case 0:cout << "Saindo do programa..." << endl;exit(0);break;
             default:cout << "\n\tOpcao invalida!" << endl;break;

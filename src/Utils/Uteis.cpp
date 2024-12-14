@@ -284,14 +284,14 @@ void Uteis::CriarUser(Biblioteca& bib){
 
     retorno user = RetornarType_String_User();
     if(!bib.listarLeitores(true,user.categoria))return;
-    cout << "\t Digite o NIF do utilizador\n";
+    cout << "\t Digite o NIF do utilizador : ";
     cin>> id_Pessoa;
     Pessoa *pessoa = bib.ProcurarUtilizador(id_Pessoa);
     if(!pessoa)return;
 
     retorno escolha =  RetornarType_String();
     if(!bib.listarLivrosComPaginacao(true,escolha.categoria))return;
-    cout << "\t Digite o ISBN/ISSN do Livro que deseja \n";
+    cout << "\t Digite o ISBN/ISSN do Livro que deseja : ";
     cin>> id_Livro;
     Geral* livro = bib.ProcurarLivro(id_Livro);
     if(!livro)return;
@@ -304,7 +304,7 @@ void Uteis::CriarUser(Biblioteca& bib){
 
     retorno user = RetornarType_String_User();
     if(!bib.listarLeitores(true,user.categoria))return;
-    cout << "\t Digite o NIF do utilizador que procuras\n";
+    cout << "\t Digite o NIF do utilizador que procuras : ";
     cin>> id_Pessoa;
     Pessoa *pessoa = bib.ProcurarUtilizador(id_Pessoa);
     if(!pessoa)return;
@@ -318,7 +318,7 @@ void Uteis::ConsultarHistoricoDeReservas(Biblioteca& bib){
 
     retorno user = RetornarType_String_User();
     if(!bib.listarLeitores(true,user.categoria))return;
-    cout << "\t Digite o NIF do utilizador que procuras\n";
+    cout << "\t Digite o NIF do utilizador que procuras : ";
     cin>> id_Pessoa;
     Pessoa *pessoa = bib.ProcurarUtilizador(id_Pessoa);
     if(!pessoa)return;
@@ -335,29 +335,31 @@ void Uteis::ConsultarHistoricoDeReservas(Biblioteca& bib){
 
 void Uteis::DevolverLivro(Biblioteca& bib){
     string id_Pessoa,id_Livro;
-    bool findUser,findLivro;
+    bool findUser=false,findLivro=false;
     Pessoa *pessoa=nullptr;
     Geral *livro=nullptr;
     retorno user = RetornarType_String_User();
     while (!findUser)
     {
         if(!bib.listarLeitores(true,user.categoria))return;
-        cout << "\t Digite o NIF do utilizador\n";
+        cout << "\t Digite o NIF do utilizador : ";
         cin>> id_Pessoa;
         pessoa = bib.ProcurarUtilizador(id_Pessoa);
         if(pessoa)findUser=true;
     }
 
     pessoa->listarEmprestimos();
+
     if(pessoa->getNumeroDeEmprestimosTotais()<=0)return;
+
     while (!findLivro)
     {
-        cout<< "\tDigite o ISBN/ISSN do Livro Deseja Devolver:";
+        cout<< "\tDigite o ISBN/ISSN do Livro Deseja Devolver : ";
         cin >> id_Livro;
         livro = bib.ProcurarLivro(id_Livro);
-        if(!livro)findLivro=true;
+        if(livro)findLivro=true;
 
-    }    
+    }
     
     auto& empresLista = bib.getEmprestimosPorCategoria();
     auto it = empresLista.find(livro->getCategoria());
@@ -491,7 +493,6 @@ bool Uteis::LerLivrosPorCategoria(Biblioteca& biblioteca) {
 }
 
 
-
 bool Uteis::LerPessoasPorCategoria(Biblioteca& biblioteca) {
     ifstream file("./data/Pessoas.txt");
     if (!file.is_open()) {
@@ -538,7 +539,7 @@ bool Uteis::LerPessoasPorCategoria(Biblioteca& biblioteca) {
         Pessoa* leitor = nullptr;
 
         if (categoria == "Estudante") {
-
+            
             leitor = new Estudante( nome,  NIF,  NumeroDeEmprestimosTotal,  NumeroDeEmprestimosAtivos,  totalMultaPorPagar,  totalMultaPago, NumeroDeReservas, categoria, limitesPorCategoria[categoria], descontoPorCategoria[categoria]);
 
         } else if (categoria == "LeitorComum") {

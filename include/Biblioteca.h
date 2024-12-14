@@ -27,8 +27,8 @@ public:
     bool GravarEmprestimosPorCategoria();
     bool GravarReservasPorCategoria();
     bool GravarPessoasPorCategoria();
-
-    bool LerLivrosPorCategoria();
+    bool LerEmprestimos();
+    bool LerReservas();
 
     //Livro
     map<string, list<Geral*>>& getLivrosPorCategoria();

@@ -18,6 +18,7 @@ class Uteis
         void LivroInfo(int opcao,string categoria,Biblioteca& biblioteca);
         bool LerLivrosPorCategoria(Biblioteca& bib);
         bool LerPessoasPorCategoria(Biblioteca& bib);
+        bool LerEmprestimos(Biblioteca& biblioteca);
         void MudarLimiteLivros(Biblioteca& bib);
         void addLimiteLivros(string categoria, int limite);
         bool LerLimitesPorCategoria();

@@ -42,8 +42,12 @@ class Pessoa
 
         // Métodos utilitários
         void decrementarEmprestimosAtivos();
-        void removerReserva();
+        void removerReserva(Emprestimo& emprestimo);
         void adicionarReserva(Emprestimo& emprestimo);
+
+        void adicionarReservaPelaLeitura(Emprestimo& emprestimo);
+        void adicionarEmprestimoPelaLeitura(Emprestimo& emprestimo);
+
         void listarEmprestimos() const;
         void listarReservas() const;
         void incrementarMulta();

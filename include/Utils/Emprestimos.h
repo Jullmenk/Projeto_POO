@@ -24,14 +24,19 @@ private:
 public:
     Emprestimo(string NIFLeitor, string nomeLeitor, string categoriaLivro, string tituloLivro, time_t dataEmprestimo, time_t dataDevolucao,string idLivro,string categoriaLeitor);
     virtual ~Emprestimo(); 
-    void Descricao() const;
-    bool escreverFicheiro(ofstream& file); 
-    string getNifEmprestimo();
-    string getIDLivroEmprestimo() ;
-    string getCategoriaLeitorEmprestimo();
-    string getCategoriaLivroEmprestimo() ;
-    time_t getDataDevolucaoEmprestimo()  ;
+    // Métodos de acesso (marcados como const)
+    string getNifEmprestimo() const;
+    string getIDLivroEmprestimo() const;
+    string getCategoriaLeitorEmprestimo() const;
+    string getCategoriaLivroEmprestimo() const;
+    time_t getDataDevolucaoEmprestimo() const;
 
+    // Métodos adicionais
+    void Descricao() const;
+    bool escreverFicheiro(ofstream& file) const; // Tornado const
+
+    // Operadores
+    bool operator==(const Emprestimo& other) const;
 };
 
 #endif

@@ -142,7 +142,7 @@ bool Biblioteca::listarLivrosComPaginacao(bool forSearch,string categoria){
         }
 
         // Opções de navegação
-        cout << "1 - Pagina Anterior | 2 - Proxima Pagina | 0 - " <<(!forSearch?"Sair\n":"Escolher o meu livro");
+        cout << "\n\n\t\t1 - Pagina Anterior | 2 - Proxima Pagina | 0 - " <<(!forSearch?"Sair\n":"Escolher o meu livro");
         cout << "\nEscolha: ";
         cin >> opcao;
 
@@ -223,7 +223,6 @@ void Biblioteca::registrarReserva(Pessoa* leitor, Geral* livro) {
 }
 
  void Biblioteca::transformarReservaEmEmprestimo(string cat,string idLivro) {
-    Emprestimo* res = nullptr;
     Geral* livro=nullptr;
     Pessoa* leitor = nullptr;
     bool reservaTransformada = false;
@@ -250,41 +249,49 @@ void Biblioteca::registrarReserva(Pessoa* leitor, Geral* livro) {
                 if (leitorReserva->PodeEmprestar()) {
                     // Estudantes têm prioridade para livros educativos
                     if (reserva.getCategoriaLivroEmprestimo() == "Educativo" && leitorReserva->getCategoria() == "Estudante") {
-                        res = &reserva;
+                        livro = ProcurarLivro(reserva.getIDLivroEmprestimo());
+                        leitor = leitorReserva;
+                        leitor -> removerReserva(reserva);
+                        it->second.erase(remove(it->second.begin(), it->second.end(), reserva), it->second.end());
+
                         reservaTransformada = true;
                         break;
                     }
 
                     // Após a primeira iteração, remove a reserva e processa
                     if (iteracao > 0) {
-                        res = &reserva;
-                        it->second.erase(std::remove(it->second.begin(), it->second.end(), reserva), it->second.end());
+                        livro = ProcurarLivro(reserva.getIDLivroEmprestimo());
+                        leitor = leitorReserva;
+                        leitor -> removerReserva(reserva);
+                        it->second.erase(remove(it->second.begin(), it->second.end(), reserva), it->second.end());
                         reservaTransformada = true;
                         break;
                     }
                 } else {
                     // Envia notificação e exclui a reserva
-                    if (livro) {
                         leitorReserva->EnviarNotificacoesdeExlusaoDeReserva(livro->getTitulo());
-                    }
-                    it->second.erase(std::remove(it->second.begin(), it->second.end(), reserva), it->second.end());
+                        leitorReserva->removerReserva(reserva);
+                        it->second.erase(remove(it->second.begin(), it->second.end(), reserva), it->second.end());
                 }
             }
         }
 
         if (!reservaTransformada && iteracao > 0) {
             cout << "Nao foi possivel transformar a reserva em emprestimo.\n";
+            system("pause");
             return;
         }
 
         iteracao++;
     }
 
-    if (res && leitor && livro) {
+    if (leitor && livro) {
         registrarEmprestimo(leitor, livro);
         cout << "Reserva transformada em emprestimo com sucesso!\n";
         leitor->EnviarNotificacoesdeAquisicaoDaReserva(livro->getCategoria());
     } else {
+        leitor->descricao();
+        livro->descricao();
         cout << "Erro: Dados insuficientes para registrar o empréstimo.\n";
     }
 }
@@ -362,7 +369,7 @@ bool Biblioteca::listarLeitores(bool forSearch,string categoria){
         }
 
         // Opções de navegação
-        cout << "1 - Pagina Anterior | 2 - Proxima Pagina | 0 - " <<(!forSearch?"Sair":"Escolher o Utilizador");
+        cout << "\n\n\t\t1 - Pagina Anterior | 2 - Proxima Pagina | 0 - " <<(!forSearch?"Sair":"Escolher o Utilizador");
         cout << "\nEscolha: ";
         cin >> opcao;
 
@@ -423,7 +430,6 @@ void Biblioteca::RelatorioEmprestimosTipoDeLivro(string cat){
             emprestimo.Descricao();
         }
 
-        cout << "Tipo de Leitor que mais requisita:";
         map<string, int> contadorTiposDeLeitores;
 
         for ( auto& LeitoresCat : leitores) { // Iterar por categorias de leitores
@@ -519,3 +525,130 @@ bool Biblioteca::GravarEmprestimosPorCategoria() {
     return true;
 }
 
+bool Biblioteca::GravarReservasPorCategoria() {
+    ofstream file("./data/Reservas.txt");
+    if (!file.is_open()) {
+        cerr << "Erro ao abrir o arquivo: Reservas.txt" << endl;
+        return false;
+    }
+
+    for (auto& par : reservasPorCategoria) {
+        for ( auto& reservas : par.second) {
+            if (!reservas.escreverFicheiro(file)) {
+                cerr << "Erro ao gravar informações do Reservas!" << endl;
+            }
+        }
+    }
+
+    file.close();
+    return true;
+}
+
+void ajustarCaracteresBib(string& str) {
+    str.erase(0, str.find_first_not_of(' ')); // Remover espaços do início
+    str.erase(str.find_last_not_of(' ') + 1); // Remover espaços do final
+}
+
+bool Biblioteca::LerEmprestimos() {
+    ifstream file("./data/Emprestimos.txt");
+    if (!file.is_open()) {
+        cerr << "Erro ao abrir o arquivo: Emprestimos.txt" << endl;
+        system("pause");
+        return false;
+    }
+
+    string linha;
+    while (getline(file, linha)) {
+        stringstream ss(linha);
+        string NIFLeitor, nomeLeitor, categoriaLivro, tituloLivro,idLivro,categoriaLeitor,strEmprestimo,strDevolucao;
+        time_t dataEmprestimo, dataDevolucao;
+
+        getline(ss, NIFLeitor, ';');
+        ajustarCaracteresBib(NIFLeitor);
+
+        getline(ss, nomeLeitor, ';');
+        ajustarCaracteresBib(nomeLeitor);
+        
+        getline(ss, categoriaLivro, ';');
+        ajustarCaracteresBib(categoriaLivro);
+        
+        getline(ss, categoriaLeitor, ';');
+        ajustarCaracteresBib(categoriaLeitor);
+
+        getline(ss, tituloLivro, ';');
+        ajustarCaracteresBib(tituloLivro);
+
+        getline(ss, idLivro, ';');
+        ajustarCaracteresBib(idLivro);
+
+        getline(ss, strEmprestimo, ';');
+        ajustarCaracteresBib(strEmprestimo);
+
+        getline(ss, strDevolucao, ';');
+        ajustarCaracteresBib(strDevolucao);     
+
+        dataEmprestimo = atol(strEmprestimo.c_str());
+        dataDevolucao = atol(strDevolucao.c_str());
+
+        Emprestimo emprestimo(NIFLeitor, nomeLeitor, categoriaLivro, tituloLivro, dataEmprestimo, dataDevolucao,idLivro,categoriaLeitor);
+        emprestimosPorCategoria[categoriaLivro].push_back(emprestimo); 
+        Pessoa* p = ProcurarUtilizador(NIFLeitor);
+        p->adicionarEmprestimoPelaLeitura(emprestimo);
+    }
+
+    file.close();
+    return true;
+}
+
+
+
+bool Biblioteca::LerReservas() {
+    ifstream file("./data/Reservas.txt");
+    if (!file.is_open()) {
+        cerr << "Erro ao abrir o arquivo: Reservas.txt" << endl;
+        system("pause");
+        return false;
+    }
+
+    string linha;
+    while (getline(file, linha)) {
+        stringstream ss(linha);
+        string NIFLeitor, nomeLeitor, categoriaLivro, tituloLivro,idLivro,categoriaLeitor,strEmprestimo,strDevolucao;
+        time_t dataEmprestimo, dataDevolucao;
+
+        getline(ss, NIFLeitor, ';');
+        ajustarCaracteresBib(NIFLeitor);
+
+        getline(ss, nomeLeitor, ';');
+        ajustarCaracteresBib(nomeLeitor);
+        
+        getline(ss, categoriaLivro, ';');
+        ajustarCaracteresBib(categoriaLivro);
+
+        getline(ss, categoriaLeitor, ';');
+        ajustarCaracteresBib(categoriaLeitor);
+        
+        getline(ss, tituloLivro, ';');
+        ajustarCaracteresBib(tituloLivro);
+
+        getline(ss, idLivro, ';');
+        ajustarCaracteresBib(idLivro);
+
+        getline(ss, strEmprestimo, ';');
+        ajustarCaracteresBib(strEmprestimo);
+
+        getline(ss, strDevolucao, ';');
+        ajustarCaracteresBib(strDevolucao);     
+
+        dataEmprestimo = atol(strEmprestimo.c_str());
+        dataDevolucao = atol(strDevolucao.c_str());
+
+        Emprestimo Reservas(NIFLeitor, nomeLeitor, categoriaLivro, tituloLivro, dataEmprestimo, dataDevolucao,idLivro,categoriaLeitor);
+        reservasPorCategoria[categoriaLivro].push_back(Reservas); 
+        Pessoa* p = ProcurarUtilizador(NIFLeitor);
+        p->adicionarReservaPelaLeitura(Reservas);
+    }
+
+    file.close();
+    return true;
+}
