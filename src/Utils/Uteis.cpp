@@ -25,7 +25,7 @@ Uteis::Uteis()
 
 Uteis::~Uteis()
 {
-    //dtor
+    cout << "Objeto Uteis destruído com sucesso.\n";
 }
 
 retorno RetornarType_String(){
@@ -135,8 +135,10 @@ void Uteis::LivroInfo(int opcao,string categoria,Biblioteca& biblioteca)
 
             cout << "\t Digite o ISBN: ";
             getline(cin, isbn);
+            while(nivelEscolaridade<1|| nivelEscolaridade>3){
             cout << "\t Digite o nivel de escolaridade (1-Fundamental, 2-Medio, 3-Superior): ";
             cin >> nivelEscolaridade;
+            }
 
             livro = new LivroEducativo(categoria,titulo, autor, ano, disponivel,isbn, nivelEscolaridade,materia);
             biblioteca.adicionarLivro(categoria, livro);
@@ -377,7 +379,7 @@ void Uteis::DevolverLivro(Biblioteca& bib){
             time_t dataAtual = time(nullptr);
             if(emprestimo.getDataDevolucaoEmprestimo() < dataAtual){
                 pessoa->incrementarMulta();
-                cout<<"O prazo de devolução já expirou, foi acrescentado uma multa de"<<5*(1 - pessoa->getDescontoMulta())<<"EUR.\n";
+                pessoa->EnviarNotificacoesdeAtraso();
                 system("pause");
             }
             cout << "Livro devolvido com sucesso.\n";
@@ -651,7 +653,6 @@ bool Uteis::gravarLimitesPorCategoria(){
 };
 
 
-// Desconto
 
 
 void Uteis::addDesconto(string categoria, double desconto) {
@@ -739,3 +740,14 @@ bool Uteis::gravarDesconto(){
     return true;
 };
 
+void Uteis::alterarLivroInfo(Biblioteca& bib){
+    string id_Livro;
+
+    retorno escolha =  RetornarType_String();
+    if(!bib.listarLivrosComPaginacao(true,escolha.categoria))return;
+    cout << "\t Digite o ISBN/ISSN do Livro que deseja : ";
+    cin>> id_Livro;
+    Geral* livro = bib.ProcurarLivro(id_Livro);
+    if(!livro)return;
+    livro->AlterarInformacaoDoLivro();
+}

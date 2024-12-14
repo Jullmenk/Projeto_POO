@@ -7,7 +7,7 @@ Revista::Revista(string categoria,string titulo, string autor, int ano, bool dis
 
 Revista::~Revista()
 {
-    //dtor
+           cout << categoria << " destruído com sucesso.\n";
 }
 
 void Revista::descricao() const {
@@ -25,4 +25,11 @@ bool Revista::escreverFicheiro(ofstream& file) {
     << Tema << " ; "
     << issn << "\n";
     return true;
+}
+
+void Revista::AlterarInformacaoDoLivro(){
+    cout << "\nNas Revistas Só é possivel alterar o Tema";
+    cout << "\n Digite o novo Tema do Jornal : ";
+    cin.ignore(); 
+    getline(cin, Tema);
 }

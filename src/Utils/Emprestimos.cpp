@@ -6,13 +6,13 @@ Emprestimo::Emprestimo(string NIFLeitor, string nomeLeitor, string categoriaLivr
             tituloLivro(tituloLivro), dataEmprestimo(dataEmprestimo), dataDevolucao(dataDevolucao), idLivro(idLivro),categoriaLeitor(categoriaLeitor) {}
 
 Emprestimo::~Emprestimo(){
-
+    cout << "Emprestimo destruido com sucesso\n";
 }; 
 
 void Emprestimo::Descricao() const {
-    // Removendo a nova linha gerada por ctime() ao imprimir a data
     char* dataEmprestimoStr = ctime(&dataEmprestimo);
     dataEmprestimoStr[strlen(dataEmprestimoStr) - 1] = '\0';
+    
     double diferencaSegundos = difftime(dataDevolucao, dataEmprestimo);
     double diferencaDias = diferencaSegundos / (60 * 60 * 24);  // Convertendo segundos para dias
     cout << "NIF: " << NIFLeitor

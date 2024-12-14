@@ -7,9 +7,6 @@ using namespace std;
 
 
 int main() {
-    // Checkpoint 13 e Ediçao info Livro.
-    // nao coloca a multa,provavel problema da leitura das datas
-
     SetConsoleOutputCP(CP_UTF8); 
     Biblioteca biblioteca;
     Uteis uteis;

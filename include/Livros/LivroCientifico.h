@@ -13,11 +13,12 @@ class LivroCientifico : public Geral
     string edicao; // Número da edição do livro.
 
     public:
-        LivroCientifico(string categoria,string titulo, string autor, int ano, bool disponivel,string isbn,const string& area, string edicao);
+        LivroCientifico(string categoria,string titulo, string autor, int ano, bool disponivel,string isbn,string area, string edicao);
         virtual ~LivroCientifico();
         void descricao() const override;
         string getCodigo() const override;
         bool escreverFicheiro(ofstream& file) override;
+        void AlterarInformacaoDoLivro() override;
 };
 
 #endif // LIVROCIENTIFICO_H

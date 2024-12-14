@@ -5,7 +5,7 @@ LeitorComum::LeitorComum(string nome, string NIF, int NumeroDeEmprestimosTotal, 
 
 LeitorComum::~LeitorComum()
 {
-    //dtor
+       cout << categoria << " destruído com sucesso.\n";
 }
 
 void LeitorComum::descricao() const {
@@ -15,7 +15,7 @@ void LeitorComum::descricao() const {
 }
 
 int LeitorComum::getPrazoDevolucao(string categoriaLivro) const {
-    return 2; 
+    return 1; 
 }
 
 bool LeitorComum::PodeReservar() const{

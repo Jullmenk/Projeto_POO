@@ -8,7 +8,7 @@ LivroEducativo::LivroEducativo(string categoria,string titulo, string autor, int
 
 LivroEducativo::~LivroEducativo()
 {
-    //dtor
+           cout << categoria << "destruído com sucesso.\n";
 }
 
 void LivroEducativo::descricao() const {
@@ -34,4 +34,35 @@ bool LivroEducativo::escreverFicheiro(ofstream& file) {
     << isbn << " ; "
     << Materia << " \n";
     return true;
+}
+
+
+void LivroEducativo::AlterarInformacaoDoLivro(){
+    int type=0;
+    int nivelEscolaridade=0;
+
+    while(type<1 || type>2){
+    system("cls");
+    cout << "\nNos Livros Educativos Só é possivel alterar o Nível de Escolaridade e a Matéria\n";
+    cout << "\t1. Nível de Escolaridade" << endl;
+    cout << "\t2. Matéria" << endl;
+    cout << "Selecione o Número do que deseja alterar : ";
+    cin>> type;
+    }
+
+    switch (type)
+    {
+    case 1:
+        while(nivelEscolaridade<1 || nivelEscolaridade>3){
+        cout << "\n Digite o novo  Nível de Escolariadade (1-Fundamental, 2-Medio, 3-Superior) : ";
+        cin >> nivelEscolaridade;
+        }
+        Nivel_Educacional = nivelEscolaridade;
+        break;
+    case 2:
+        cout << "\n Digite a nova Matéria : ";
+        cin.ignore(); 
+        getline(cin, Materia);
+        break;
+    }
 }

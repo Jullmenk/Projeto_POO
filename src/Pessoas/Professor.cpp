@@ -5,7 +5,7 @@ Professor::Professor(string nome, string NIF, int NumeroDeEmprestimosTotal, int 
 
 Professor::~Professor()
 {
-    //dtor
+       cout << categoria << " destruído com sucesso.\n";
 }
 
 void Professor::descricao() const{
@@ -18,7 +18,7 @@ int Professor::getPrazoDevolucao(string categoriaLivro) const {
     if (categoriaLivro == "Cientifico") {
         return 7; 
     }
-    return 2; 
+    return 1; 
 }
 
 

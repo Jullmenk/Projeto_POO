@@ -7,7 +7,7 @@ Jornal::Jornal(string categoria,string titulo, string autor, int ano, bool dispo
 
 Jornal::~Jornal()
 {
-    //dtor
+           cout << categoria << "destruído com sucesso.\n";
 }
 
 void Jornal::descricao() const {
@@ -28,15 +28,9 @@ bool Jornal::escreverFicheiro(ofstream& file) {
     return true;
 }
 
-void AlterarInformacaoDoLivro(){
-    int type;
-    cout << "\nNos Jornais So é possivel alterar a Secção";
-    // cout << "O que deseja alterar ?";
-    // cout << "\t1. Seccao" << endl;
-    // cin>> type;
-
-    cout << "\n Digite a nova secção do Jornal";
+void Jornal::AlterarInformacaoDoLivro(){
+    cout << "\nNos Jornais Só é possivel alterar a Secção";
+    cout << "\n Digite a nova secção do Jornal :";
     cin.ignore(); 
-    getline(cin, seccao);
-
+    getline(cin, Seccao);
 }

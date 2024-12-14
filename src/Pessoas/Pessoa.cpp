@@ -4,7 +4,11 @@ Pessoa::Pessoa(string nome, string NIF, int NumeroDeEmprestimosTotal, int Numero
     : nome(nome), NIF(NIF),NumeroDeEmprestimosTotal(NumeroDeEmprestimosTotal), NumeroDeEmprestimosAtivos(NumeroDeEmprestimosAtivos),
     totalMultaPorPagar(totalMultaPorPagar), totalMultaPago(totalMultaPago), NumeroDeReservas(NumeroDeReservas),categoria(categoria) {}
 
-Pessoa::~Pessoa() {}
+Pessoa::~Pessoa() {
+        EmprestimosUser.clear();
+        Reservas.clear();
+        cout << "Pessoa destruída.\n";
+}
 
 void Pessoa::descricao() const {
     cout << "Nome: " << nome 
@@ -93,7 +97,11 @@ void Pessoa::listarReservas() const {
 }
 
 void Pessoa::EnviarNotificacoesdeAtraso(){
-    cout << "";
+    if(categoria == "Professor"){
+        cout<<"O prazo de devolução já expirou, Gostaria de Prorrogar o Empréstimo?\n";
+    }else{
+    cout << "O prazo de devolução já expirou, foi acrescentado uma multa de"<<5*(1 - Pessoa::getDescontoMulta())<<"EUR.\n";
+    }
 }
 
 void Pessoa::EnviarNotificacoesdeExlusaoDeReserva(string livro){

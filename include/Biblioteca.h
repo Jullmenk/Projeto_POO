@@ -41,11 +41,10 @@ public:
     void removerLivro(const string& categoria, string codigo);
     bool listarLivrosComPaginacao(bool forSearch,string categoria);
     Geral* ProcurarLivro(string id);
-
+    void alterarInfoLivro();
     //Leitor
     void adicionarLeitor(string categoria,Pessoa* leitor);
     bool listarLeitores(bool forSearch,string categoria);
-    Pessoa* buscarLeitor(string NIF) const;
     Pessoa* ProcurarUtilizador(string id);
 
     //Emprestimo

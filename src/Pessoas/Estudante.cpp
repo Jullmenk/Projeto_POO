@@ -3,7 +3,9 @@
 Estudante::Estudante(string nome, string NIF, int NumeroDeEmprestimosTotal, int NumeroDeEmprestimosAtivos, int totalMultaPorPagar, int totalMultaPago,int NumeroDeReservas,string categoria,int livrosMaximos,double descontoMulta)
     : Pessoa(nome, NIF, NumeroDeEmprestimosTotal, NumeroDeEmprestimosAtivos, totalMultaPorPagar, totalMultaPago, NumeroDeReservas,categoria),livrosMaximos(livrosMaximos),descontoMulta(descontoMulta) {} // 5 livros máximos, 20% de desconto
 
-Estudante::~Estudante() {}
+Estudante::~Estudante() {
+       cout << categoria << " destruído com sucesso.\n";
+}
 
 void Estudante::descricao() const {
     Pessoa::descricao();
@@ -13,9 +15,9 @@ void Estudante::descricao() const {
 
 int Estudante::getPrazoDevolucao(string categoriaLivro) const {
     if (categoriaLivro == "Educativo") {
-        return 4; // 4 dias para livros educativos
+        return 2; // 4 dias para livros educativos
     }
-    return 2; // Prazo padrão para outros tipos de livros
+    return 1; // Prazo padrão para outros tipos de livros
 }
 
 

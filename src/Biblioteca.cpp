@@ -8,11 +8,37 @@ using namespace std;
 #include "../include/Utils/Uteis.h"
 
 Biblioteca::~Biblioteca() {
+// Liberar livros
     for (auto& categoria : livrosPorCategoria) {
-        for (auto& livro : categoria.second) {
+        for (auto livro : categoria.second) {
             delete livro;
         }
+        categoria.second.clear();
     }
+    livrosPorCategoria.clear();
+
+    // Liberar leitores
+    for (auto& categoriaL : leitores) {
+        for (auto leitor : categoriaL.second) {
+            delete leitor;
+        }
+        categoriaL.second.clear();
+    }
+    leitores.clear();
+
+
+     for (auto& categoriaE : emprestimosPorCategoria) {
+        categoriaE.second.clear(); // limpar a lista de empréstimos
+    }
+    emprestimosPorCategoria.clear();
+
+    // Limpar reservas
+    for (auto& categoriaR : reservasPorCategoria) {
+        categoriaR.second.clear(); // limpar a lista de reservas
+    }
+    reservasPorCategoria.clear();
+
+    cout << "Biblioteca destruída com sucesso.\n";
 }
 
 map<string, list<Geral*>>& Biblioteca::getLivrosPorCategoria() {
@@ -295,21 +321,6 @@ void Biblioteca::registrarReserva(Pessoa* leitor, Geral* livro) {
         cout << "Erro: Dados insuficientes para registrar o empréstimo.\n";
     }
 }
-
-        
-   // Listar todos os empréstimos de uma categoria
-    // void listarEmprestimosPorCategoria(const string& categoria) const {
-    //     auto it = emprestimosPorCategoria.find(categoria);
-    //     if (it != emprestimosPorCategoria.end()) {
-    //         cout << "Empréstimos na categoria: " << categoria << "\n";
-    //         for (const auto& emprestimo : it->second) {
-    //             emprestimo.mostrarDetalhes();
-    //             cout << "----------------------\n";
-    //         }
-    //     } else {
-    //         cout << "Nenhum empréstimo registrado na categoria " << categoria << ".\n";
-    //     }
-    // }
 
 
 void Biblioteca::adicionarLeitor(string categoria, Pessoa* leitor) {
@@ -652,3 +663,7 @@ bool Biblioteca::LerReservas() {
     file.close();
     return true;
 }
+
+void Biblioteca::alterarInfoLivro(){
+    
+};

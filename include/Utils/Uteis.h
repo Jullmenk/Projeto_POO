@@ -23,6 +23,7 @@ class Uteis
         void addLimiteLivros(string categoria, int limite);
         bool LerLimitesPorCategoria();
         bool gravarLimitesPorCategoria();
+        void alterarLivroInfo(Biblioteca& bib);       
         
         void MudarDesconto(Biblioteca& bib);
         void addDesconto(string categoria, double desconto);

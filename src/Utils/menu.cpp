@@ -63,10 +63,9 @@ void MENU_LIVROS(Biblioteca &biblioteca,Uteis uteis) {
         cout << "\t1. Ver Livros" << endl;
         cout << "\t2. Adicionar Livros" << endl;
         cout << "\t3. Emprestar Livro" << endl;
-        cout << "\t4. Remover Livro" << endl;
-        cout << "\t6. Relatorio de Emprestimos por Tipo de Livro" << endl;
-        cout << "\t7. Relatorio Multas Pendentes" << endl;
-        cout << "\t8. Voltar" << endl;
+        cout << "\t4. Relatorio de Emprestimos por Tipo de Livro" << endl;
+        cout << "\t5. Relatorio Multas Pendentes" << endl;
+        cout << "\t6. Voltar" << endl;
         cout << "\n\tEscolha uma opção: ";
 
         cin >> num;
@@ -85,13 +84,13 @@ void MENU_LIVROS(Biblioteca &biblioteca,Uteis uteis) {
             case 3:
                 uteis.EmprestimoFuncaoPrincipal(biblioteca);
                 break;
-            case 6:
+            case 4:
                 uteis.RelatorioTipoDeLivro(biblioteca);
                 break;
-            case 7:
+            case 5:
                 biblioteca.RelatorioMultasPendentes();
                 break;
-            case 8:
+            case 6:
                 MENU_PRINCIPAL(biblioteca,uteis);
                 break;
             case 0:
@@ -120,7 +119,7 @@ void MENU_UTILIZADOR(Biblioteca &biblioteca,Uteis uteis) {
         cout << "\t3. Ver Histórico de Empréstimo do Utilizador" << endl;
         cout << "\t4. Ver Histórico de Reservas do Utilizador" << endl;
         cout << "\t5. Devolver Livro" << endl;
-        cout << "\t7. Voltar" << endl;
+        cout << "\t6. Voltar" << endl;
         cout << "\n\tEscolha uma opção: ";
 
         cin >> num;
@@ -141,7 +140,7 @@ void MENU_UTILIZADOR(Biblioteca &biblioteca,Uteis uteis) {
             case 3: uteis.ConsultarHistoricoUtilizador(biblioteca);break;
             case 4: uteis.ConsultarHistoricoDeReservas(biblioteca);break;
             case 5: uteis.DevolverLivro(biblioteca);break;
-            case 7:MENU_PRINCIPAL(biblioteca,uteis);break;
+            case 6:MENU_PRINCIPAL(biblioteca,uteis);break;
             case 0:cout << "Saindo do programa..." << endl;exit(0);break;
             default:cout << "\n\topção invalida!" << endl;break;
         }
@@ -169,9 +168,12 @@ void MENU_SENIOR(Biblioteca &biblioteca,Uteis uteis) {
             case 1:
                 uteis.MudarLimiteLivros(biblioteca);
                 break;
-            case 2:{
+            case 2:
                 uteis.MudarDesconto(biblioteca);
-                break;}
+                break;
+            case 3:
+                uteis.alterarLivroInfo(biblioteca);
+                break;
             case 4:
                 { 
                 bool emp = biblioteca.GravarEmprestimosPorCategoria();

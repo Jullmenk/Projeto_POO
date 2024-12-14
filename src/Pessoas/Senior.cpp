@@ -5,7 +5,7 @@ Senior::Senior(string nome, string NIF, int NumeroDeEmprestimosTotal, int Numero
 
 Senior::~Senior()
 {
-
+       cout << categoria << " destruído com sucesso.\n";
 }
 
 void Senior::descricao() const {
