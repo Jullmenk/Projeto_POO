@@ -1,0 +1,275 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.12.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Projeto POO SRC: Referência ao ficheiro Projeto_POO/src/Utils/Uteis.cpp</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Projeto POO SRC
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Gerado por Doxygen 1.12.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Localizar',false);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){ initResizable(false); });
+/* @license-end */
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Carregando...</div>
+<div class="SRStatus" id="Searching">Procurando...</div>
+<div class="SRStatus" id="NoMatches">Nenhuma entrada encontrada</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_ee0e4fe380731bff8eb97ac3a5df11b0.html">Projeto_POO</a></li><li class="navelem"><a class="el" href="dir_0d4a999da45fb42fd85b551a703a2e3c.html">src</a></li><li class="navelem"><a class="el" href="dir_63a7eaac15659bc569952674060fe8a6.html">Utils</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div id="doc-content">
+<div class="header">
+  <div class="summary">
+<a href="#func-members">Funções</a>  </div>
+  <div class="headertitle"><div class="title">Referência ao ficheiro Uteis.cpp</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &lt;iostream&gt;</code><br />
+<code>#include &lt;string&gt;</code><br />
+<code>#include &lt;cstdlib&gt;</code><br />
+<code>#include &quot;<a class="el" href="_uteis_8h_source.html">../../include/Utils/Uteis.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="_geral_8h_source.html">../../include/Livros/Geral.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="_biblioteca_8h_source.html">../../include/Biblioteca.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="_livro_ficcao_8h_source.html">../../include/Livros/LivroFiccao.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="_livro_cientifico_8h_source.html">../../include/Livros/LivroCientifico.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="_livro_educativo_8h_source.html">../../include/Livros/LivroEducativo.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="_revista_8h_source.html">../../include/Livros/Revista.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="_jornal_8h_source.html">../../include/Livros/Jornal.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="_estudante_8h_source.html">../../include/Pessoas/Estudante.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="_leitor_comum_8h_source.html">../../include/Pessoas/LeitorComum.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="_professor_8h_source.html">../../include/Pessoas/Professor.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="_senior_8h_source.html">../../include/Pessoas/Senior.h</a>&quot;</code><br />
+</div>
+<p><a href="_uteis_8cpp_source.html">Ir para o código fonte deste ficheiro.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+Funções</h2></td></tr>
+<tr class="memitem:ab084090a292196b923952858d97fd463" id="r_ab084090a292196b923952858d97fd463"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structretorno.html">retorno</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab084090a292196b923952858d97fd463">RetornarType_String</a> ()</td></tr>
+<tr class="separator:ab084090a292196b923952858d97fd463"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a54dbc7259d9060498515946688788fc9" id="r_a54dbc7259d9060498515946688788fc9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structretorno.html">retorno</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a54dbc7259d9060498515946688788fc9">RetornarType_String_User</a> ()</td></tr>
+<tr class="separator:a54dbc7259d9060498515946688788fc9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1aaf64f3175fbca295d7b68ce80665cd" id="r_a1aaf64f3175fbca295d7b68ce80665cd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1aaf64f3175fbca295d7b68ce80665cd">ajustarCaracteres</a> (string &amp;str)</td></tr>
+<tr class="separator:a1aaf64f3175fbca295d7b68ce80665cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">Documentação das funções</h2>
+<a id="a1aaf64f3175fbca295d7b68ce80665cd" name="a1aaf64f3175fbca295d7b68ce80665cd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1aaf64f3175fbca295d7b68ce80665cd">&#9670;&#160;</a></span>ajustarCaracteres()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ajustarCaracteres </td>
+          <td>(</td>
+          <td class="paramtype">string &amp;</td>          <td class="paramname"><span class="paramname"><em>str</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definido na linha <a class="el" href="_uteis_8cpp_source.html#l00396">396</a> do ficheiro <a class="el" href="_uteis_8cpp_source.html">Uteis.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  396</span>                                    {</div>
+<div class="line"><span class="lineno">  397</span>    str.erase(0, str.find_first_not_of(<span class="charliteral">&#39; &#39;</span>)); <span class="comment">// Remover espaços do início</span></div>
+<div class="line"><span class="lineno">  398</span>    str.erase(str.find_last_not_of(<span class="charliteral">&#39; &#39;</span>) + 1); <span class="comment">// Remover espaços do final</span></div>
+<div class="line"><span class="lineno">  399</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="ab084090a292196b923952858d97fd463" name="ab084090a292196b923952858d97fd463"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab084090a292196b923952858d97fd463">&#9670;&#160;</a></span>RetornarType_String()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structretorno.html">retorno</a> RetornarType_String </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definido na linha <a class="el" href="_uteis_8cpp_source.html#l00031">31</a> do ficheiro <a class="el" href="_uteis_8cpp_source.html">Uteis.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   31</span>                             {</div>
+<div class="line"><span class="lineno">   32</span>    <span class="keywordtype">int</span> type=-1;</div>
+<div class="line"><span class="lineno">   33</span>    <span class="keywordtype">string</span> categoria;</div>
+<div class="line"><span class="lineno">   34</span>    <span class="keywordflow">while</span> (type&lt;0||type&gt;5)</div>
+<div class="line"><span class="lineno">   35</span>    {</div>
+<div class="line"><span class="lineno">   36</span>    cout &lt;&lt; <span class="stringliteral">&quot;\t1. Livro de Ficcao&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><span class="lineno">   37</span>    cout &lt;&lt; <span class="stringliteral">&quot;\t2. Livro Cientifico&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><span class="lineno">   38</span>    cout &lt;&lt; <span class="stringliteral">&quot;\t3. Livro Educativo&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><span class="lineno">   39</span>    cout &lt;&lt; <span class="stringliteral">&quot;\t4. Revista&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><span class="lineno">   40</span>    cout &lt;&lt; <span class="stringliteral">&quot;\t5. Jornal&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><span class="lineno">   41</span>    cout &lt;&lt; <span class="stringliteral">&quot;\t0. Sair&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><span class="lineno">   42</span>    cout &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span> &lt;&lt; endl;    </div>
+<div class="line"><span class="lineno">   43</span>    cout &lt;&lt; <span class="stringliteral">&quot;\tSelecione uma categoria de Livro&quot;</span>&lt;&lt; endl;</div>
+<div class="line"><span class="lineno">   44</span>    cout &lt;&lt; <span class="stringliteral">&quot;\n\tEscolha uma opção: &quot;</span>;</div>
+<div class="line"><span class="lineno">   45</span>    </div>
+<div class="line"><span class="lineno">   46</span>    cin&gt;&gt; type;</div>
+<div class="line"><span class="lineno">   47</span>    }</div>
+<div class="line"><span class="lineno">   48</span>    cout &lt;&lt; <span class="stringliteral">&quot;\tLivro Escolhido : &quot;</span>;</div>
+<div class="line"><span class="lineno">   49</span>    <span class="keywordflow">switch</span> (type)</div>
+<div class="line"><span class="lineno">   50</span>        {</div>
+<div class="line"><span class="lineno">   51</span>        <span class="keywordflow">case</span> 1:</div>
+<div class="line"><span class="lineno">   52</span>            cout&lt;&lt;<span class="stringliteral">&quot;Livro de Ficcao&quot;</span>&lt;&lt;endl;</div>
+<div class="line"><span class="lineno">   53</span>            categoria = <span class="stringliteral">&quot;Ficcao&quot;</span>;</div>
+<div class="line"><span class="lineno">   54</span>            <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">   55</span>        <span class="keywordflow">case</span> 2:</div>
+<div class="line"><span class="lineno">   56</span>            cout&lt;&lt;<span class="stringliteral">&quot;Livro Cientifico&quot;</span>&lt;&lt;endl;</div>
+<div class="line"><span class="lineno">   57</span>            categoria = <span class="stringliteral">&quot;Cientifico&quot;</span>;</div>
+<div class="line"><span class="lineno">   58</span>            <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">   59</span>        <span class="keywordflow">case</span> 3:</div>
+<div class="line"><span class="lineno">   60</span>            cout&lt;&lt;<span class="stringliteral">&quot;Livro Educativo&quot;</span>&lt;&lt;endl;</div>
+<div class="line"><span class="lineno">   61</span>            categoria = <span class="stringliteral">&quot;Educativo&quot;</span>;</div>
+<div class="line"><span class="lineno">   62</span>            <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">   63</span>        <span class="keywordflow">case</span> 4:</div>
+<div class="line"><span class="lineno">   64</span>            cout&lt;&lt;<span class="stringliteral">&quot;Revista&quot;</span>&lt;&lt;endl;</div>
+<div class="line"><span class="lineno">   65</span>            categoria = <span class="stringliteral">&quot;Revista&quot;</span>;</div>
+<div class="line"><span class="lineno">   66</span>            <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">   67</span>        <span class="keywordflow">case</span> 5:</div>
+<div class="line"><span class="lineno">   68</span>            cout&lt;&lt;<span class="stringliteral">&quot;Livro Jornal&quot;</span>&lt;&lt;endl;</div>
+<div class="line"><span class="lineno">   69</span>            categoria = <span class="stringliteral">&quot;Jornal&quot;</span>;</div>
+<div class="line"><span class="lineno">   70</span>            <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">   71</span>        }</div>
+<div class="line"><span class="lineno">   72</span>        cout &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
+<div class="line"><span class="lineno">   73</span>        <span class="keywordflow">return</span> {type,categoria};</div>
+<div class="line"><span class="lineno">   74</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a54dbc7259d9060498515946688788fc9" name="a54dbc7259d9060498515946688788fc9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a54dbc7259d9060498515946688788fc9">&#9670;&#160;</a></span>RetornarType_String_User()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structretorno.html">retorno</a> RetornarType_String_User </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definido na linha <a class="el" href="_uteis_8cpp_source.html#l00196">196</a> do ficheiro <a class="el" href="_uteis_8cpp_source.html">Uteis.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  196</span>                                  {</div>
+<div class="line"><span class="lineno">  197</span>    <span class="keywordtype">int</span> type=-1;</div>
+<div class="line"><span class="lineno">  198</span>    <span class="keywordtype">string</span> categoria;</div>
+<div class="line"><span class="lineno">  199</span>    <span class="keywordflow">while</span> (type&lt;0||type&gt;5)</div>
+<div class="line"><span class="lineno">  200</span>    {</div>
+<div class="line"><span class="lineno">  201</span>    cout &lt;&lt; <span class="stringliteral">&quot;\t1. Estudante&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><span class="lineno">  202</span>    cout &lt;&lt; <span class="stringliteral">&quot;\t2. Professor&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><span class="lineno">  203</span>    cout &lt;&lt; <span class="stringliteral">&quot;\t3. Senior&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><span class="lineno">  204</span>    cout &lt;&lt; <span class="stringliteral">&quot;\t4. Leitor Comum&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><span class="lineno">  205</span>    cout &lt;&lt; <span class="stringliteral">&quot;\t0. Sair&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><span class="lineno">  206</span>    cout &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span> &lt;&lt; endl;    </div>
+<div class="line"><span class="lineno">  207</span>    cout &lt;&lt; <span class="stringliteral">&quot;\tSelecione uma categoria do utilizador&quot;</span>&lt;&lt; endl;</div>
+<div class="line"><span class="lineno">  208</span>    cout &lt;&lt; <span class="stringliteral">&quot;\n\tEscolha uma opção: &quot;</span>;</div>
+<div class="line"><span class="lineno">  209</span>    </div>
+<div class="line"><span class="lineno">  210</span>    cin&gt;&gt; type;</div>
+<div class="line"><span class="lineno">  211</span>    }</div>
+<div class="line"><span class="lineno">  212</span>    cout &lt;&lt; <span class="stringliteral">&quot;\tUtilizador Escolhido : &quot;</span>;</div>
+<div class="line"><span class="lineno">  213</span>    <span class="keywordflow">switch</span> (type)</div>
+<div class="line"><span class="lineno">  214</span>        {</div>
+<div class="line"><span class="lineno">  215</span>        <span class="keywordflow">case</span> 1:</div>
+<div class="line"><span class="lineno">  216</span>            cout&lt;&lt;<span class="stringliteral">&quot;Estudante&quot;</span>&lt;&lt;endl;</div>
+<div class="line"><span class="lineno">  217</span>            categoria = <span class="stringliteral">&quot;Estudante&quot;</span>;</div>
+<div class="line"><span class="lineno">  218</span>            <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  219</span>        <span class="keywordflow">case</span> 2:</div>
+<div class="line"><span class="lineno">  220</span>            cout&lt;&lt;<span class="stringliteral">&quot;Professor&quot;</span>&lt;&lt;endl;</div>
+<div class="line"><span class="lineno">  221</span>            categoria = <span class="stringliteral">&quot;Professor&quot;</span>;</div>
+<div class="line"><span class="lineno">  222</span>            <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  223</span>        <span class="keywordflow">case</span> 3:</div>
+<div class="line"><span class="lineno">  224</span>            cout&lt;&lt;<span class="stringliteral">&quot;Senior&quot;</span>&lt;&lt;endl;</div>
+<div class="line"><span class="lineno">  225</span>            categoria = <span class="stringliteral">&quot;Senior&quot;</span>;</div>
+<div class="line"><span class="lineno">  226</span>            <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  227</span>        <span class="keywordflow">case</span> 4:</div>
+<div class="line"><span class="lineno">  228</span>            cout&lt;&lt;<span class="stringliteral">&quot;Leitor Comum&quot;</span>&lt;&lt;endl;</div>
+<div class="line"><span class="lineno">  229</span>            categoria = <span class="stringliteral">&quot;Comum&quot;</span>;</div>
+<div class="line"><span class="lineno">  230</span>            <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  231</span>        }</div>
+<div class="line"><span class="lineno">  232</span>        cout &lt;&lt; <span class="stringliteral">&quot;\n&quot;</span>;</div>
+<div class="line"><span class="lineno">  233</span>        <span class="keywordflow">return</span> {type,categoria};</div>
+<div class="line"><span class="lineno">  234</span>}</div>
+</div><!-- fragment -->
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Gerado por&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0
+</small></address>
+</div><!-- doc-content -->
+</body>
+</html>

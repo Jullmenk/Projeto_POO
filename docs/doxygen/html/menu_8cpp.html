@@ -1,0 +1,398 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.12.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Projeto POO SRC: Referência ao ficheiro Projeto_POO/src/Utils/menu.cpp</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Projeto POO SRC
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Gerado por Doxygen 1.12.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Localizar',false);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){ initResizable(false); });
+/* @license-end */
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Carregando...</div>
+<div class="SRStatus" id="Searching">Procurando...</div>
+<div class="SRStatus" id="NoMatches">Nenhuma entrada encontrada</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_ee0e4fe380731bff8eb97ac3a5df11b0.html">Projeto_POO</a></li><li class="navelem"><a class="el" href="dir_0d4a999da45fb42fd85b551a703a2e3c.html">src</a></li><li class="navelem"><a class="el" href="dir_63a7eaac15659bc569952674060fe8a6.html">Utils</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div id="doc-content">
+<div class="header">
+  <div class="summary">
+<a href="#func-members">Funções</a>  </div>
+  <div class="headertitle"><div class="title">Referência ao ficheiro menu.cpp</div></div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &lt;iostream&gt;</code><br />
+<code>#include &lt;cstdlib&gt;</code><br />
+<code>#include &lt;string&gt;</code><br />
+<code>#include &quot;<a class="el" href="menu_8h_source.html">../../include/Utils/menu.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="_biblioteca_8h_source.html">../../include/Biblioteca.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="_uteis_8h_source.html">../../include/Utils/Uteis.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="_livro_ficcao_8h_source.html">../../include/Livros/LivroFiccao.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="_livro_cientifico_8h_source.html">../../include/Livros/LivroCientifico.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="_livro_educativo_8h_source.html">../../include/Livros/LivroEducativo.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="_estudante_8h_source.html">../../include/Pessoas/Estudante.h</a>&quot;</code><br />
+</div>
+<p><a href="menu_8cpp_source.html">Ir para o código fonte deste ficheiro.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+Funções</h2></td></tr>
+<tr class="memitem:aa7a3094a14deea45bbd5b80cb27a8acf" id="r_aa7a3094a14deea45bbd5b80cb27a8acf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa7a3094a14deea45bbd5b80cb27a8acf">MENU_PRINCIPAL</a> (<a class="el" href="class_biblioteca.html">Biblioteca</a> &amp;biblioteca, <a class="el" href="class_uteis.html">Uteis</a> uteis)</td></tr>
+<tr class="separator:aa7a3094a14deea45bbd5b80cb27a8acf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ace55111bca24c9445c2dd4f6b56a6170" id="r_ace55111bca24c9445c2dd4f6b56a6170"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ace55111bca24c9445c2dd4f6b56a6170">MENU_LIVROS</a> (<a class="el" href="class_biblioteca.html">Biblioteca</a> &amp;biblioteca, <a class="el" href="class_uteis.html">Uteis</a> uteis)</td></tr>
+<tr class="separator:ace55111bca24c9445c2dd4f6b56a6170"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8ca43f1e582a0240cd03d0a3d85c8245" id="r_a8ca43f1e582a0240cd03d0a3d85c8245"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8ca43f1e582a0240cd03d0a3d85c8245">MENU_UTILIZADOR</a> (<a class="el" href="class_biblioteca.html">Biblioteca</a> &amp;biblioteca, <a class="el" href="class_uteis.html">Uteis</a> uteis)</td></tr>
+<tr class="separator:a8ca43f1e582a0240cd03d0a3d85c8245"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a30d35fc071a46053e4a262b26fc7a8dd" id="r_a30d35fc071a46053e4a262b26fc7a8dd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a30d35fc071a46053e4a262b26fc7a8dd">MENU_SENIOR</a> (<a class="el" href="class_biblioteca.html">Biblioteca</a> &amp;biblioteca, <a class="el" href="class_uteis.html">Uteis</a> uteis)</td></tr>
+<tr class="separator:a30d35fc071a46053e4a262b26fc7a8dd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">Documentação das funções</h2>
+<a id="ace55111bca24c9445c2dd4f6b56a6170" name="ace55111bca24c9445c2dd4f6b56a6170"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ace55111bca24c9445c2dd4f6b56a6170">&#9670;&#160;</a></span>MENU_LIVROS()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MENU_LIVROS </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_biblioteca.html">Biblioteca</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>biblioteca</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_uteis.html">Uteis</a></td>          <td class="paramname"><span class="paramname"><em>uteis</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definido na linha <a class="el" href="menu_8cpp_source.html#l00055">55</a> do ficheiro <a class="el" href="menu_8cpp_source.html">menu.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   55</span>                                                     {</div>
+<div class="line"><span class="lineno">   56</span>    <span class="keywordtype">int</span> num;</div>
+<div class="line"><span class="lineno">   57</span>    <span class="keywordflow">do</span> {</div>
+<div class="line"><span class="lineno">   58</span>        system(<span class="stringliteral">&quot;cls&quot;</span>);</div>
+<div class="line"><span class="lineno">   59</span> </div>
+<div class="line"><span class="lineno">   60</span>        cout &lt;&lt; <span class="stringliteral">&quot;\n\t***** Biblioteca - LIVROS *****&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><span class="lineno">   61</span>        cout &lt;&lt; <span class="stringliteral">&quot;\t1. Ver Livros&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><span class="lineno">   62</span>        cout &lt;&lt; <span class="stringliteral">&quot;\t2. Adicionar Livros&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><span class="lineno">   63</span>        cout &lt;&lt; <span class="stringliteral">&quot;\t3. Emprestar Livro&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><span class="lineno">   64</span>        cout &lt;&lt; <span class="stringliteral">&quot;\t4. Relatorio de Emprestimos por Tipo de Livro&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><span class="lineno">   65</span>        cout &lt;&lt; <span class="stringliteral">&quot;\t5. Relatorio Multas Pendentes&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><span class="lineno">   66</span>        cout &lt;&lt; <span class="stringliteral">&quot;\t6. Voltar&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><span class="lineno">   67</span>        cout &lt;&lt; <span class="stringliteral">&quot;\n\tEscolha uma opção: &quot;</span>;</div>
+<div class="line"><span class="lineno">   68</span> </div>
+<div class="line"><span class="lineno">   69</span>        cin &gt;&gt; num;</div>
+<div class="line"><span class="lineno">   70</span> </div>
+<div class="line"><span class="lineno">   71</span>        system(<span class="stringliteral">&quot;cls&quot;</span>);</div>
+<div class="line"><span class="lineno">   72</span> </div>
+<div class="line"><span class="lineno">   73</span>        <span class="keywordflow">switch</span> (num) {</div>
+<div class="line"><span class="lineno">   74</span>            <span class="keywordflow">case</span> 1:{</div>
+<div class="line"><span class="lineno">   75</span>                uteis.<a class="code hl_function" href="class_uteis.html#a86f88ab2aaba32c050156ac455107d39">ListarPorCategoriaLivro</a>(biblioteca,<span class="keyword">false</span>);</div>
+<div class="line"><span class="lineno">   76</span>                system(<span class="stringliteral">&quot;pause&quot;</span>);</div>
+<div class="line"><span class="lineno">   77</span>                <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">   78</span>            }</div>
+<div class="line"><span class="lineno">   79</span>            <span class="keywordflow">case</span> 2:{</div>
+<div class="line"><span class="lineno">   80</span>                 uteis.<a class="code hl_function" href="class_uteis.html#af0fa2a6abca79ff160c1ebd5b79cc02d">CriarLivroUser</a>(biblioteca);</div>
+<div class="line"><span class="lineno">   81</span>                <span class="keywordflow">break</span>;}</div>
+<div class="line"><span class="lineno">   82</span>            <span class="keywordflow">case</span> 3:</div>
+<div class="line"><span class="lineno">   83</span>                uteis.<a class="code hl_function" href="class_uteis.html#a0eaf087b58d0252b96f183caff4a8533">EmprestimoFuncaoPrincipal</a>(biblioteca);</div>
+<div class="line"><span class="lineno">   84</span>                <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">   85</span>            <span class="keywordflow">case</span> 4:</div>
+<div class="line"><span class="lineno">   86</span>                uteis.<a class="code hl_function" href="class_uteis.html#af1a690db5dd197e728145a59dbacc624">RelatorioTipoDeLivro</a>(biblioteca);</div>
+<div class="line"><span class="lineno">   87</span>                <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">   88</span>            <span class="keywordflow">case</span> 5:</div>
+<div class="line"><span class="lineno">   89</span>                biblioteca.<a class="code hl_function" href="class_biblioteca.html#a4690b893e0bc35f8fed0d782753e3ac9">RelatorioMultasPendentes</a>();</div>
+<div class="line"><span class="lineno">   90</span>                <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">   91</span>            <span class="keywordflow">case</span> 6:</div>
+<div class="line"><span class="lineno">   92</span>                <a class="code hl_function" href="#aa7a3094a14deea45bbd5b80cb27a8acf">MENU_PRINCIPAL</a>(biblioteca,uteis);</div>
+<div class="line"><span class="lineno">   93</span>                <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">   94</span>            <span class="keywordflow">case</span> 0:</div>
+<div class="line"><span class="lineno">   95</span>                cout &lt;&lt; <span class="stringliteral">&quot;Saindo do programa...&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><span class="lineno">   96</span>                exit(0);</div>
+<div class="line"><span class="lineno">   97</span>                <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">   98</span> </div>
+<div class="line"><span class="lineno">   99</span>            <span class="keywordflow">default</span>:</div>
+<div class="line"><span class="lineno">  100</span>                cout &lt;&lt; <span class="stringliteral">&quot;\n\topção invalida!&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><span class="lineno">  101</span>                <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  102</span>        }</div>
+<div class="line"><span class="lineno">  103</span>    } <span class="keywordflow">while</span> (num != 0);</div>
+<div class="line"><span class="lineno">  104</span>}</div>
+<div class="ttc" id="aclass_biblioteca_html_a4690b893e0bc35f8fed0d782753e3ac9"><div class="ttname"><a href="class_biblioteca.html#a4690b893e0bc35f8fed0d782753e3ac9">Biblioteca::RelatorioMultasPendentes</a></div><div class="ttdeci">void RelatorioMultasPendentes()</div><div class="ttdef"><b>Definição</b> <a href="_biblioteca_8cpp_source.html#l00401">Biblioteca.cpp:401</a></div></div>
+<div class="ttc" id="aclass_uteis_html_a0eaf087b58d0252b96f183caff4a8533"><div class="ttname"><a href="class_uteis.html#a0eaf087b58d0252b96f183caff4a8533">Uteis::EmprestimoFuncaoPrincipal</a></div><div class="ttdeci">void EmprestimoFuncaoPrincipal(Biblioteca &amp;bib)</div><div class="ttdef"><b>Definição</b> <a href="_uteis_8cpp_source.html#l00283">Uteis.cpp:283</a></div></div>
+<div class="ttc" id="aclass_uteis_html_a86f88ab2aaba32c050156ac455107d39"><div class="ttname"><a href="class_uteis.html#a86f88ab2aaba32c050156ac455107d39">Uteis::ListarPorCategoriaLivro</a></div><div class="ttdeci">void ListarPorCategoriaLivro(Biblioteca &amp;bib, bool search)</div><div class="ttdef"><b>Definição</b> <a href="_uteis_8cpp_source.html#l00185">Uteis.cpp:185</a></div></div>
+<div class="ttc" id="aclass_uteis_html_af0fa2a6abca79ff160c1ebd5b79cc02d"><div class="ttname"><a href="class_uteis.html#af0fa2a6abca79ff160c1ebd5b79cc02d">Uteis::CriarLivroUser</a></div><div class="ttdeci">void CriarLivroUser(Biblioteca &amp;bib)</div><div class="ttdef"><b>Definição</b> <a href="_uteis_8cpp_source.html#l00180">Uteis.cpp:180</a></div></div>
+<div class="ttc" id="aclass_uteis_html_af1a690db5dd197e728145a59dbacc624"><div class="ttname"><a href="class_uteis.html#af1a690db5dd197e728145a59dbacc624">Uteis::RelatorioTipoDeLivro</a></div><div class="ttdeci">void RelatorioTipoDeLivro(Biblioteca &amp;bib)</div><div class="ttdef"><b>Definição</b> <a href="_uteis_8cpp_source.html#l00331">Uteis.cpp:331</a></div></div>
+<div class="ttc" id="amenu_8cpp_html_aa7a3094a14deea45bbd5b80cb27a8acf"><div class="ttname"><a href="#aa7a3094a14deea45bbd5b80cb27a8acf">MENU_PRINCIPAL</a></div><div class="ttdeci">void MENU_PRINCIPAL(Biblioteca &amp;biblioteca, Uteis uteis)</div><div class="ttdef"><b>Definição</b> <a href="menu_8cpp_source.html#l00015">menu.cpp:15</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="aa7a3094a14deea45bbd5b80cb27a8acf" name="aa7a3094a14deea45bbd5b80cb27a8acf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa7a3094a14deea45bbd5b80cb27a8acf">&#9670;&#160;</a></span>MENU_PRINCIPAL()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MENU_PRINCIPAL </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_biblioteca.html">Biblioteca</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>biblioteca</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_uteis.html">Uteis</a></td>          <td class="paramname"><span class="paramname"><em>uteis</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definido na linha <a class="el" href="menu_8cpp_source.html#l00015">15</a> do ficheiro <a class="el" href="menu_8cpp_source.html">menu.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">   15</span>                                                        {</div>
+<div class="line"><span class="lineno">   16</span> </div>
+<div class="line"><span class="lineno">   17</span>    <span class="keywordtype">int</span> num;</div>
+<div class="line"><span class="lineno">   18</span>    <span class="keywordflow">do</span> {</div>
+<div class="line"><span class="lineno">   19</span>        system(<span class="stringliteral">&quot;cls&quot;</span>);</div>
+<div class="line"><span class="lineno">   20</span> </div>
+<div class="line"><span class="lineno">   21</span>        cout &lt;&lt; <span class="stringliteral">&quot;\n\t***** Biblioteca *****&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><span class="lineno">   22</span>        cout &lt;&lt; <span class="stringliteral">&quot;\t1. Livros&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><span class="lineno">   23</span>        cout &lt;&lt; <span class="stringliteral">&quot;\t2. Utilizador&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><span class="lineno">   24</span>        cout &lt;&lt; <span class="stringliteral">&quot;\t3. Senior&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><span class="lineno">   25</span>        cout &lt;&lt; <span class="stringliteral">&quot;\t0. Sair&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><span class="lineno">   26</span>        cout &lt;&lt; <span class="stringliteral">&quot;\n\tEscolha uma opção: &quot;</span>;</div>
+<div class="line"><span class="lineno">   27</span> </div>
+<div class="line"><span class="lineno">   28</span>        cin &gt;&gt; num;</div>
+<div class="line"><span class="lineno">   29</span> </div>
+<div class="line"><span class="lineno">   30</span>        system(<span class="stringliteral">&quot;cls&quot;</span>);</div>
+<div class="line"><span class="lineno">   31</span> </div>
+<div class="line"><span class="lineno">   32</span>        <span class="keywordflow">switch</span> (num) {</div>
+<div class="line"><span class="lineno">   33</span>            <span class="keywordflow">case</span> 1:</div>
+<div class="line"><span class="lineno">   34</span>                <a class="code hl_function" href="#ace55111bca24c9445c2dd4f6b56a6170">MENU_LIVROS</a>(biblioteca,uteis);</div>
+<div class="line"><span class="lineno">   35</span>                <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">   36</span>            <span class="keywordflow">case</span> 2:</div>
+<div class="line"><span class="lineno">   37</span>                <a class="code hl_function" href="#a8ca43f1e582a0240cd03d0a3d85c8245">MENU_UTILIZADOR</a>(biblioteca,uteis);</div>
+<div class="line"><span class="lineno">   38</span>                <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">   39</span>            <span class="keywordflow">case</span> 3: <a class="code hl_function" href="#a30d35fc071a46053e4a262b26fc7a8dd">MENU_SENIOR</a>(biblioteca,uteis);</div>
+<div class="line"><span class="lineno">   40</span>                <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">   41</span>            <span class="keywordflow">case</span> 0:</div>
+<div class="line"><span class="lineno">   42</span>                cout &lt;&lt; <span class="stringliteral">&quot;Saindo do programa...&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><span class="lineno">   43</span>                exit(0);</div>
+<div class="line"><span class="lineno">   44</span>                <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">   45</span> </div>
+<div class="line"><span class="lineno">   46</span>            <span class="keywordflow">default</span>:</div>
+<div class="line"><span class="lineno">   47</span>                cout &lt;&lt; <span class="stringliteral">&quot;\n\topção invalida!&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><span class="lineno">   48</span>                <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">   49</span>        }</div>
+<div class="line"><span class="lineno">   50</span>    } <span class="keywordflow">while</span> (num != 0);</div>
+<div class="line"><span class="lineno">   51</span>}</div>
+<div class="ttc" id="amenu_8cpp_html_a30d35fc071a46053e4a262b26fc7a8dd"><div class="ttname"><a href="#a30d35fc071a46053e4a262b26fc7a8dd">MENU_SENIOR</a></div><div class="ttdeci">void MENU_SENIOR(Biblioteca &amp;biblioteca, Uteis uteis)</div><div class="ttdef"><b>Definição</b> <a href="menu_8cpp_source.html#l00148">menu.cpp:148</a></div></div>
+<div class="ttc" id="amenu_8cpp_html_a8ca43f1e582a0240cd03d0a3d85c8245"><div class="ttname"><a href="#a8ca43f1e582a0240cd03d0a3d85c8245">MENU_UTILIZADOR</a></div><div class="ttdeci">void MENU_UTILIZADOR(Biblioteca &amp;biblioteca, Uteis uteis)</div><div class="ttdef"><b>Definição</b> <a href="menu_8cpp_source.html#l00109">menu.cpp:109</a></div></div>
+<div class="ttc" id="amenu_8cpp_html_ace55111bca24c9445c2dd4f6b56a6170"><div class="ttname"><a href="#ace55111bca24c9445c2dd4f6b56a6170">MENU_LIVROS</a></div><div class="ttdeci">void MENU_LIVROS(Biblioteca &amp;biblioteca, Uteis uteis)</div><div class="ttdef"><b>Definição</b> <a href="menu_8cpp_source.html#l00055">menu.cpp:55</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a30d35fc071a46053e4a262b26fc7a8dd" name="a30d35fc071a46053e4a262b26fc7a8dd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a30d35fc071a46053e4a262b26fc7a8dd">&#9670;&#160;</a></span>MENU_SENIOR()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MENU_SENIOR </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_biblioteca.html">Biblioteca</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>biblioteca</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_uteis.html">Uteis</a></td>          <td class="paramname"><span class="paramname"><em>uteis</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definido na linha <a class="el" href="menu_8cpp_source.html#l00148">148</a> do ficheiro <a class="el" href="menu_8cpp_source.html">menu.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  148</span>                                                     {</div>
+<div class="line"><span class="lineno">  149</span>    <span class="keywordtype">int</span> num;</div>
+<div class="line"><span class="lineno">  150</span>    <span class="keywordflow">do</span> {</div>
+<div class="line"><span class="lineno">  151</span>        system(<span class="stringliteral">&quot;cls&quot;</span>);</div>
+<div class="line"><span class="lineno">  152</span> </div>
+<div class="line"><span class="lineno">  153</span>        cout &lt;&lt; <span class="stringliteral">&quot;\n\t***** Biblioteca - Senior *****&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><span class="lineno">  154</span>        cout &lt;&lt; <span class="stringliteral">&quot;\t1. Editar Livros máximos dos Leitores&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><span class="lineno">  155</span>        cout &lt;&lt; <span class="stringliteral">&quot;\t2. Editar Descontos de multa dos Leitores&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><span class="lineno">  156</span>        cout &lt;&lt; <span class="stringliteral">&quot;\t3. Editar Informacoes de Livro&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><span class="lineno">  157</span>        cout &lt;&lt; <span class="stringliteral">&quot;\t4. Salvar Alteracoes&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><span class="lineno">  158</span>        cout &lt;&lt; <span class="stringliteral">&quot;\t5. Voltar&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><span class="lineno">  159</span>        cout &lt;&lt; <span class="stringliteral">&quot;\n\tEscolha uma opção: &quot;</span>;</div>
+<div class="line"><span class="lineno">  160</span> </div>
+<div class="line"><span class="lineno">  161</span>        cin &gt;&gt; num;</div>
+<div class="line"><span class="lineno">  162</span> </div>
+<div class="line"><span class="lineno">  163</span>        system(<span class="stringliteral">&quot;cls&quot;</span>);</div>
+<div class="line"><span class="lineno">  164</span> </div>
+<div class="line"><span class="lineno">  165</span>        <span class="keywordflow">switch</span> (num) {</div>
+<div class="line"><span class="lineno">  166</span>            <span class="keywordflow">case</span> 1:</div>
+<div class="line"><span class="lineno">  167</span>                uteis.<a class="code hl_function" href="class_uteis.html#a4149976dcca71f8b667fbf5633bcc191">MudarLimiteLivros</a>(biblioteca);</div>
+<div class="line"><span class="lineno">  168</span>                <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  169</span>            <span class="keywordflow">case</span> 2:</div>
+<div class="line"><span class="lineno">  170</span>                uteis.<a class="code hl_function" href="class_uteis.html#a471b73003d3657c9fa4b680b4b00a195">MudarDesconto</a>(biblioteca);</div>
+<div class="line"><span class="lineno">  171</span>                <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  172</span>            <span class="keywordflow">case</span> 3:</div>
+<div class="line"><span class="lineno">  173</span>                uteis.<a class="code hl_function" href="class_uteis.html#a01e7697880dcb657da6db1b6a8fdf9ae">alterarLivroInfo</a>(biblioteca);</div>
+<div class="line"><span class="lineno">  174</span>                <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  175</span>            <span class="keywordflow">case</span> 4:uteis.<a class="code hl_function" href="class_uteis.html#aba244af454c29328f39f76e617206718">GravarGeral</a>(biblioteca);</div>
+<div class="line"><span class="lineno">  176</span>                <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  177</span>            <span class="keywordflow">case</span> 5:<a class="code hl_function" href="#aa7a3094a14deea45bbd5b80cb27a8acf">MENU_PRINCIPAL</a>(biblioteca,uteis);<span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  178</span>            <span class="keywordflow">case</span> 0:cout &lt;&lt; <span class="stringliteral">&quot;Saindo do programa...&quot;</span> &lt;&lt; endl;exit(0);<span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  179</span>            <span class="keywordflow">default</span>:cout &lt;&lt; <span class="stringliteral">&quot;\n\topção invalida!&quot;</span> &lt;&lt; endl;<span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  180</span>        }</div>
+<div class="line"><span class="lineno">  181</span>    } <span class="keywordflow">while</span> (num != 0);</div>
+<div class="line"><span class="lineno">  182</span>}</div>
+<div class="ttc" id="aclass_uteis_html_a01e7697880dcb657da6db1b6a8fdf9ae"><div class="ttname"><a href="class_uteis.html#a01e7697880dcb657da6db1b6a8fdf9ae">Uteis::alterarLivroInfo</a></div><div class="ttdeci">void alterarLivroInfo(Biblioteca &amp;bib)</div><div class="ttdef"><b>Definição</b> <a href="_uteis_8cpp_source.html#l00743">Uteis.cpp:743</a></div></div>
+<div class="ttc" id="aclass_uteis_html_a4149976dcca71f8b667fbf5633bcc191"><div class="ttname"><a href="class_uteis.html#a4149976dcca71f8b667fbf5633bcc191">Uteis::MudarLimiteLivros</a></div><div class="ttdeci">void MudarLimiteLivros(Biblioteca &amp;bib)</div><div class="ttdef"><b>Definição</b> <a href="_uteis_8cpp_source.html#l00581">Uteis.cpp:581</a></div></div>
+<div class="ttc" id="aclass_uteis_html_a471b73003d3657c9fa4b680b4b00a195"><div class="ttname"><a href="class_uteis.html#a471b73003d3657c9fa4b680b4b00a195">Uteis::MudarDesconto</a></div><div class="ttdeci">void MudarDesconto(Biblioteca &amp;bib)</div><div class="ttdef"><b>Definição</b> <a href="_uteis_8cpp_source.html#l00670">Uteis.cpp:670</a></div></div>
+<div class="ttc" id="aclass_uteis_html_aba244af454c29328f39f76e617206718"><div class="ttname"><a href="class_uteis.html#aba244af454c29328f39f76e617206718">Uteis::GravarGeral</a></div><div class="ttdeci">void GravarGeral(Biblioteca &amp;bib)</div><div class="ttdef"><b>Definição</b> <a href="_uteis_8cpp_source.html#l00755">Uteis.cpp:755</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+<a id="a8ca43f1e582a0240cd03d0a3d85c8245" name="a8ca43f1e582a0240cd03d0a3d85c8245"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8ca43f1e582a0240cd03d0a3d85c8245">&#9670;&#160;</a></span>MENU_UTILIZADOR()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MENU_UTILIZADOR </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_biblioteca.html">Biblioteca</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>biblioteca</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_uteis.html">Uteis</a></td>          <td class="paramname"><span class="paramname"><em>uteis</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definido na linha <a class="el" href="menu_8cpp_source.html#l00109">109</a> do ficheiro <a class="el" href="menu_8cpp_source.html">menu.cpp</a>.</p>
+<div class="fragment"><div class="line"><span class="lineno">  109</span>                                                         {</div>
+<div class="line"><span class="lineno">  110</span>    <span class="keywordtype">int</span> num;</div>
+<div class="line"><span class="lineno">  111</span>    <span class="keywordflow">do</span> {</div>
+<div class="line"><span class="lineno">  112</span>        system(<span class="stringliteral">&quot;cls&quot;</span>);</div>
+<div class="line"><span class="lineno">  113</span> </div>
+<div class="line"><span class="lineno">  114</span>        cout &lt;&lt; <span class="stringliteral">&quot;\n\t***** Biblioteca - Utilizador *****&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><span class="lineno">  115</span>        cout &lt;&lt; <span class="stringliteral">&quot;\t1. Ver Utilizadores&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><span class="lineno">  116</span>        cout &lt;&lt; <span class="stringliteral">&quot;\t2. Adicionar Utilizador&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><span class="lineno">  117</span>        cout &lt;&lt; <span class="stringliteral">&quot;\t3. Ver Histórico de Empréstimo do Utilizador&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><span class="lineno">  118</span>        cout &lt;&lt; <span class="stringliteral">&quot;\t4. Ver Histórico de Reservas do Utilizador&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><span class="lineno">  119</span>        cout &lt;&lt; <span class="stringliteral">&quot;\t5. Devolver Livro&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><span class="lineno">  120</span>        cout &lt;&lt; <span class="stringliteral">&quot;\t6. Voltar&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><span class="lineno">  121</span>        cout &lt;&lt; <span class="stringliteral">&quot;\n\tEscolha uma opção: &quot;</span>;</div>
+<div class="line"><span class="lineno">  122</span> </div>
+<div class="line"><span class="lineno">  123</span>        cin &gt;&gt; num;</div>
+<div class="line"><span class="lineno">  124</span> </div>
+<div class="line"><span class="lineno">  125</span>        system(<span class="stringliteral">&quot;cls&quot;</span>);</div>
+<div class="line"><span class="lineno">  126</span> </div>
+<div class="line"><span class="lineno">  127</span>        <span class="keywordflow">switch</span> (num) {</div>
+<div class="line"><span class="lineno">  128</span>            <span class="keywordflow">case</span> 1:{</div>
+<div class="line"><span class="lineno">  129</span>                uteis.<a class="code hl_function" href="class_uteis.html#a7af79838665c08cc49edc8c074513a4b">ListarPorCategoriaUtilizador</a>(biblioteca,<span class="keyword">false</span>);</div>
+<div class="line"><span class="lineno">  130</span>                system(<span class="stringliteral">&quot;pause&quot;</span>);</div>
+<div class="line"><span class="lineno">  131</span>                <span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  132</span>            }</div>
+<div class="line"><span class="lineno">  133</span>            <span class="keywordflow">case</span> 2:{</div>
+<div class="line"><span class="lineno">  134</span>                uteis.<a class="code hl_function" href="class_uteis.html#a2c242b0f1e570eabc36d85f667699db6">CriarUser</a>(biblioteca);</div>
+<div class="line"><span class="lineno">  135</span>                system(<span class="stringliteral">&quot;pause&quot;</span>);</div>
+<div class="line"><span class="lineno">  136</span>                <span class="keywordflow">break</span>;}</div>
+<div class="line"><span class="lineno">  137</span> </div>
+<div class="line"><span class="lineno">  138</span>            <span class="keywordflow">case</span> 3: uteis.<a class="code hl_function" href="class_uteis.html#a5c67b74a8500be9985f2898bdfe7f05f">ConsultarHistoricoUtilizador</a>(biblioteca);<span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  139</span>            <span class="keywordflow">case</span> 4: uteis.<a class="code hl_function" href="class_uteis.html#a2b02490133fe1ee09539f1dc93395636">ConsultarHistoricoDeReservas</a>(biblioteca);<span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  140</span>            <span class="keywordflow">case</span> 5: uteis.<a class="code hl_function" href="class_uteis.html#aeeade7547cbba168c2ea044788f4823a">DevolverLivro</a>(biblioteca);<span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  141</span>            <span class="keywordflow">case</span> 6:<a class="code hl_function" href="#aa7a3094a14deea45bbd5b80cb27a8acf">MENU_PRINCIPAL</a>(biblioteca,uteis);<span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  142</span>            <span class="keywordflow">case</span> 0:cout &lt;&lt; <span class="stringliteral">&quot;Saindo do programa...&quot;</span> &lt;&lt; endl;exit(0);<span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  143</span>            <span class="keywordflow">default</span>:cout &lt;&lt; <span class="stringliteral">&quot;\n\topção invalida!&quot;</span> &lt;&lt; endl;<span class="keywordflow">break</span>;</div>
+<div class="line"><span class="lineno">  144</span>        }</div>
+<div class="line"><span class="lineno">  145</span>    } <span class="keywordflow">while</span> (num != 0);</div>
+<div class="line"><span class="lineno">  146</span>}</div>
+<div class="ttc" id="aclass_uteis_html_a2b02490133fe1ee09539f1dc93395636"><div class="ttname"><a href="class_uteis.html#a2b02490133fe1ee09539f1dc93395636">Uteis::ConsultarHistoricoDeReservas</a></div><div class="ttdeci">void ConsultarHistoricoDeReservas(Biblioteca &amp;bib)</div><div class="ttdef"><b>Definição</b> <a href="_uteis_8cpp_source.html#l00317">Uteis.cpp:317</a></div></div>
+<div class="ttc" id="aclass_uteis_html_a2c242b0f1e570eabc36d85f667699db6"><div class="ttname"><a href="class_uteis.html#a2c242b0f1e570eabc36d85f667699db6">Uteis::CriarUser</a></div><div class="ttdeci">void CriarUser(Biblioteca &amp;bib)</div><div class="ttdef"><b>Definição</b> <a href="_uteis_8cpp_source.html#l00278">Uteis.cpp:278</a></div></div>
+<div class="ttc" id="aclass_uteis_html_a5c67b74a8500be9985f2898bdfe7f05f"><div class="ttname"><a href="class_uteis.html#a5c67b74a8500be9985f2898bdfe7f05f">Uteis::ConsultarHistoricoUtilizador</a></div><div class="ttdeci">void ConsultarHistoricoUtilizador(Biblioteca &amp;bib)</div><div class="ttdef"><b>Definição</b> <a href="_uteis_8cpp_source.html#l00303">Uteis.cpp:303</a></div></div>
+<div class="ttc" id="aclass_uteis_html_a7af79838665c08cc49edc8c074513a4b"><div class="ttname"><a href="class_uteis.html#a7af79838665c08cc49edc8c074513a4b">Uteis::ListarPorCategoriaUtilizador</a></div><div class="ttdeci">void ListarPorCategoriaUtilizador(Biblioteca &amp;bib, bool search)</div><div class="ttdef"><b>Definição</b> <a href="_uteis_8cpp_source.html#l00190">Uteis.cpp:190</a></div></div>
+<div class="ttc" id="aclass_uteis_html_aeeade7547cbba168c2ea044788f4823a"><div class="ttname"><a href="class_uteis.html#aeeade7547cbba168c2ea044788f4823a">Uteis::DevolverLivro</a></div><div class="ttdeci">void DevolverLivro(Biblioteca &amp;bib)</div><div class="ttdef"><b>Definição</b> <a href="_uteis_8cpp_source.html#l00338">Uteis.cpp:338</a></div></div>
+</div><!-- fragment -->
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Gerado por&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0
+</small></address>
+</div><!-- doc-content -->
+</body>
+</html>

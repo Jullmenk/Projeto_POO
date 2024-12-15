@@ -1,0 +1,218 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.12.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Projeto POO SRC: Código-Fonte de Projeto_POO/include/Pessoas/Pessoa.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectalign">
+   <div id="projectname">Projeto POO SRC
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Gerado por Doxygen 1.12.0 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+/* @license-end */
+</script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() { codefold.init(0); });
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function() {
+  initMenu('',true,false,'search.php','Localizar',false);
+  $(function() { init_search(); });
+});
+/* @license-end */
+</script>
+<div id="main-nav"></div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
+$(function(){ initResizable(false); });
+/* @license-end */
+</script>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Carregando...</div>
+<div class="SRStatus" id="Searching">Procurando...</div>
+<div class="SRStatus" id="NoMatches">Nenhuma entrada encontrada</div>
+</div>
+</div>
+</div>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_ee0e4fe380731bff8eb97ac3a5df11b0.html">Projeto_POO</a></li><li class="navelem"><a class="el" href="dir_0306fe41ac5ae07a176e4bbaf30acbc2.html">include</a></li><li class="navelem"><a class="el" href="dir_b203e552a047d0d9a05ce4aee8e4b7d8.html">Pessoas</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div id="doc-content">
+<div class="header">
+  <div class="headertitle"><div class="title">Pessoa.h</div></div>
+</div><!--header-->
+<div class="contents">
+<a href="_pessoa_8h.html">Ir para a documentação deste ficheiro.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#ifndef PESSOA_H</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#define PESSOA_H</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="keyword">using namespace </span>std;</div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &quot;<a class="code" href="_emprestimos_8h.html">../Utils/Emprestimos.h</a>&quot;</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &lt;fstream&gt;</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
+<div class="foldopen" id="foldopen00012" data-start="{" data-end="};">
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno"><a class="line" href="class_pessoa.html">   12</a></span><span class="keyword">class </span><a class="code hl_class" href="class_pessoa.html">Pessoa</a></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>{</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>    <span class="keyword">protected</span>:</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno"><a class="line" href="class_pessoa.html#ad4e88b8f3499405a7a03df648857c338">   15</a></span>    <span class="keywordtype">string</span> <a class="code hl_variable" href="class_pessoa.html#ad4e88b8f3499405a7a03df648857c338">nome</a>;</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno"><a class="line" href="class_pessoa.html#a3cbd1ffaf1a4d64c1158a5adf0039a6e">   16</a></span>    <span class="keywordtype">string</span> <a class="code hl_variable" href="class_pessoa.html#a3cbd1ffaf1a4d64c1158a5adf0039a6e">NIF</a>;</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno"><a class="line" href="class_pessoa.html#a7ff2ef76e5996adcf06f78497e7952cf">   17</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="class_pessoa.html#a7ff2ef76e5996adcf06f78497e7952cf">totalMultaPorPagar</a>;</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno"><a class="line" href="class_pessoa.html#a92327a1bf830c1443ba5fef668c7a475">   18</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="class_pessoa.html#a92327a1bf830c1443ba5fef668c7a475">totalMultaPago</a>;</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno"><a class="line" href="class_pessoa.html#ad225d6d216d5d1777d5f39bb1354c769">   19</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="class_pessoa.html#ad225d6d216d5d1777d5f39bb1354c769">NumeroDeEmprestimosTotal</a>;</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno"><a class="line" href="class_pessoa.html#a93d4067eb3c44acf22bb1a52bfe4039f">   20</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="class_pessoa.html#a93d4067eb3c44acf22bb1a52bfe4039f">NumeroDeEmprestimosAtivos</a>;</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno"><a class="line" href="class_pessoa.html#a541bce2406d8af9447c223fbddac72b6">   21</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="class_pessoa.html#a541bce2406d8af9447c223fbddac72b6">NumeroDeReservas</a>;</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno"><a class="line" href="class_pessoa.html#a7c39cb0039d1ed9cdc10cc409a3393a2">   22</a></span>    <span class="keywordtype">string</span> <a class="code hl_variable" href="class_pessoa.html#a7c39cb0039d1ed9cdc10cc409a3393a2">categoria</a>;</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="class_pessoa.html#a4d61084073db6d1e100546d7411df481">   24</a></span>    vector&lt;Emprestimo&gt; <a class="code hl_variable" href="class_pessoa.html#a4d61084073db6d1e100546d7411df481">EmprestimosUser</a>;</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="class_pessoa.html#a90d79171fa18b5e6f7ff872b322649a2">   25</a></span>    vector&lt;Emprestimo&gt; <a class="code hl_variable" href="class_pessoa.html#a90d79171fa18b5e6f7ff872b322649a2">Reservas</a>;</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    </div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>        <span class="comment">// Construtor e destruidor</span></div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>        <a class="code hl_function" href="class_pessoa.html#a94ec89ec18555f838705e3b6ca87f4c0">Pessoa</a>(<span class="keywordtype">string</span> <a class="code hl_variable" href="class_pessoa.html#ad4e88b8f3499405a7a03df648857c338">nome</a>, <span class="keywordtype">string</span> <a class="code hl_variable" href="class_pessoa.html#a3cbd1ffaf1a4d64c1158a5adf0039a6e">NIF</a>, <span class="keywordtype">int</span> <a class="code hl_variable" href="class_pessoa.html#ad225d6d216d5d1777d5f39bb1354c769">NumeroDeEmprestimosTotal</a>, <span class="keywordtype">int</span> <a class="code hl_variable" href="class_pessoa.html#a93d4067eb3c44acf22bb1a52bfe4039f">NumeroDeEmprestimosAtivos</a>, <span class="keywordtype">int</span> <a class="code hl_variable" href="class_pessoa.html#a7ff2ef76e5996adcf06f78497e7952cf">totalMultaPorPagar</a>, <span class="keywordtype">int</span> <a class="code hl_variable" href="class_pessoa.html#a92327a1bf830c1443ba5fef668c7a475">totalMultaPago</a>,<span class="keywordtype">int</span> <a class="code hl_variable" href="class_pessoa.html#a541bce2406d8af9447c223fbddac72b6">NumeroDeReservas</a>,<span class="keywordtype">string</span> <a class="code hl_variable" href="class_pessoa.html#a7c39cb0039d1ed9cdc10cc409a3393a2">categoria</a>);</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>        <span class="keyword">virtual</span> <a class="code hl_function" href="class_pessoa.html#a1501b01d184497075fe5ce042da3ae44">~Pessoa</a>();</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>        <span class="comment">// Método virtual para descrição</span></div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>        <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code hl_function" href="class_pessoa.html#ac51c20f612fe763eac3938e37b6823d7">descricao</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>        <span class="keyword">virtual</span> <span class="keywordtype">bool</span> <a class="code hl_function" href="class_pessoa.html#aaa29de437d537a6bb661dbbf26c38023">escreverFicheiro</a>(ofstream&amp; file); </div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>        <span class="comment">// Métodos de acesso (getters)</span></div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>        <span class="keywordtype">string</span> <a class="code hl_function" href="class_pessoa.html#a8d551db3b19e1f07022adb3793cb8ed7">getNome</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>        <span class="keywordtype">string</span> <a class="code hl_function" href="class_pessoa.html#a4f18fa80707eb641ab07b92eabeac725">getNIF</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>        <span class="keywordtype">string</span> <a class="code hl_function" href="class_pessoa.html#ad78b2e510b221babc66bb92364443c6a">getCategoria</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>        <span class="keywordtype">int</span> <a class="code hl_function" href="class_pessoa.html#aecbe93b4f5ec73d6d6f7fd99574abdee">getNumeroDeEmprestimosTotais</a>();</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>        <span class="comment">// Métodos utilitários</span></div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="class_pessoa.html#a56290ea084876825e3dcea2da8abd586">decrementarEmprestimosAtivos</a>();</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="class_pessoa.html#a702983d2b9f5543d11ee0f3dea527433">removerReserva</a>(<a class="code hl_class" href="class_emprestimo.html">Emprestimo</a>&amp; emprestimo);</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="class_pessoa.html#a125f3bc79f3262d5c127a19976c802ae">adicionarReserva</a>(<a class="code hl_class" href="class_emprestimo.html">Emprestimo</a>&amp; emprestimo);</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="class_pessoa.html#a056864bad3f325d7ca18052ca564f6a2">adicionarReservaPelaLeitura</a>(<a class="code hl_class" href="class_emprestimo.html">Emprestimo</a>&amp; emprestimo);</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="class_pessoa.html#af0bad20809b6545187ad010cb1ef7cac">adicionarEmprestimoPelaLeitura</a>(<a class="code hl_class" href="class_emprestimo.html">Emprestimo</a>&amp; emprestimo);</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="class_pessoa.html#ac6620cad0f9e47e5ac989ee4ed64f959">listarEmprestimos</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="class_pessoa.html#a086dabd5d80445c4b814c797c4bf6e65">listarReservas</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="class_pessoa.html#afed7dd0311fb39bf2f6aed86492a1157">incrementarMulta</a>();</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>        <span class="comment">//Notificacoes</span></div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno"><a class="line" href="class_pessoa.html#ac38a84865b1b6802c69eab17c2e364eb">   55</a></span>        <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code hl_function" href="class_pessoa.html#ac38a84865b1b6802c69eab17c2e364eb">EnviarNotificacoesdeAtraso</a>() = 0;</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="class_pessoa.html#a0fb2979cb05960baebef7d1917e874e2">EnviarNotificacoesdeExlusaoDeReserva</a>(<span class="keywordtype">string</span> livro);</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>        <span class="keywordtype">void</span> <a class="code hl_function" href="class_pessoa.html#a4cae08b69bdc4045482a42fbeb99d813">EnviarNotificacoesdeAquisicaoDaReserva</a>(<span class="keywordtype">string</span> livro);</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>        <span class="comment">// Método puramente virtual = 0 , só é acedida pelsa subclasses</span></div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno"><a class="line" href="class_pessoa.html#aa4bbc59c50d24acc69b1e9d1f487cae3">   60</a></span>        <span class="keyword">virtual</span> <span class="keywordtype">int</span> <a class="code hl_function" href="class_pessoa.html#aa4bbc59c50d24acc69b1e9d1f487cae3">getPrazoDevolucao</a>(<span class="keywordtype">string</span> categoriaLivro) <span class="keyword">const</span> = 0;</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno"><a class="line" href="class_pessoa.html#a711e3db614405b2e963bb8f970506680">   61</a></span>        <span class="keyword">virtual</span> <span class="keywordtype">bool</span> <a class="code hl_function" href="class_pessoa.html#a711e3db614405b2e963bb8f970506680">PodeReservar</a>() <span class="keyword">const</span> = 0;</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno"><a class="line" href="class_pessoa.html#a336dbc6c4950bb082bd025db02a66b32">   62</a></span>        <span class="keyword">virtual</span> <span class="keywordtype">bool</span> <a class="code hl_function" href="class_pessoa.html#a336dbc6c4950bb082bd025db02a66b32">PodeEmprestar</a>() <span class="keyword">const</span> = 0;</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno"><a class="line" href="class_pessoa.html#aa197857ad2d4ee5b8e5ca5c1c3e47c9e">   63</a></span>        <span class="keyword">virtual</span> <span class="keywordtype">int</span> <a class="code hl_function" href="class_pessoa.html#aa197857ad2d4ee5b8e5ca5c1c3e47c9e">getLivrosMaximos</a>() = 0;</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno"><a class="line" href="class_pessoa.html#a33df96bd16faf07c931aa25fd30b429f">   64</a></span>        <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code hl_function" href="class_pessoa.html#a33df96bd16faf07c931aa25fd30b429f">alterarLivrosMaximos</a>(<span class="keywordtype">int</span> max) = 0;</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno"><a class="line" href="class_pessoa.html#a2d3ac73736b40f5216e19d0842968db7">   65</a></span>        <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code hl_function" href="class_pessoa.html#a2d3ac73736b40f5216e19d0842968db7">alterarDescontos</a>(<span class="keywordtype">int</span> desc) = 0;</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno"><a class="line" href="class_pessoa.html#ae81e9d7e61c73f43e6e47d4f472d3803">   66</a></span>        <span class="keyword">virtual</span> <span class="keywordtype">double</span> <a class="code hl_function" href="class_pessoa.html#ae81e9d7e61c73f43e6e47d4f472d3803">getDescontoMulta</a>() = 0;</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno"><a class="line" href="class_pessoa.html#a805aa13cbe96ea52c35e8eac04c9a10a">   67</a></span>        <span class="keyword">virtual</span> <span class="keywordtype">double</span> <a class="code hl_function" href="class_pessoa.html#a805aa13cbe96ea52c35e8eac04c9a10a">calcularMultaTotal</a>() = 0;</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno"><a class="line" href="class_pessoa.html#a916e3a3949bf831cdfe0c9369f46b4c4">   68</a></span>        <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code hl_function" href="class_pessoa.html#a916e3a3949bf831cdfe0c9369f46b4c4">incrementarEmprestimosAtivos</a>() = 0;</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno"><a class="line" href="class_pessoa.html#aef4caed21bfc0836464c375b67e375ef">   69</a></span>        <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code hl_function" href="class_pessoa.html#aef4caed21bfc0836464c375b67e375ef">addEmprestimo</a>(<a class="code hl_class" href="class_emprestimo.html">Emprestimo</a>&amp; emprestimo) = 0;</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    </div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    };</div>
+</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span> </div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span><span class="preprocessor">#endif </span><span class="comment">// PESSOA_H</span></div>
+<div class="ttc" id="a_emprestimos_8h_html"><div class="ttname"><a href="_emprestimos_8h.html">Emprestimos.h</a></div></div>
+<div class="ttc" id="aclass_emprestimo_html"><div class="ttname"><a href="class_emprestimo.html">Emprestimo</a></div><div class="ttdef"><b>Definição</b> <a href="_emprestimos_8h_source.html#l00013">Emprestimos.h:13</a></div></div>
+<div class="ttc" id="aclass_pessoa_html"><div class="ttname"><a href="class_pessoa.html">Pessoa</a></div><div class="ttdef"><b>Definição</b> <a href="#l00012">Pessoa.h:13</a></div></div>
+<div class="ttc" id="aclass_pessoa_html_a056864bad3f325d7ca18052ca564f6a2"><div class="ttname"><a href="class_pessoa.html#a056864bad3f325d7ca18052ca564f6a2">Pessoa::adicionarReservaPelaLeitura</a></div><div class="ttdeci">void adicionarReservaPelaLeitura(Emprestimo &amp;emprestimo)</div><div class="ttdef"><b>Definição</b> <a href="_pessoa_8cpp_source.html#l00049">Pessoa.cpp:49</a></div></div>
+<div class="ttc" id="aclass_pessoa_html_a086dabd5d80445c4b814c797c4bf6e65"><div class="ttname"><a href="class_pessoa.html#a086dabd5d80445c4b814c797c4bf6e65">Pessoa::listarReservas</a></div><div class="ttdeci">void listarReservas() const</div><div class="ttdef"><b>Definição</b> <a href="_pessoa_8cpp_source.html#l00087">Pessoa.cpp:87</a></div></div>
+<div class="ttc" id="aclass_pessoa_html_a0fb2979cb05960baebef7d1917e874e2"><div class="ttname"><a href="class_pessoa.html#a0fb2979cb05960baebef7d1917e874e2">Pessoa::EnviarNotificacoesdeExlusaoDeReserva</a></div><div class="ttdeci">void EnviarNotificacoesdeExlusaoDeReserva(string livro)</div><div class="ttdef"><b>Definição</b> <a href="_pessoa_8cpp_source.html#l00099">Pessoa.cpp:99</a></div></div>
+<div class="ttc" id="aclass_pessoa_html_a125f3bc79f3262d5c127a19976c802ae"><div class="ttname"><a href="class_pessoa.html#a125f3bc79f3262d5c127a19976c802ae">Pessoa::adicionarReserva</a></div><div class="ttdeci">void adicionarReserva(Emprestimo &amp;emprestimo)</div><div class="ttdef"><b>Definição</b> <a href="_pessoa_8cpp_source.html#l00044">Pessoa.cpp:44</a></div></div>
+<div class="ttc" id="aclass_pessoa_html_a1501b01d184497075fe5ce042da3ae44"><div class="ttname"><a href="class_pessoa.html#a1501b01d184497075fe5ce042da3ae44">Pessoa::~Pessoa</a></div><div class="ttdeci">virtual ~Pessoa()</div><div class="ttdef"><b>Definição</b> <a href="_pessoa_8cpp_source.html#l00007">Pessoa.cpp:7</a></div></div>
+<div class="ttc" id="aclass_pessoa_html_a2d3ac73736b40f5216e19d0842968db7"><div class="ttname"><a href="class_pessoa.html#a2d3ac73736b40f5216e19d0842968db7">Pessoa::alterarDescontos</a></div><div class="ttdeci">virtual void alterarDescontos(int desc)=0</div></div>
+<div class="ttc" id="aclass_pessoa_html_a336dbc6c4950bb082bd025db02a66b32"><div class="ttname"><a href="class_pessoa.html#a336dbc6c4950bb082bd025db02a66b32">Pessoa::PodeEmprestar</a></div><div class="ttdeci">virtual bool PodeEmprestar() const =0</div></div>
+<div class="ttc" id="aclass_pessoa_html_a33df96bd16faf07c931aa25fd30b429f"><div class="ttname"><a href="class_pessoa.html#a33df96bd16faf07c931aa25fd30b429f">Pessoa::alterarLivrosMaximos</a></div><div class="ttdeci">virtual void alterarLivrosMaximos(int max)=0</div></div>
+<div class="ttc" id="aclass_pessoa_html_a3cbd1ffaf1a4d64c1158a5adf0039a6e"><div class="ttname"><a href="class_pessoa.html#a3cbd1ffaf1a4d64c1158a5adf0039a6e">Pessoa::NIF</a></div><div class="ttdeci">string NIF</div><div class="ttdef"><b>Definição</b> <a href="#l00016">Pessoa.h:16</a></div></div>
+<div class="ttc" id="aclass_pessoa_html_a4cae08b69bdc4045482a42fbeb99d813"><div class="ttname"><a href="class_pessoa.html#a4cae08b69bdc4045482a42fbeb99d813">Pessoa::EnviarNotificacoesdeAquisicaoDaReserva</a></div><div class="ttdeci">void EnviarNotificacoesdeAquisicaoDaReserva(string livro)</div><div class="ttdef"><b>Definição</b> <a href="_pessoa_8cpp_source.html#l00108">Pessoa.cpp:108</a></div></div>
+<div class="ttc" id="aclass_pessoa_html_a4d61084073db6d1e100546d7411df481"><div class="ttname"><a href="class_pessoa.html#a4d61084073db6d1e100546d7411df481">Pessoa::EmprestimosUser</a></div><div class="ttdeci">vector&lt; Emprestimo &gt; EmprestimosUser</div><div class="ttdef"><b>Definição</b> <a href="#l00024">Pessoa.h:24</a></div></div>
+<div class="ttc" id="aclass_pessoa_html_a4f18fa80707eb641ab07b92eabeac725"><div class="ttname"><a href="class_pessoa.html#a4f18fa80707eb641ab07b92eabeac725">Pessoa::getNIF</a></div><div class="ttdeci">string getNIF() const</div><div class="ttdef"><b>Definição</b> <a href="_pessoa_8cpp_source.html#l00026">Pessoa.cpp:26</a></div></div>
+<div class="ttc" id="aclass_pessoa_html_a541bce2406d8af9447c223fbddac72b6"><div class="ttname"><a href="class_pessoa.html#a541bce2406d8af9447c223fbddac72b6">Pessoa::NumeroDeReservas</a></div><div class="ttdeci">int NumeroDeReservas</div><div class="ttdef"><b>Definição</b> <a href="#l00021">Pessoa.h:21</a></div></div>
+<div class="ttc" id="aclass_pessoa_html_a56290ea084876825e3dcea2da8abd586"><div class="ttname"><a href="class_pessoa.html#a56290ea084876825e3dcea2da8abd586">Pessoa::decrementarEmprestimosAtivos</a></div><div class="ttdeci">void decrementarEmprestimosAtivos()</div><div class="ttdef"><b>Definição</b> <a href="_pessoa_8cpp_source.html#l00034">Pessoa.cpp:34</a></div></div>
+<div class="ttc" id="aclass_pessoa_html_a702983d2b9f5543d11ee0f3dea527433"><div class="ttname"><a href="class_pessoa.html#a702983d2b9f5543d11ee0f3dea527433">Pessoa::removerReserva</a></div><div class="ttdeci">void removerReserva(Emprestimo &amp;emprestimo)</div><div class="ttdef"><b>Definição</b> <a href="_pessoa_8cpp_source.html#l00057">Pessoa.cpp:57</a></div></div>
+<div class="ttc" id="aclass_pessoa_html_a711e3db614405b2e963bb8f970506680"><div class="ttname"><a href="class_pessoa.html#a711e3db614405b2e963bb8f970506680">Pessoa::PodeReservar</a></div><div class="ttdeci">virtual bool PodeReservar() const =0</div></div>
+<div class="ttc" id="aclass_pessoa_html_a7c39cb0039d1ed9cdc10cc409a3393a2"><div class="ttname"><a href="class_pessoa.html#a7c39cb0039d1ed9cdc10cc409a3393a2">Pessoa::categoria</a></div><div class="ttdeci">string categoria</div><div class="ttdef"><b>Definição</b> <a href="#l00022">Pessoa.h:22</a></div></div>
+<div class="ttc" id="aclass_pessoa_html_a7ff2ef76e5996adcf06f78497e7952cf"><div class="ttname"><a href="class_pessoa.html#a7ff2ef76e5996adcf06f78497e7952cf">Pessoa::totalMultaPorPagar</a></div><div class="ttdeci">int totalMultaPorPagar</div><div class="ttdef"><b>Definição</b> <a href="#l00017">Pessoa.h:17</a></div></div>
+<div class="ttc" id="aclass_pessoa_html_a805aa13cbe96ea52c35e8eac04c9a10a"><div class="ttname"><a href="class_pessoa.html#a805aa13cbe96ea52c35e8eac04c9a10a">Pessoa::calcularMultaTotal</a></div><div class="ttdeci">virtual double calcularMultaTotal()=0</div></div>
+<div class="ttc" id="aclass_pessoa_html_a8d551db3b19e1f07022adb3793cb8ed7"><div class="ttname"><a href="class_pessoa.html#a8d551db3b19e1f07022adb3793cb8ed7">Pessoa::getNome</a></div><div class="ttdeci">string getNome() const</div><div class="ttdef"><b>Definição</b> <a href="_pessoa_8cpp_source.html#l00024">Pessoa.cpp:24</a></div></div>
+<div class="ttc" id="aclass_pessoa_html_a90d79171fa18b5e6f7ff872b322649a2"><div class="ttname"><a href="class_pessoa.html#a90d79171fa18b5e6f7ff872b322649a2">Pessoa::Reservas</a></div><div class="ttdeci">vector&lt; Emprestimo &gt; Reservas</div><div class="ttdef"><b>Definição</b> <a href="#l00025">Pessoa.h:25</a></div></div>
+<div class="ttc" id="aclass_pessoa_html_a916e3a3949bf831cdfe0c9369f46b4c4"><div class="ttname"><a href="class_pessoa.html#a916e3a3949bf831cdfe0c9369f46b4c4">Pessoa::incrementarEmprestimosAtivos</a></div><div class="ttdeci">virtual void incrementarEmprestimosAtivos()=0</div></div>
+<div class="ttc" id="aclass_pessoa_html_a92327a1bf830c1443ba5fef668c7a475"><div class="ttname"><a href="class_pessoa.html#a92327a1bf830c1443ba5fef668c7a475">Pessoa::totalMultaPago</a></div><div class="ttdeci">int totalMultaPago</div><div class="ttdef"><b>Definição</b> <a href="#l00018">Pessoa.h:18</a></div></div>
+<div class="ttc" id="aclass_pessoa_html_a93d4067eb3c44acf22bb1a52bfe4039f"><div class="ttname"><a href="class_pessoa.html#a93d4067eb3c44acf22bb1a52bfe4039f">Pessoa::NumeroDeEmprestimosAtivos</a></div><div class="ttdeci">int NumeroDeEmprestimosAtivos</div><div class="ttdef"><b>Definição</b> <a href="#l00020">Pessoa.h:20</a></div></div>
+<div class="ttc" id="aclass_pessoa_html_a94ec89ec18555f838705e3b6ca87f4c0"><div class="ttname"><a href="class_pessoa.html#a94ec89ec18555f838705e3b6ca87f4c0">Pessoa::Pessoa</a></div><div class="ttdeci">Pessoa(string nome, string NIF, int NumeroDeEmprestimosTotal, int NumeroDeEmprestimosAtivos, int totalMultaPorPagar, int totalMultaPago, int NumeroDeReservas, string categoria)</div><div class="ttdef"><b>Definição</b> <a href="_pessoa_8cpp_source.html#l00003">Pessoa.cpp:3</a></div></div>
+<div class="ttc" id="aclass_pessoa_html_aa197857ad2d4ee5b8e5ca5c1c3e47c9e"><div class="ttname"><a href="class_pessoa.html#aa197857ad2d4ee5b8e5ca5c1c3e47c9e">Pessoa::getLivrosMaximos</a></div><div class="ttdeci">virtual int getLivrosMaximos()=0</div></div>
+<div class="ttc" id="aclass_pessoa_html_aa4bbc59c50d24acc69b1e9d1f487cae3"><div class="ttname"><a href="class_pessoa.html#aa4bbc59c50d24acc69b1e9d1f487cae3">Pessoa::getPrazoDevolucao</a></div><div class="ttdeci">virtual int getPrazoDevolucao(string categoriaLivro) const =0</div></div>
+<div class="ttc" id="aclass_pessoa_html_aaa29de437d537a6bb661dbbf26c38023"><div class="ttname"><a href="class_pessoa.html#aaa29de437d537a6bb661dbbf26c38023">Pessoa::escreverFicheiro</a></div><div class="ttdeci">virtual bool escreverFicheiro(ofstream &amp;file)</div><div class="ttdef"><b>Definição</b> <a href="_pessoa_8cpp_source.html#l00114">Pessoa.cpp:114</a></div></div>
+<div class="ttc" id="aclass_pessoa_html_ac38a84865b1b6802c69eab17c2e364eb"><div class="ttname"><a href="class_pessoa.html#ac38a84865b1b6802c69eab17c2e364eb">Pessoa::EnviarNotificacoesdeAtraso</a></div><div class="ttdeci">virtual void EnviarNotificacoesdeAtraso()=0</div></div>
+<div class="ttc" id="aclass_pessoa_html_ac51c20f612fe763eac3938e37b6823d7"><div class="ttname"><a href="class_pessoa.html#ac51c20f612fe763eac3938e37b6823d7">Pessoa::descricao</a></div><div class="ttdeci">virtual void descricao() const</div><div class="ttdef"><b>Definição</b> <a href="_pessoa_8cpp_source.html#l00013">Pessoa.cpp:13</a></div></div>
+<div class="ttc" id="aclass_pessoa_html_ac6620cad0f9e47e5ac989ee4ed64f959"><div class="ttname"><a href="class_pessoa.html#ac6620cad0f9e47e5ac989ee4ed64f959">Pessoa::listarEmprestimos</a></div><div class="ttdeci">void listarEmprestimos() const</div><div class="ttdef"><b>Definição</b> <a href="_pessoa_8cpp_source.html#l00075">Pessoa.cpp:75</a></div></div>
+<div class="ttc" id="aclass_pessoa_html_ad225d6d216d5d1777d5f39bb1354c769"><div class="ttname"><a href="class_pessoa.html#ad225d6d216d5d1777d5f39bb1354c769">Pessoa::NumeroDeEmprestimosTotal</a></div><div class="ttdeci">int NumeroDeEmprestimosTotal</div><div class="ttdef"><b>Definição</b> <a href="#l00019">Pessoa.h:19</a></div></div>
+<div class="ttc" id="aclass_pessoa_html_ad4e88b8f3499405a7a03df648857c338"><div class="ttname"><a href="class_pessoa.html#ad4e88b8f3499405a7a03df648857c338">Pessoa::nome</a></div><div class="ttdeci">string nome</div><div class="ttdef"><b>Definição</b> <a href="#l00015">Pessoa.h:15</a></div></div>
+<div class="ttc" id="aclass_pessoa_html_ad78b2e510b221babc66bb92364443c6a"><div class="ttname"><a href="class_pessoa.html#ad78b2e510b221babc66bb92364443c6a">Pessoa::getCategoria</a></div><div class="ttdeci">string getCategoria() const</div><div class="ttdef"><b>Definição</b> <a href="_pessoa_8cpp_source.html#l00028">Pessoa.cpp:28</a></div></div>
+<div class="ttc" id="aclass_pessoa_html_ae81e9d7e61c73f43e6e47d4f472d3803"><div class="ttname"><a href="class_pessoa.html#ae81e9d7e61c73f43e6e47d4f472d3803">Pessoa::getDescontoMulta</a></div><div class="ttdeci">virtual double getDescontoMulta()=0</div></div>
+<div class="ttc" id="aclass_pessoa_html_aecbe93b4f5ec73d6d6f7fd99574abdee"><div class="ttname"><a href="class_pessoa.html#aecbe93b4f5ec73d6d6f7fd99574abdee">Pessoa::getNumeroDeEmprestimosTotais</a></div><div class="ttdeci">int getNumeroDeEmprestimosTotais()</div><div class="ttdef"><b>Definição</b> <a href="_pessoa_8cpp_source.html#l00070">Pessoa.cpp:70</a></div></div>
+<div class="ttc" id="aclass_pessoa_html_aef4caed21bfc0836464c375b67e375ef"><div class="ttname"><a href="class_pessoa.html#aef4caed21bfc0836464c375b67e375ef">Pessoa::addEmprestimo</a></div><div class="ttdeci">virtual void addEmprestimo(Emprestimo &amp;emprestimo)=0</div></div>
+<div class="ttc" id="aclass_pessoa_html_af0bad20809b6545187ad010cb1ef7cac"><div class="ttname"><a href="class_pessoa.html#af0bad20809b6545187ad010cb1ef7cac">Pessoa::adicionarEmprestimoPelaLeitura</a></div><div class="ttdeci">void adicionarEmprestimoPelaLeitura(Emprestimo &amp;emprestimo)</div><div class="ttdef"><b>Definição</b> <a href="_pessoa_8cpp_source.html#l00053">Pessoa.cpp:53</a></div></div>
+<div class="ttc" id="aclass_pessoa_html_afed7dd0311fb39bf2f6aed86492a1157"><div class="ttname"><a href="class_pessoa.html#afed7dd0311fb39bf2f6aed86492a1157">Pessoa::incrementarMulta</a></div><div class="ttdeci">void incrementarMulta()</div><div class="ttdef"><b>Definição</b> <a href="_pessoa_8cpp_source.html#l00030">Pessoa.cpp:30</a></div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Gerado por&#160;<a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.12.0
+</small></address>
+</div><!-- doc-content -->
+</body>
+</html>

@@ -11,6 +11,6 @@ int main() {
     Biblioteca biblioteca;
     Uteis uteis;
     uteis.LerGeral(biblioteca);
-    // MENU_PRINCIPAL(biblioteca,uteis);
+    MENU_PRINCIPAL(biblioteca,uteis);
     return 0;
 }

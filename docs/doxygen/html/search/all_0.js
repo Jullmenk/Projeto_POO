@@ -1,0 +1,20 @@
+var searchData=
+[
+  ['adddesconto_0',['addDesconto',['../class_uteis.html#ac5bb9fbf8d03c7392cb1515cc29600e1',1,'Uteis']]],
+  ['addemprestimo_1',['addEmprestimo',['../class_estudante.html#a3b605d6d3af4186e81c415539a5b848d',1,'Estudante::addEmprestimo()'],['../class_leitor_comum.html#a9ae63c1eda647d4db9c34059157ab9fd',1,'LeitorComum::addEmprestimo()'],['../class_pessoa.html#aef4caed21bfc0836464c375b67e375ef',1,'Pessoa::addEmprestimo()'],['../class_professor.html#a7e5fa1feaf0a5549966067b6eb1397fd',1,'Professor::addEmprestimo()'],['../class_senior.html#a11cc7c9fa14a222de9d8b303fbe3d99d',1,'Senior::addEmprestimo()']]],
+  ['addlimitelivros_2',['addLimiteLivros',['../class_uteis.html#a30a1cb32ce01db42d4b757ebd6dd0634',1,'Uteis']]],
+  ['adicionaremprestimopelaleitura_3',['adicionarEmprestimoPelaLeitura',['../class_pessoa.html#af0bad20809b6545187ad010cb1ef7cac',1,'Pessoa']]],
+  ['adicionarleitor_4',['adicionarLeitor',['../class_biblioteca.html#ae521f83e78fdde4182ca3f811cb77621',1,'Biblioteca']]],
+  ['adicionarlivro_5',['adicionarLivro',['../class_biblioteca.html#a4c9c6ff56fc4a359779d4989bc8c2c9e',1,'Biblioteca']]],
+  ['adicionarreserva_6',['adicionarReserva',['../class_pessoa.html#a125f3bc79f3262d5c127a19976c802ae',1,'Pessoa']]],
+  ['adicionarreservapelaleitura_7',['adicionarReservaPelaLeitura',['../class_pessoa.html#a056864bad3f325d7ca18052ca564f6a2',1,'Pessoa']]],
+  ['ajustarcaracteres_8',['ajustarCaracteres',['../_uteis_8cpp.html#a1aaf64f3175fbca295d7b68ce80665cd',1,'Uteis.cpp']]],
+  ['ajustarcaracteresbib_9',['ajustarCaracteresBib',['../_biblioteca_8cpp.html#a6059524b380d437122855b98b9ed61c4',1,'Biblioteca.cpp']]],
+  ['alterardescontos_10',['alterarDescontos',['../class_estudante.html#a2dbc71191d8a3c44e1c5160eb1338a47',1,'Estudante::alterarDescontos()'],['../class_leitor_comum.html#a12944ac457fafcfb033d8d632e1224c8',1,'LeitorComum::alterarDescontos()'],['../class_pessoa.html#a2d3ac73736b40f5216e19d0842968db7',1,'Pessoa::alterarDescontos()'],['../class_professor.html#a69fdd17e2f8564c2087fc37492a81d66',1,'Professor::alterarDescontos()'],['../class_senior.html#a14feb798f04dde25e16c282c7461a25b',1,'Senior::alterarDescontos()']]],
+  ['alterarinfolivro_11',['alterarInfoLivro',['../class_biblioteca.html#a6afbb72f145d73ea91732ee503c6954b',1,'Biblioteca']]],
+  ['alterarinformacaodolivro_12',['AlterarInformacaoDoLivro',['../class_geral.html#a5c1efa762c67db2f2d26dd32cc5f6cf0',1,'Geral::AlterarInformacaoDoLivro()'],['../class_jornal.html#aa3255755c71ac8ca05d511fb687ff49a',1,'Jornal::AlterarInformacaoDoLivro()'],['../class_livro_cientifico.html#a541714d578f2bd7b8ce87ebc9af6bbeb',1,'LivroCientifico::AlterarInformacaoDoLivro()'],['../class_livro_educativo.html#a0315fe21a585960a0ef4aa3dba6341ec',1,'LivroEducativo::AlterarInformacaoDoLivro()'],['../class_livro_ficcao.html#a8b631ba92424eafc5100091b6e80a6db',1,'LivroFiccao::AlterarInformacaoDoLivro()'],['../class_revista.html#a1041abdb1417c9a907f46fe102b474b4',1,'Revista::AlterarInformacaoDoLivro()']]],
+  ['alterarlivroinfo_13',['alterarLivroInfo',['../class_uteis.html#a01e7697880dcb657da6db1b6a8fdf9ae',1,'Uteis']]],
+  ['alterarlivrosmaximos_14',['alterarLivrosMaximos',['../class_estudante.html#abb85bd6d40626c2ec8390239a9156c11',1,'Estudante::alterarLivrosMaximos()'],['../class_leitor_comum.html#a5885754617a7ea11009dc3383dd1b86b',1,'LeitorComum::alterarLivrosMaximos()'],['../class_pessoa.html#a33df96bd16faf07c931aa25fd30b429f',1,'Pessoa::alterarLivrosMaximos()'],['../class_professor.html#a329a7efb01ae234c20c49b3b243a9e22',1,'Professor::alterarLivrosMaximos()'],['../class_senior.html#abe3bac1089ac0412f5e3b05bb3ba3001',1,'Senior::alterarLivrosMaximos()']]],
+  ['ano_15',['ano',['../class_geral.html#a6a0e6bd4008771e9bf6f8530918553e2',1,'Geral']]],
+  ['autor_16',['autor',['../class_geral.html#ad0286f426a628e713993994e37f2a102',1,'Geral']]]
+];

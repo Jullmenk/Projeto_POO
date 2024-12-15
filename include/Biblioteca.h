@@ -8,7 +8,6 @@
 #include "Livros/Geral.h"
 #include "Utils/Emprestimos.h"
 using namespace std;
-#include <cstdlib>
 
 
 class Biblioteca {

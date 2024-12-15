@@ -1,0 +1,28 @@
+var searchData=
+[
+  ['geral_0',['Geral',['../class_geral.html#ad6093cfbca698f68734ef5b2dc20c209',1,'Geral']]],
+  ['getcategoria_1',['getCategoria',['../class_geral.html#a8b4e7dae7ff070a5a3392b2be72d5d95',1,'Geral::getCategoria()'],['../class_pessoa.html#ad78b2e510b221babc66bb92364443c6a',1,'Pessoa::getCategoria()']]],
+  ['getcategorialeitoremprestimo_2',['getCategoriaLeitorEmprestimo',['../class_emprestimo.html#a12f6bbe15199205d594e58a3f63ea984',1,'Emprestimo']]],
+  ['getcategorialivroemprestimo_3',['getCategoriaLivroEmprestimo',['../class_emprestimo.html#a271a38c7594fc2667c195c471afeb035',1,'Emprestimo']]],
+  ['getcodigo_4',['getCodigo',['../class_geral.html#a1eccd0c765cc576f94e1fe38f5cb7f4c',1,'Geral::getCodigo()'],['../class_jornal.html#a861af5eba368c9040177c1aba77493ba',1,'Jornal::getCodigo()'],['../class_livro_cientifico.html#a43ab665da98a106248edbce7fd84927b',1,'LivroCientifico::getCodigo()'],['../class_livro_educativo.html#a7d3b1b03865fa1a80eea4b1cbb812cd9',1,'LivroEducativo::getCodigo()'],['../class_livro_ficcao.html#a7ffa3083b8c5a6652ea34aeb47d1f526',1,'LivroFiccao::getCodigo()'],['../class_revista.html#a4634b9b1914dae20d31eb932148c4f35',1,'Revista::getCodigo()']]],
+  ['getdatadevolucaoemprestimo_5',['getDataDevolucaoEmprestimo',['../class_emprestimo.html#a6a926766733ce75820134f1dbc4885cc',1,'Emprestimo']]],
+  ['getdescontomulta_6',['getDescontoMulta',['../class_estudante.html#aabb055b2dfb2a521d37992caaca96e15',1,'Estudante::getDescontoMulta()'],['../class_leitor_comum.html#a030f6fdb8dfe70c9b6d8acd265f279ca',1,'LeitorComum::getDescontoMulta()'],['../class_pessoa.html#ae81e9d7e61c73f43e6e47d4f472d3803',1,'Pessoa::getDescontoMulta()'],['../class_professor.html#aedfc3898877dbdc39a9da9cf0489ad18',1,'Professor::getDescontoMulta()'],['../class_senior.html#a91965159e2ee96d16b3cd77eadd9b7c8',1,'Senior::getDescontoMulta()']]],
+  ['getemprestimosporcategoria_7',['getEmprestimosPorCategoria',['../class_biblioteca.html#a18195b358ec99d9571c980ed1f43ddde',1,'Biblioteca']]],
+  ['getidlivroemprestimo_8',['getIDLivroEmprestimo',['../class_emprestimo.html#ada41d59c5d5d733440adbe677ef17f9d',1,'Emprestimo']]],
+  ['getleitores_9',['getleitores',['../class_biblioteca.html#a2e47dfa797e8fce8b3cf85857d2693f6',1,'Biblioteca']]],
+  ['getlivrosmaximos_10',['getLivrosMaximos',['../class_estudante.html#ab65b9aa59e1baa66d4c26fceee99aa0e',1,'Estudante::getLivrosMaximos()'],['../class_leitor_comum.html#ada1091d3b71bb025631bd846fe35e3b5',1,'LeitorComum::getLivrosMaximos()'],['../class_pessoa.html#aa197857ad2d4ee5b8e5ca5c1c3e47c9e',1,'Pessoa::getLivrosMaximos()'],['../class_professor.html#a2bbb038d96846b69839ce67b801627a7',1,'Professor::getLivrosMaximos()'],['../class_senior.html#ac158148e9fcb14ae2a9b726f8ef3bfdd',1,'Senior::getLivrosMaximos()']]],
+  ['getlivrosporcategoria_11',['getLivrosPorCategoria',['../class_biblioteca.html#a42aa301aec27fbbd6b927183cf171a24',1,'Biblioteca']]],
+  ['getnif_12',['getNIF',['../class_pessoa.html#a4f18fa80707eb641ab07b92eabeac725',1,'Pessoa']]],
+  ['getnifemprestimo_13',['getNifEmprestimo',['../class_emprestimo.html#ab8a9c3a99b11bf810b9e4fd1154755ea',1,'Emprestimo']]],
+  ['getnome_14',['getNome',['../class_pessoa.html#a8d551db3b19e1f07022adb3793cb8ed7',1,'Pessoa']]],
+  ['getnumerodeemprestimostotais_15',['getNumeroDeEmprestimosTotais',['../class_pessoa.html#aecbe93b4f5ec73d6d6f7fd99574abdee',1,'Pessoa']]],
+  ['getprazodevolucao_16',['getPrazoDevolucao',['../class_estudante.html#aa7e089c529bb6cf6108b5624a436c672',1,'Estudante::getPrazoDevolucao()'],['../class_leitor_comum.html#a9f53ea83e3b40721df455724619b3f87',1,'LeitorComum::getPrazoDevolucao()'],['../class_pessoa.html#aa4bbc59c50d24acc69b1e9d1f487cae3',1,'Pessoa::getPrazoDevolucao()'],['../class_professor.html#ae7e10dcc38ef8713a0036efa270c7d9f',1,'Professor::getPrazoDevolucao()'],['../class_senior.html#a8787c8f82d4ba685545a2b69358964b7',1,'Senior::getPrazoDevolucao()']]],
+  ['gettitulo_17',['getTitulo',['../class_geral.html#a528dd8ead0b30bcd155e3e68105cb7d2',1,'Geral']]],
+  ['gravardesconto_18',['gravarDesconto',['../class_uteis.html#a9212e48b84dde088f5d5302c261935a4',1,'Uteis']]],
+  ['gravaremprestimosporcategoria_19',['GravarEmprestimosPorCategoria',['../class_biblioteca.html#af69cf84bcefd710161d453428df50d9a',1,'Biblioteca']]],
+  ['gravargeral_20',['GravarGeral',['../class_uteis.html#aba244af454c29328f39f76e617206718',1,'Uteis']]],
+  ['gravarlimitesporcategoria_21',['gravarLimitesPorCategoria',['../class_uteis.html#a5cacaab8fc0761ead611f6400d45ad17',1,'Uteis']]],
+  ['gravarlivrosporcategoria_22',['GravarLivrosPorCategoria',['../class_biblioteca.html#a1b7b47b7076f641672316d10ec7f96e7',1,'Biblioteca']]],
+  ['gravarpessoasporcategoria_23',['GravarPessoasPorCategoria',['../class_biblioteca.html#ab21cdb0fb6835812d739d7e9d3dc7739',1,'Biblioteca']]],
+  ['gravarreservasporcategoria_24',['GravarReservasPorCategoria',['../class_biblioteca.html#a16eaf92d979f477058cc10f916567015',1,'Biblioteca']]]
+];

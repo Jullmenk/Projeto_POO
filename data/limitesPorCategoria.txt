@@ -1,3 +1,4 @@
+Comum ; 3
 Estudante ; 8
 LeitorComum ; 3
 Professor ; 10

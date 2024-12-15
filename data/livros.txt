@@ -1,7 +1,7 @@
-Cientifico ; Física Quântica ; Albert Einstein ; 1915 ; 1 ; Física ; 9780135042435 ;         1ª Edição        
-Cientifico ; Biologia Molecular ; James Watson ; 1961 ; 1 ; Biologia ; 9780198509371 ;         2ª Edição        
-Cientifico ; Inteligência Artificial ; Marvin Minsky ; 1967 ; 1 ; Computação ; 9780262033861 ;         1ª Edição        
-Cientifico ; Teoria da Relatividade ; Albert Einstein ; 1916 ; 1 ; Física ; 9780393090765 ;         3ª Edição        
+Cientifico ; Física Quântica ; Albert Einstein ; 1915 ; 1 ; Física ; 9780135042435 ;           1ª Edição          
+Cientifico ; Biologia Molecular ; James Watson ; 1961 ; 1 ; Biologia ; 9780198509371 ;           2ª Edição          
+Cientifico ; Inteligência Artificial ; Marvin Minsky ; 1967 ; 1 ; Computação ; 9780262033861 ;           1ª Edição          
+Cientifico ; Teoria da Relatividade ; Albert Einstein ; 1916 ; 1 ; Física ; 9780393090765 ;           3ª Edição          
 Educativo ; Matemática para Crianças ; John Smith ; 2015 ; 1 ; 1 ; 9781537636421 ; Matemática 
 Educativo ; História do Brasil ; Sérgio Buarque de Holanda ; 1990 ; 1 ; 2 ; 9788502084319 ; História 
 Educativo ; Introdução à Geografia ; Maria de Souza ; 2018 ; 1 ; 2 ; 9788502107216 ; Geografia 

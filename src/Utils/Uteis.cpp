@@ -544,7 +544,7 @@ bool Uteis::LerPessoasPorCategoria(Biblioteca& biblioteca,string extensaoArquivo
             
             leitor = new Estudante( nome,  NIF,  NumeroDeEmprestimosTotal,  NumeroDeEmprestimosAtivos,  totalMultaPorPagar,  totalMultaPago, NumeroDeReservas, categoria, limitesPorCategoria[categoria], descontoPorCategoria[categoria]);
 
-        } else if (categoria == "LeitorComum") {
+        } else if (categoria == "Comum") {
 
             leitor = new LeitorComum( nome,  NIF,  NumeroDeEmprestimosTotal,  NumeroDeEmprestimosAtivos,  totalMultaPorPagar,  totalMultaPago, NumeroDeReservas, categoria, limitesPorCategoria[categoria], descontoPorCategoria[categoria]);
 
