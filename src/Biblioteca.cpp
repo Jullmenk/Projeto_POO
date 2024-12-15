@@ -479,8 +479,8 @@ void Biblioteca::RelatorioEmprestimosTipoDeLivro(string cat){
 
 // Gravar em Ficheiros
 
-bool Biblioteca::GravarLivrosPorCategoria() {
-    ofstream file("./data/livros.txt");
+bool Biblioteca::GravarLivrosPorCategoria(string extensaoArquivo) {
+    ofstream file("./data/livros"+extensaoArquivo);
     if (!file.is_open()) {
         cerr << "Erro ao abrir o arquivo: livros.txt" << endl;
         return false;
@@ -498,8 +498,8 @@ bool Biblioteca::GravarLivrosPorCategoria() {
     return true;
 }
 
-bool Biblioteca::GravarPessoasPorCategoria() {
-    ofstream file("./data/Pessoas.txt");
+bool Biblioteca::GravarPessoasPorCategoria(string extensaoArquivo) {
+    ofstream file("./data/Pessoas"+extensaoArquivo);
     if (!file.is_open()) {
         cerr << "Erro ao abrir o arquivo: Pessoas.txt" << endl;
         return false;
@@ -517,8 +517,8 @@ bool Biblioteca::GravarPessoasPorCategoria() {
     return true;
 }
 
-bool Biblioteca::GravarEmprestimosPorCategoria() {
-    ofstream file("./data/Emprestimos.txt");
+bool Biblioteca::GravarEmprestimosPorCategoria(string extensaoArquivo) {
+    ofstream file("./data/Emprestimos"+extensaoArquivo);
     if (!file.is_open()) {
         cerr << "Erro ao abrir o arquivo: Emprestimos.txt" << endl;
         return false;
@@ -536,8 +536,8 @@ bool Biblioteca::GravarEmprestimosPorCategoria() {
     return true;
 }
 
-bool Biblioteca::GravarReservasPorCategoria() {
-    ofstream file("./data/Reservas.txt");
+bool Biblioteca::GravarReservasPorCategoria(string extensaoArquivo) {
+    ofstream file("./data/Reservas"+extensaoArquivo);
     if (!file.is_open()) {
         cerr << "Erro ao abrir o arquivo: Reservas.txt" << endl;
         return false;
@@ -560,8 +560,8 @@ void ajustarCaracteresBib(string& str) {
     str.erase(str.find_last_not_of(' ') + 1); // Remover espaços do final
 }
 
-bool Biblioteca::LerEmprestimos() {
-    ifstream file("./data/Emprestimos.txt");
+bool Biblioteca::LerEmprestimos(string extensaoArquivo) {
+    ifstream file("./data/Emprestimos"+extensaoArquivo);
     if (!file.is_open()) {
         cerr << "Erro ao abrir o arquivo: Emprestimos.txt" << endl;
         system("pause");
@@ -613,8 +613,8 @@ bool Biblioteca::LerEmprestimos() {
 
 
 
-bool Biblioteca::LerReservas() {
-    ifstream file("./data/Reservas.txt");
+bool Biblioteca::LerReservas(string extensaoArquivo) {
+    ifstream file("./data/Reservas"+extensaoArquivo);
     if (!file.is_open()) {
         cerr << "Erro ao abrir o arquivo: Reservas.txt" << endl;
         system("pause");

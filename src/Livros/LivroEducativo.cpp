@@ -8,7 +8,7 @@ LivroEducativo::LivroEducativo(string categoria,string titulo, string autor, int
 
 LivroEducativo::~LivroEducativo()
 {
-           cout << categoria << "destruído com sucesso.\n";
+           cout << categoria << " destruído com sucesso.\n";
 }
 
 void LivroEducativo::descricao() const {

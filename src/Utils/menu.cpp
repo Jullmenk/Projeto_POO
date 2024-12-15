@@ -32,9 +32,7 @@ void MENU_PRINCIPAL(Biblioteca &biblioteca,Uteis uteis) {
         switch (num) {
             case 1:
                 MENU_LIVROS(biblioteca,uteis);
-                system("pause");
                 break;
-
             case 2:
                 MENU_UTILIZADOR(biblioteca,uteis);
                 break;
@@ -174,18 +172,7 @@ void MENU_SENIOR(Biblioteca &biblioteca,Uteis uteis) {
             case 3:
                 uteis.alterarLivroInfo(biblioteca);
                 break;
-            case 4:
-                { 
-                bool emp = biblioteca.GravarEmprestimosPorCategoria();
-                bool res = biblioteca.GravarReservasPorCategoria();
-                bool conf = biblioteca.GravarLivrosPorCategoria();
-                bool user = biblioteca.GravarPessoasPorCategoria();
-                bool liv = uteis.gravarLimitesPorCategoria();
-                bool disc = uteis.gravarDesconto();
-                if(conf && user && liv && disc && emp && res){
-                     cout<< "Livros, Utilizadores, Limites e Descontos de Livros Gravados com sucesso";
-                     system("pause");
-                 }}
+            case 4:uteis.GravarGeral(biblioteca);
                 break;
             case 5:MENU_PRINCIPAL(biblioteca,uteis);break;
             case 0:cout << "Saindo do programa..." << endl;exit(0);break;

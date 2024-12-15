@@ -16,19 +16,19 @@ class Uteis
         virtual ~Uteis();
         void CriarLivroUser(Biblioteca& bib);
         void LivroInfo(int opcao,string categoria,Biblioteca& biblioteca);
-        bool LerLivrosPorCategoria(Biblioteca& bib);
-        bool LerPessoasPorCategoria(Biblioteca& bib);
-        bool LerEmprestimos(Biblioteca& biblioteca);
+        bool LerLivrosPorCategoria(Biblioteca& bib,string extensaoArquivo);
+        bool LerPessoasPorCategoria(Biblioteca& bib,string extensaoArquivo);
+        bool LerEmprestimos(Biblioteca& biblioteca,string extensaoArquivo);
         void MudarLimiteLivros(Biblioteca& bib);
         void addLimiteLivros(string categoria, int limite);
-        bool LerLimitesPorCategoria();
-        bool gravarLimitesPorCategoria();
+        bool LerLimitesPorCategoria(string extensaoArquivo);
+        bool gravarLimitesPorCategoria(string extensaoArquivo);
         void alterarLivroInfo(Biblioteca& bib);       
         
         void MudarDesconto(Biblioteca& bib);
         void addDesconto(string categoria, double desconto);
-        bool LerDesconto();
-        bool gravarDesconto();
+        bool LerDesconto(string extensaoArquivo);
+        bool gravarDesconto(string extensaoArquivo);
 
         void CriarUser(Biblioteca& bib);
         void UserInfo(int opcao,string categoria,Biblioteca& biblioteca);
@@ -39,6 +39,9 @@ class Uteis
         void RelatorioTipoDeLivro(Biblioteca& bib);
         void ConsultarHistoricoDeReservas(Biblioteca& bib);
         void DevolverLivro(Biblioteca& bib);
+
+        void GravarGeral(Biblioteca& bib);
+        void LerGeral(Biblioteca& bib);
         
 };
 

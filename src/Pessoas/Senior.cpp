@@ -75,3 +75,11 @@ void Senior::alterarLivrosMaximos(int max) {
 void Senior::alterarDescontos(int desc) {
     descontoMulta = desc;
 };
+
+void Senior::EnviarNotificacoesdeAtraso(){
+    if(categoria == "Professor"){
+        cout<<"O prazo de devolução já expirou, Gostaria de Prorrogar o Empréstimo?\n";
+    }else{
+    cout << "O prazo de devolução já expirou, foi acrescentado uma multa de"<<5*(1 - Senior::getDescontoMulta())<<"EUR.\n";
+    }
+}

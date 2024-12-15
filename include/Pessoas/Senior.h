@@ -26,6 +26,7 @@ class Senior : public Pessoa
         void incrementarEmprestimosAtivos() override;
         void addEmprestimo (Emprestimo &emprestimo) override;
         bool escreverFicheiro(ofstream& file) override;
+        void EnviarNotificacoesdeAtraso() override;
 };
 
 #endif // SENIOR_H_H

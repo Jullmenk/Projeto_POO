@@ -23,12 +23,12 @@ public:
     Biblioteca() = default;
     virtual ~Biblioteca();
     //File
-    bool GravarLivrosPorCategoria();
-    bool GravarEmprestimosPorCategoria();
-    bool GravarReservasPorCategoria();
-    bool GravarPessoasPorCategoria();
-    bool LerEmprestimos();
-    bool LerReservas();
+    bool GravarLivrosPorCategoria(string extensaoArquivo);
+    bool GravarEmprestimosPorCategoria(string extensaoArquivo);
+    bool GravarReservasPorCategoria(string extensaoArquivo);
+    bool GravarPessoasPorCategoria(string extensaoArquivo);
+    bool LerEmprestimos(string extensaoArquivo);
+    bool LerReservas(string extensaoArquivo);
 
     //Livro
     map<string, list<Geral*>>& getLivrosPorCategoria();

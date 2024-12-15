@@ -3,7 +3,7 @@
 Geral::Geral(string categoria,string titulo,  string autor, int ano, bool disponivel):categoria(categoria), titulo(titulo), autor(autor), ano(ano), disponivel(disponivel) {}
 
 Geral::~Geral(){
-
+    
 };
 
 void Geral::descricao() const {

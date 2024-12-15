@@ -7,7 +7,7 @@ Jornal::Jornal(string categoria,string titulo, string autor, int ano, bool dispo
 
 Jornal::~Jornal()
 {
-           cout << categoria << "destruído com sucesso.\n";
+           cout << categoria << " destruído com sucesso.\n";
 }
 
 void Jornal::descricao() const {

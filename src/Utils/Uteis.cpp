@@ -398,8 +398,8 @@ void ajustarCaracteres(string& str) {
     str.erase(str.find_last_not_of(' ') + 1); // Remover espaços do final
 }
 
-bool Uteis::LerLivrosPorCategoria(Biblioteca& biblioteca) {
-    ifstream file("./data/livros.txt");
+bool Uteis::LerLivrosPorCategoria(Biblioteca& biblioteca,string extensaoArquivo) {
+    ifstream file("./data/livros"+extensaoArquivo);
     if (!file.is_open()) {
         cerr << "Erro ao abrir o arquivo: livros.txt" << endl;
         system("pause");
@@ -495,8 +495,8 @@ bool Uteis::LerLivrosPorCategoria(Biblioteca& biblioteca) {
 }
 
 
-bool Uteis::LerPessoasPorCategoria(Biblioteca& biblioteca) {
-    ifstream file("./data/Pessoas.txt");
+bool Uteis::LerPessoasPorCategoria(Biblioteca& biblioteca,string extensaoArquivo) {
+    ifstream file("./data/Pessoas"+extensaoArquivo);
     if (!file.is_open()) {
         cerr << "Erro ao abrir o arquivo: Pessoas.txt" << endl;
         system("pause");
@@ -609,8 +609,8 @@ void Uteis::MudarLimiteLivros(Biblioteca& bib) {
 
 
 
-bool Uteis::LerLimitesPorCategoria() {
-    ifstream file("./data/limitesPorCategoria.txt");
+bool Uteis::LerLimitesPorCategoria(string extensaoArquivo) {
+    ifstream file("./data/limitesPorCategoria"+extensaoArquivo);
     if (!file.is_open()) {
         cerr << "Erro ao abrir o arquivo: limitesPorCategoria.txt" << endl;
         system("pause");
@@ -637,8 +637,8 @@ bool Uteis::LerLimitesPorCategoria() {
     return true;
 }
 
-bool Uteis::gravarLimitesPorCategoria(){
-    ofstream file("./data/limitesPorCategoria.txt");
+bool Uteis::gravarLimitesPorCategoria(string extensaoArquivo){
+    ofstream file("./data/limitesPorCategoria"+extensaoArquivo);
     if (!file.is_open()) {
         cerr << "Erro ao abrir o arquivo: limitesPorCategoria.txt" << endl;
         return false;
@@ -699,8 +699,8 @@ void Uteis::MudarDesconto(Biblioteca& bib) {
 
 
 
-bool Uteis::LerDesconto() {
-    ifstream file("./data/descontoPorCategoria.txt");
+bool Uteis::LerDesconto(string extensaoArquivo) {
+    ifstream file("./data/descontoPorCategoria"+extensaoArquivo);
     if (!file.is_open()) {
         cerr << "Erro ao abrir o arquivo: descontoPorCategoria.txt" << endl;
         system("pause");
@@ -726,8 +726,8 @@ bool Uteis::LerDesconto() {
     return true;
 }
 
-bool Uteis::gravarDesconto(){
-    ofstream file("./data/descontoPorCategoria.txt");
+bool Uteis::gravarDesconto(string extensaoArquivo){
+    ofstream file("./data/descontoPorCategoria"+extensaoArquivo);
     if (!file.is_open()) {
         cerr << "Erro ao abrir o arquivo: descontoPorCategoria.txt" << endl;
         return false;
@@ -750,4 +750,56 @@ void Uteis::alterarLivroInfo(Biblioteca& bib){
     Geral* livro = bib.ProcurarLivro(id_Livro);
     if(!livro)return;
     livro->AlterarInformacaoDoLivro();
+}
+
+void Uteis::GravarGeral(Biblioteca& bib){
+                int tipoArquivo;
+                string extensaoArquivo;
+                cout << "Escolha o número do tipo de arquivo para gravar:\n";
+                        while (tipoArquivo<1||tipoArquivo>2)
+                        {
+                            cout << "1 - .txt\n";
+                            cout << "2 - .csv\n";
+                            cout << "Escolha uma opção: ";
+                            cin >> tipoArquivo;
+                        }
+                            switch (tipoArquivo) {
+                                case 1: extensaoArquivo = ".txt"; break;
+                                case 2: extensaoArquivo = ".csv"; break;
+                }
+
+                bool emp = bib.GravarEmprestimosPorCategoria(extensaoArquivo);
+                bool res = bib.GravarReservasPorCategoria(extensaoArquivo);
+                bool conf = bib.GravarLivrosPorCategoria(extensaoArquivo);
+                bool user = bib.GravarPessoasPorCategoria(extensaoArquivo);
+                bool liv = gravarLimitesPorCategoria(extensaoArquivo);
+                bool disc = gravarDesconto(extensaoArquivo);
+                
+                if(conf && user && liv && disc && emp && res){
+                     cout<< "Livros, Utilizadores, Limites e Descontos de Livros Gravados com sucesso";
+                     system("pause");
+                 }
+};
+
+void Uteis::LerGeral(Biblioteca& bib){
+                int tipoArquivo;
+                string extensaoArquivo;
+                cout << "Escolha o número do tipo de arquivo para ler:\n";
+                        while (tipoArquivo<1||tipoArquivo>2)
+                        {
+                            cout << "1 - .txt\n";
+                            cout << "2 - .csv\n";
+                            cout << "Escolha uma opção: ";
+                            cin >> tipoArquivo;
+                        }
+                            switch (tipoArquivo) {
+                                case 1: extensaoArquivo = ".txt"; break;
+                                case 2: extensaoArquivo = ".csv"; break;
+                }
+                LerLimitesPorCategoria(extensaoArquivo);
+                LerDesconto(extensaoArquivo);
+                LerLivrosPorCategoria(bib,extensaoArquivo);
+                LerPessoasPorCategoria(bib,extensaoArquivo);
+                bib.LerEmprestimos(extensaoArquivo);
+                bib.LerReservas(extensaoArquivo);
 }

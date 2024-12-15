@@ -96,14 +96,6 @@ void Pessoa::listarReservas() const {
     };
 }
 
-void Pessoa::EnviarNotificacoesdeAtraso(){
-    if(categoria == "Professor"){
-        cout<<"O prazo de devolução já expirou, Gostaria de Prorrogar o Empréstimo?\n";
-    }else{
-    cout << "O prazo de devolução já expirou, foi acrescentado uma multa de"<<5*(1 - Pessoa::getDescontoMulta())<<"EUR.\n";
-    }
-}
-
 void Pessoa::EnviarNotificacoesdeExlusaoDeReserva(string livro){
     cout 
     <<"Ola,"<<nome

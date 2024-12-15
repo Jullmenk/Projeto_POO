@@ -69,3 +69,11 @@ void LeitorComum::alterarLivrosMaximos(int max) {
 void LeitorComum::alterarDescontos(int desc) {
     descontoMulta = desc;
 };
+
+void LeitorComum::EnviarNotificacoesdeAtraso(){
+    if(categoria == "Professor"){
+        cout<<"O prazo de devolução já expirou, Gostaria de Prorrogar o Empréstimo?\n";
+    }else{
+    cout << "O prazo de devolução já expirou, foi acrescentado uma multa de"<<5*(1 - LeitorComum::getDescontoMulta())<<"EUR.\n";
+    }
+}

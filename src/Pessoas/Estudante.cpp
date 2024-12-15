@@ -75,3 +75,11 @@ void Estudante::alterarLivrosMaximos(int max) {
 void Estudante::alterarDescontos(int desc) {
     descontoMulta = desc;
 };
+
+void Estudante::EnviarNotificacoesdeAtraso(){
+    if(categoria == "Professor"){
+        cout<<"O prazo de devolução já expirou, Gostaria de Prorrogar o Empréstimo?\n";
+    }else{
+    cout << "O prazo de devolução já expirou, foi acrescentado uma multa de"<<5*(1 - Estudante::getDescontoMulta())<<"EUR.\n";
+    }
+}

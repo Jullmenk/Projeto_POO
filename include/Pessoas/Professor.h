@@ -25,6 +25,7 @@ class Professor : public Pessoa
         void incrementarEmprestimosAtivos() override;
         void addEmprestimo (Emprestimo &emprestimo) override;
         bool escreverFicheiro(ofstream& file) override;
+        void EnviarNotificacoesdeAtraso() override;
 };
 
 #endif // PROFESSOR_H
